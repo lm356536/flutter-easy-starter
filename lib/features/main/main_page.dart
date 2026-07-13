@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_easy_starter/core/theme/app_colors.dart';
 import 'package:flutter_easy_starter/features/intro/intro_page.dart';
@@ -18,10 +19,10 @@ class MainPageState extends State<MainPage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    IntroPage(),
-    TravelHomePage(),
-    MessagePage(),
-    ProfilePage(),
+    const IntroPage(),
+    const TravelHomePage(),
+    const MessagePage(),
+    const ProfilePage(),
   ];
 
   void switchToTab(int index) {
@@ -40,28 +41,95 @@ class MainPageState extends State<MainPage> {
         index: _currentIndex,
         children: _pages,
       ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: AppColors.surface,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.3),
-              blurRadius: 20,
-              offset: const Offset(0, -5),
+      bottomNavigationBar: _buildBottomBar(),
+    );
+  }
+
+  Widget _buildBottomBar() {
+    const double barHeight = 80;
+    const double indicatorWidth = 56;
+    const double indicatorHeight = 42;
+
+    return ClipRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 25, sigmaY: 25),
+        child: Container(
+          decoration: BoxDecoration(
+            color: AppColors.surface.withValues(alpha: 0.55),
+            border: Border(
+              top: BorderSide(
+                color: AppColors.white.withValues(alpha: 0.08),
+                width: 0.5,
+              ),
             ),
-          ],
-        ),
-        child: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _buildNavItem(0, Icons.info_outline, Icons.info, '介绍'),
-                _buildNavItem(1, Icons.travel_explore_outlined, Icons.travel_explore, '探索'),
-                _buildNavItem(2, Icons.chat_bubble_outline, Icons.chat_bubble, '消息'),
-                _buildNavItem(3, Icons.person_outline, Icons.person, '我的'),
-              ],
+          ),
+          child: SafeArea(
+            top: false,
+            child: SizedBox(
+              height: barHeight.w,
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final itemWidth = constraints.maxWidth / 4;
+                  final indicatorLeft = _currentIndex * itemWidth +
+                      (itemWidth - indicatorWidth) / 2;
+                  final indicatorTop = (barHeight.w - indicatorHeight) / 2;
+
+                  return Stack(
+                    children: [
+                      // 滑动指示器 - 毛玻璃背景上平滑滑动的选中条
+                      AnimatedPositioned(
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeInOutCubic,
+                        left: indicatorLeft,
+                        top: indicatorTop,
+                        child: Container(
+                          width: indicatorWidth,
+                          height: indicatorHeight,
+                          decoration: BoxDecoration(
+                            color: AppColors.primary.withValues(alpha: 0.2),
+                            borderRadius: BorderRadius.circular(
+                              indicatorHeight / 2,
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Tab 项
+                      Row(
+                        children: [
+                          _buildNavItem(
+                            0,
+                            Icons.info_outline,
+                            Icons.info,
+                            '介绍',
+                            itemWidth,
+                          ),
+                          _buildNavItem(
+                            1,
+                            Icons.travel_explore_outlined,
+                            Icons.travel_explore,
+                            '探索',
+                            itemWidth,
+                          ),
+                          _buildNavItem(
+                            2,
+                            Icons.chat_bubble_outline,
+                            Icons.chat_bubble,
+                            '消息',
+                            itemWidth,
+                          ),
+                          _buildNavItem(
+                            3,
+                            Icons.person_outline,
+                            Icons.person,
+                            '我的',
+                            itemWidth,
+                          ),
+                        ],
+                      ),
+                    ],
+                  );
+                },
+              ),
             ),
           ),
         ),
@@ -74,37 +142,34 @@ class MainPageState extends State<MainPage> {
     IconData icon,
     IconData activeIcon,
     String label,
+    double itemWidth,
   ) {
     final isSelected = _currentIndex == index;
 
     return GestureDetector(
       onTap: () => setState(() => _currentIndex = index),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        decoration: BoxDecoration(
-          color: isSelected ? AppColors.primary.withValues(alpha: 0.2) : Colors.transparent,
-          borderRadius: BorderRadius.circular(20.r),
-        ),
-        child: Row(
+      child: Container(
+        width: itemWidth,
+        height: 80.w,
+        alignment: Alignment.center,
+        child: Column(
           mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
               isSelected ? activeIcon : icon,
               color: isSelected ? AppColors.primary : AppColors.lightGrey,
               size: 24,
             ),
-            if (isSelected) ...[
-              SizedBox(width: 8.w),
-              Text(
-                label,
-                style: TextStyle(
-                  color: AppColors.primary,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w600,
-                ),
+            SizedBox(height: 4.w),
+            Text(
+              label,
+              style: TextStyle(
+                color: isSelected ? AppColors.primary : AppColors.lightGrey,
+                fontSize: 10.sp,
+                fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
               ),
-            ],
+            ),
           ],
         ),
       ),

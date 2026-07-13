@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easy_starter/core/constants/app_constants.dart';
 import 'package:flutter_easy_starter/core/theme/app_theme.dart';
+import 'package:flutter_easy_starter/core/theme/theme_provider.dart';
 import 'package:flutter_easy_starter/core/router/app_router.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,6 +14,8 @@ class EasyStarterApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final themeMode = ref.watch(themeModeProvider);
+
     return ScreenUtilInit(
       designSize: const Size(
         AppConstants.designWidth,
@@ -24,9 +27,9 @@ class EasyStarterApp extends ConsumerWidget {
         return MaterialApp.router(
           title: AppConstants.appName,
           debugShowCheckedModeBanner: false,
-          theme: AppTheme.dark,
+          theme: AppTheme.light,
           darkTheme: AppTheme.dark,
-          themeMode: ThemeMode.dark,
+          themeMode: themeMode,
           routerConfig: AppRouter.router,
           localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,

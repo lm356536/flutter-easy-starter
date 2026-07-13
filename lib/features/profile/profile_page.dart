@@ -6,6 +6,7 @@ import 'package:flutter_easy_starter/core/utils/device_utils.dart';
 import 'package:flutter_easy_starter/core/utils/dialog_utils.dart';
 import 'package:flutter_easy_starter/models/user_model.dart';
 import 'package:flutter_easy_starter/providers/auth_provider.dart';
+import 'package:flutter_easy_starter/core/theme/theme_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -93,9 +94,11 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     trailing: _CustomSwitch(
                       value: _notificationsEnabled,
                       activeColor: AppColors.primary,
-                      onChanged: (value) => setState(() => _notificationsEnabled = value),
+                      onChanged: (value) =>
+                          setState(() => _notificationsEnabled = value),
                     ),
-                    onTap: () => setState(() => _notificationsEnabled = !_notificationsEnabled),
+                    onTap: () => setState(
+                        () => _notificationsEnabled = !_notificationsEnabled),
                   ),
                   _MenuItem(
                     icon: Icons.location_on_outlined,
@@ -104,14 +107,28 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     trailing: _CustomSwitch(
                       value: _locationEnabled,
                       activeColor: AppColors.primary,
-                      onChanged: (value) => setState(() => _locationEnabled = value),
+                      onChanged: (value) =>
+                          setState(() => _locationEnabled = value),
                     ),
-                    onTap: () => setState(() => _locationEnabled = !_locationEnabled),
+                    onTap: () =>
+                        setState(() => _locationEnabled = !_locationEnabled),
                   ),
                   _MenuItem(
                     icon: Icons.visibility_outlined,
                     title: '隐私设置',
                     onTap: () => context.push(RouteNames.privacySettings),
+                  ),
+                  _MenuItem(
+                    icon: Icons.palette_outlined,
+                    title: '外观模式',
+                    trailing: Text(
+                      _getThemeModeLabel(ref.watch(themeModeProvider)),
+                      style: TextStyle(
+                        fontSize: 13.sp,
+                        color: AppColors.lightGrey,
+                      ),
+                    ),
+                    onTap: () => _showThemePicker(context),
                   ),
                 ],
               ),
@@ -198,7 +215,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   _MenuItem(
                     icon: Icons.phone_android_outlined,
                     title: '设备信息',
-                    onTap: () => DeviceInfoDisplay.showDeviceInfoDialog(context),
+                    onTap: () =>
+                        DeviceInfoDisplay.showDeviceInfoDialog(context),
                   ),
                   _MenuItem(
                     icon: Icons.description_outlined,
@@ -307,8 +325,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                 Text(
                   user?.displayName ?? '未设置昵称',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: AppColors.white,
-                  ),
+                        color: AppColors.white,
+                      ),
                 ),
                 SizedBox(height: 4.w),
                 Text(
@@ -389,7 +407,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   GestureDetector(
                     onTap: item.onTap,
                     child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                       decoration: BoxDecoration(
                         border: isLast
                             ? null
@@ -440,6 +459,163 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
           ),
         ),
       ],
+    );
+  }
+
+  String _getThemeModeLabel(ThemeMode mode) {
+    switch (mode) {
+      case ThemeMode.system:
+        return '跟随系统';
+      case ThemeMode.light:
+        return '浅色';
+      case ThemeMode.dark:
+        return '深色';
+    }
+  }
+
+  void _showThemePicker(BuildContext context) {
+    final currentMode = ref.read(themeModeProvider);
+
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: AppColors.surface,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(AppRadius.xxl),
+        ),
+      ),
+      builder: (ctx) {
+        return SafeArea(
+          child: Padding(
+            padding: EdgeInsets.all(AppSpacing.xxl),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // 拖拽指示条
+                Container(
+                  width: 36.w,
+                  height: 4.w,
+                  margin: EdgeInsets.only(bottom: AppSpacing.lg),
+                  decoration: BoxDecoration(
+                    color: AppColors.tertiaryGrey,
+                    borderRadius: BorderRadius.circular(2.r),
+                  ),
+                ),
+                Text(
+                  '选择外观模式',
+                  style: TextStyle(
+                    fontSize: 17.sp,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.white,
+                  ),
+                ),
+                SizedBox(height: AppSpacing.xxl),
+                _buildThemeOption(
+                  ctx,
+                  icon: Icons.brightness_auto,
+                  label: '跟随系统',
+                  subtitle: '自动跟随设备外观设置',
+                  isSelected: currentMode == ThemeMode.system,
+                  onTap: () {
+                    ref
+                        .read(themeModeProvider.notifier)
+                        .setThemeMode(ThemeMode.system);
+                    Navigator.pop(ctx);
+                  },
+                ),
+                _buildThemeOption(
+                  ctx,
+                  icon: Icons.light_mode,
+                  label: '浅色模式',
+                  subtitle: '始终使用浅色外观',
+                  isSelected: currentMode == ThemeMode.light,
+                  onTap: () {
+                    ref
+                        .read(themeModeProvider.notifier)
+                        .setThemeMode(ThemeMode.light);
+                    Navigator.pop(ctx);
+                  },
+                ),
+                _buildThemeOption(
+                  ctx,
+                  icon: Icons.dark_mode,
+                  label: '深色模式',
+                  subtitle: '始终使用深色外观',
+                  isSelected: currentMode == ThemeMode.dark,
+                  onTap: () {
+                    ref
+                        .read(themeModeProvider.notifier)
+                        .setThemeMode(ThemeMode.dark);
+                    Navigator.pop(ctx);
+                  },
+                ),
+                SizedBox(height: AppSpacing.sm),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildThemeOption(
+    BuildContext context, {
+    required IconData icon,
+    required String label,
+    required String subtitle,
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          vertical: AppSpacing.md,
+          horizontal: AppSpacing.lg,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(AppRadius.md),
+          color: isSelected ? AppColors.primary.withValues(alpha: 0.15) : null,
+        ),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              color: isSelected ? AppColors.primary : AppColors.lightGrey,
+              size: 24,
+            ),
+            SizedBox(width: AppSpacing.md),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    label,
+                    style: TextStyle(
+                      color: isSelected ? AppColors.primary : AppColors.white,
+                      fontWeight:
+                          isSelected ? FontWeight.w600 : FontWeight.w400,
+                    ),
+                  ),
+                  Text(
+                    subtitle,
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      color: AppColors.lightGrey,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            if (isSelected)
+              Icon(
+                Icons.check,
+                color: AppColors.primary,
+                size: 20,
+              ),
+          ],
+        ),
+      ),
     );
   }
 

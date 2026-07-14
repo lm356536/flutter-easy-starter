@@ -6,6 +6,10 @@ import 'package:flutter_easy_starter/core/widgets/dialogs/dialogs.dart';
 import 'package:flutter_easy_starter/core/widgets/shimmer_widgets.dart';
 import 'package:flutter_easy_starter/features/main/main_page.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
+import 'package:flutter_easy_starter/core/widgets/selection_controls/app_switch.dart';
+import 'package:flutter_easy_starter/core/widgets/selection_controls/app_segmented_control.dart';
+import 'package:flutter_easy_starter/core/widgets/selection_controls/app_radio_group.dart';
+import 'package:flutter_easy_starter/core/widgets/selection_controls/app_checkbox_group.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// 项目介绍页面 - 沉浸式美学设计
@@ -1794,44 +1798,13 @@ class _SwitchDemoState extends State<_SwitchDemo> {
           Row(
             children: [
               for (int i = 0; i < 4; i++) ...[
-                GestureDetector(
-                  onTap: () {
+                AppSwitch(
+                  value: _values[i],
+                  activeColor: _colors[i],
+                  onChanged: (v) {
                     HapticFeedback.lightImpact();
-                    setState(() => _values[i] = !_values[i]);
+                    setState(() => _values[i] = v);
                   },
-                  child: AnimatedContainer(
-                    duration: Duration(milliseconds: 200),
-                    width: 52.w,
-                    height: 32.w,
-                    decoration: BoxDecoration(
-                      color: _values[i] ? _colors[i] : context.surfaceVariant,
-                      borderRadius: BorderRadius.circular(16.r),
-                    ),
-                    child: AnimatedAlign(
-                      duration: const Duration(milliseconds: 200),
-                      alignment: _values[i]
-                          ? Alignment.centerRight
-                          : Alignment.centerLeft,
-                      child: Padding(
-                        padding: EdgeInsets.all(3.w),
-                        child: Container(
-                          width: 26.w,
-                          height: 26.w,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(13.r),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withValues(alpha: 0.2),
-                                blurRadius: 4,
-                                spreadRadius: 0,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
                 ),
                 if (i < 3) SizedBox(width: 16.w),
               ],
@@ -1874,46 +1847,18 @@ class _SegmentedControlDemoState extends State<_SegmentedControlDemo> {
             ),
           ),
           SizedBox(height: 16.w),
-          Container(
-            padding: EdgeInsets.all(4.w),
-            decoration: BoxDecoration(
-              color: context.background,
-              borderRadius: BorderRadius.circular(10.r),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: _options.asMap().entries.map((entry) {
-                final index = entry.key;
-                final label = entry.value;
-                final isSelected = index == _selectedIndex;
-                return GestureDetector(
-                  onTap: () {
-                    HapticFeedback.lightImpact();
-                    setState(() => _selectedIndex = index);
-                  },
-                  child: AnimatedContainer(
-                    duration: Duration(milliseconds: 200),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.w),
-                    decoration: BoxDecoration(
-                      color: isSelected ? context.surface : Colors.transparent,
-                      borderRadius: BorderRadius.circular(8.r),
-                    ),
-                    child: Text(
-                      label,
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight:
-                            isSelected ? FontWeight.w600 : FontWeight.w400,
-                        color: isSelected
-                            ? context.textPrimary
-                            : context.lightGrey,
-                      ),
-                    ),
-                  ),
-                );
-              }).toList(),
-            ),
+          AppSegmentedControl<int>(
+            value: _selectedIndex,
+            options: _options.asMap().entries.map((entry) {
+              return AppSegmentedOption(
+                value: entry.key,
+                label: entry.value,
+              );
+            }).toList(),
+            onChanged: (index) {
+              HapticFeedback.lightImpact();
+              setState(() => _selectedIndex = index);
+            },
           ),
         ],
       ),
@@ -1951,53 +1896,17 @@ class _RadioGroupDemoState extends State<_RadioGroupDemo> {
             ),
           ),
           SizedBox(height: 16.w),
-          Row(
-            children: [
-              _buildRadioItem('选项一', 1),
-              SizedBox(width: 20.w),
-              _buildRadioItem('选项二', 2),
-              SizedBox(width: 20.w),
-              _buildRadioItem('选项三', 3),
+          AppRadioGroup<int>(
+            value: _selectedValue,
+            options: [
+              AppRadioOption(value: 1, label: '选项一'),
+              AppRadioOption(value: 2, label: '选项二'),
+              AppRadioOption(value: 3, label: '选项三'),
             ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildRadioItem(String label, int value) {
-    final isSelected = value == _selectedValue;
-    return GestureDetector(
-      onTap: () {
-        HapticFeedback.lightImpact();
-        setState(() => _selectedValue = value);
-      },
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          AnimatedContainer(
-            duration: Duration(milliseconds: 200),
-            width: 22.w,
-            height: 22.w,
-            decoration: BoxDecoration(
-              color: isSelected ? context.primary : Colors.transparent,
-              borderRadius: BorderRadius.circular(11.r),
-              border: Border.all(
-                color: isSelected ? context.primary : context.lightGrey,
-                width: 2,
-              ),
-            ),
-            child: isSelected
-                ? Icon(LucideIcons.check, color: Colors.white, size: 14)
-                : null,
-          ),
-          SizedBox(width: 8.w),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 14.sp,
-              color: isSelected ? context.textPrimary : context.lightGrey,
-            ),
+            onChanged: (value) {
+              HapticFeedback.lightImpact();
+              setState(() => _selectedValue = value);
+            },
           ),
         ],
       ),
@@ -2035,59 +1944,23 @@ class _CheckboxGroupDemoState extends State<_CheckboxGroupDemo> {
             ),
           ),
           SizedBox(height: 16.w),
-          Wrap(
-            spacing: 16.w,
-            runSpacing: 12.w,
-            children: [
-              _buildCheckboxItem('选项 A', 1),
-              _buildCheckboxItem('选项 B', 2),
-              _buildCheckboxItem('选项 C', 3),
+          AppCheckboxGroup<int>(
+            values: _checkedItems,
+            options: [
+              AppCheckboxOption(value: 1, label: '选项 A'),
+              AppCheckboxOption(value: 2, label: '选项 B'),
+              AppCheckboxOption(value: 3, label: '选项 C'),
             ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildCheckboxItem(String label, int value) {
-    final isChecked = _checkedItems.contains(value);
-    return GestureDetector(
-      onTap: () {
-        HapticFeedback.lightImpact();
-        setState(() {
-          if (isChecked) {
-            _checkedItems.remove(value);
-          } else {
-            _checkedItems.add(value);
-          }
-        });
-      },
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          AnimatedContainer(
-            duration: Duration(milliseconds: 200),
-            width: 22.w,
-            height: 22.w,
-            decoration: BoxDecoration(
-              color: isChecked ? context.primary : Colors.transparent,
-              borderRadius: BorderRadius.circular(6.r),
-              border: Border.all(
-                color: isChecked ? context.primary : context.lightGrey,
-                width: 2,
-              ),
-            ),
-            child: isChecked
-                ? Icon(LucideIcons.check, color: Colors.white, size: 14)
-                : null,
-          ),
-          SizedBox(width: 8.w),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 14.sp,
-              color: isChecked ? context.textPrimary : context.lightGrey,
-            ),
+            onChanged: (value) {
+              HapticFeedback.lightImpact();
+              setState(() {
+                if (_checkedItems.contains(value)) {
+                  _checkedItems.remove(value);
+                } else {
+                  _checkedItems.add(value);
+                }
+              });
+            },
           ),
         ],
       ),

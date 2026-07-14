@@ -143,7 +143,7 @@ final List<GiftItem> giftItems = [
     id: '14',
     name: '爱心礼盒',
     icon: LucideIcons.gift,
-    gradient: const [Color(0xFFFF2D55), Color(0xFFAF52DE)],
+    gradient: const [Color(0xFF007AFF), Color(0xFF0A84FF)],
     coins: 100,
     category: '浪漫',
   ),
@@ -220,7 +220,9 @@ class _GiftShopPageState extends State<GiftShopPage>
 
   List<GiftItem> get filteredGifts {
     if (_selectedCategory == 0) return giftItems;
-    return giftItems.where((g) => g.category == categories[_selectedCategory]).toList();
+    return giftItems
+        .where((g) => g.category == categories[_selectedCategory])
+        .toList();
   }
 
   @override
@@ -340,7 +342,8 @@ class _GiftShopPageState extends State<GiftShopPage>
                 borderRadius: BorderRadius.circular(8.r),
                 child: AnimatedContainer(
                   duration: Duration(milliseconds: 200),
-                  padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.w),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.w),
                   decoration: BoxDecoration(
                     color: isSelected ? context.primary : context.surface,
                     borderRadius: BorderRadius.circular(8.r),
@@ -360,7 +363,8 @@ class _GiftShopPageState extends State<GiftShopPage>
                       style: TextStyle(
                         color: isSelected ? Colors.white : context.lightGrey,
                         fontSize: 14.sp,
-                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                        fontWeight:
+                            isSelected ? FontWeight.bold : FontWeight.normal,
                       ),
                     ),
                   ),
@@ -421,7 +425,9 @@ class _GiftShopPageState extends State<GiftShopPage>
               onTap: () {
                 setState(() => _selectedGiftId = gift.id);
                 if (isSelected) {
-                  _pulseController.forward().then((_) => _pulseController.reverse());
+                  _pulseController
+                      .forward()
+                      .then((_) => _pulseController.reverse());
                 }
               },
               borderRadius: BorderRadius.circular(12.r),
@@ -499,9 +505,13 @@ class _GiftShopPageState extends State<GiftShopPage>
                         Text(
                           '${gift.coins}',
                           style: TextStyle(
-                            color: isSelected ? gift.gradient[0] : context.lightGrey,
+                            color: isSelected
+                                ? gift.gradient[0]
+                                : context.lightGrey,
                             fontSize: 12.sp,
-                            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                            fontWeight: isSelected
+                                ? FontWeight.bold
+                                : FontWeight.normal,
                           ),
                         ),
                       ],
@@ -706,7 +716,8 @@ class _GiftShopPageState extends State<GiftShopPage>
                                 DialogUtils.showSuccess(
                                   context,
                                   title: '赠送成功',
-                                  message: '已送出 ${selectedGift.name} x$_selectedQuantity',
+                                  message:
+                                      '已送出 ${selectedGift.name} x$_selectedQuantity',
                                 );
                                 Future.delayed(Duration(seconds: 1), () {
                                   if (mounted) context.pop();
@@ -789,7 +800,9 @@ class _GiftShopPageState extends State<GiftShopPage>
             gradient: isActive && gradient != null
                 ? LinearGradient(colors: gradient)
                 : null,
-            color: isActive && gradient == null ? context.primary : context.tertiaryGrey,
+            color: isActive && gradient == null
+                ? context.primary
+                : context.tertiaryGrey,
             borderRadius: BorderRadius.circular(8.r),
           ),
           child: Icon(

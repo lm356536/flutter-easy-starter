@@ -258,7 +258,7 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                   ],
                 ),
                 borderRadius: BorderRadius.circular(22.r),
-                boxShadow: AppShadows.purpleGlow(opacity: 0.4),
+                boxShadow: AppShadows.primaryGlow(opacity: 0.4),
               ),
               child: Icon(
                 LucideIcons.pen_line,
@@ -343,7 +343,7 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                       colors: [context.primary, context.accent],
                     ),
                     borderRadius: BorderRadius.circular(32.r),
-                    boxShadow: AppShadows.purpleGlow(opacity: 0.3),
+                    boxShadow: AppShadows.primaryGlow(opacity: 0.3),
                   ),
                   child: Icon(
                     LucideIcons.plus,

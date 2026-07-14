@@ -33,7 +33,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
     'reviews': 234,
     'image': 'assets/images/gift_rose.png',
     'description': '精选99朵厄瓜多尔进口玫瑰，象征长久永恒的爱情。每一朵都经过精心挑选，花型饱满，色泽艳丽。',
-    'colors': [0xFFFF2D55, 0xFFFF9500, 0xFFFFCC00, 0xFFAF52DE, 0xFF007AFF],
+    'colors': [0xFFFF2D55, 0xFFFF9500, 0xFFFFCC00, 0xFF34C759, 0xFF007AFF],
     'thumbnails': ['rose1', 'rose2', 'rose3', 'rose4'],
   };
 

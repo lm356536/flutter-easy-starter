@@ -333,7 +333,7 @@ class _IntroPageState extends State<IntroPage>
             ],
           ),
           borderRadius: BorderRadius.circular(28.r),
-          boxShadow: AppShadows.purpleGlow(opacity: 0.5),
+          boxShadow: AppShadows.primaryGlow(opacity: 0.5),
         ),
         child: Stack(
           alignment: Alignment.center,

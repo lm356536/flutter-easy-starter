@@ -50,8 +50,8 @@ class FrostedWidget extends StatelessWidget {
           child: Container(
             padding: padding,
             decoration: BoxDecoration(
-              color: backgroundColor ??
-                  context.glassWhite.withValues(alpha: 0.15),
+              color:
+                  backgroundColor ?? context.glassWhite.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(borderRadius.r),
               border: border ??
                   Border.all(
@@ -296,14 +296,14 @@ class AppShadows {
   /// 微弱发光（用于强调元素）
   static const List<BoxShadow> glow = [
     BoxShadow(
-      color: Color(0x40AF52DE),
+      color: Color(0x40007AFF),
       blurRadius: 20,
       spreadRadius: 0,
     ),
   ];
 
-  /// 紫色发光
-  static List<BoxShadow> purpleGlow({double opacity = 0.4}) {
+  /// 蓝色发光
+  static List<BoxShadow> primaryGlow({double opacity = 0.4}) {
     return [
       BoxShadow(
         color: AppColors.primary.withValues(alpha: opacity),

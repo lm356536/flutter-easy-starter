@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 /// ============================================
-/// Flutter Easy Starter - Dark Social Design System
-/// Theme: Dark Dating/Social App Style
+/// Flutter Easy Starter - Tech Blue Design System
+/// Theme: Technology Company Blue Style
 /// ============================================
 
-/// 颜色系统 - Dark Social 风格
+/// 颜色系统 - 科技蓝风格
 class AppColors {
   AppColors._();
 
@@ -35,14 +35,14 @@ class AppColors {
   static const Color white = Color(0xFFFFFFFF);
 
   // === 强调色 ===
-  /// 主强调色 - 紫色（类似社交App的点赞/匹配色）
-  static const Color primary = Color(0xFFAF52DE);
+  /// 主强调色 - 科技蓝
+  static const Color primary = Color(0xFF007AFF);
 
-  /// 紫色浅色
-  static const Color primaryLight = Color(0xFFBF5AF2);
+  /// 蓝色浅色
+  static const Color primaryLight = Color(0xFF0A84FF);
 
-  /// 紫色深色
-  static const Color primaryDark = Color(0xFF9F49C9);
+  /// 蓝色深色
+  static const Color primaryDark = Color(0xFF0066CC);
 
   /// 粉红强调
   static const Color pink = Color(0xFFFF2D55);
@@ -260,14 +260,14 @@ class AppShadows {
   /// 微弱发光（用于强调元素）
   static const List<BoxShadow> glow = [
     BoxShadow(
-      color: Color(0x40AF52DE),
+      color: Color(0x40007AFF),
       blurRadius: 20,
       spreadRadius: 0,
     ),
   ];
 
-  /// 紫色发光
-  static List<BoxShadow> purpleGlow({double opacity = 0.4}) {
+  /// 蓝色发光
+  static List<BoxShadow> primaryGlow({double opacity = 0.4}) {
     return [
       BoxShadow(
         color: AppColors.primary.withValues(alpha: opacity),

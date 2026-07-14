@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easy_starter/core/theme/app_colors.dart';
 
-/// Dark Social 主题配置
+/// Tech Blue 主题配置
 ///
 /// 特点：
 /// - 纯黑背景（深色模式）/ 浅灰背景（浅色模式）
-/// - 紫色强调色贯穿始终
+/// - 科技蓝强调色贯穿始终
 /// - 半透明玻璃效果
 /// - iOS 风格
 class AppTheme {

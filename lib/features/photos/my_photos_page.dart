@@ -263,7 +263,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                       ],
                     ),
                     shape: BoxShape.circle,
-                    boxShadow: AppShadows.purpleGlow(opacity: 0.5),
+                    boxShadow: AppShadows.primaryGlow(opacity: 0.5),
                   ),
                   child: Icon(
                     LucideIcons.camera,
@@ -437,7 +437,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                   ],
                 ),
                 borderRadius: BorderRadius.circular(16.r),
-                boxShadow: AppShadows.purpleGlow(opacity: 0.4),
+                boxShadow: AppShadows.primaryGlow(opacity: 0.4),
               ),
               child: Icon(
                 LucideIcons.upload,
@@ -513,7 +513,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
             width: isSelected ? 2.w : 1.w,
           ),
           boxShadow: isSelected
-              ? AppShadows.purpleGlow(opacity: 0.4)
+              ? AppShadows.primaryGlow(opacity: 0.4)
               : null,
         ),
         clipBehavior: Clip.hardEdge,

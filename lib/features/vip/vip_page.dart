@@ -4,7 +4,8 @@ import 'package:flutter_easy_starter/core/theme/app_colors.dart';
 import 'package:flutter_easy_starter/core/utils/dialog_utils.dart';
 import 'package:flutter_easy_starter/core/widgets/animated_button.dart';
 import 'package:flutter_easy_starter/core/widgets/shimmer_widgets.dart';
-import 'package:flutter_easy_starter/features/travel/widgets/frosted_widget.dart' show FrostedWidget;
+import 'package:flutter_easy_starter/features/travel/widgets/frosted_widget.dart'
+    show FrostedWidget;
 import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -33,7 +34,7 @@ final List<VipBenefit> benefits = [
   ),
   const VipBenefit(
     icon: LucideIcons.message_circle,
-    gradient: [Color(0xFFAF52DE), Color(0xFFBF5AF2)],
+    gradient: [Color(0xFF007AFF), Color(0xFF0A84FF)],
     title: '优先聊天',
     subtitle: '消息优先展示给对方',
   ),
@@ -109,8 +110,7 @@ class VipPage extends StatefulWidget {
   State<VipPage> createState() => _VipPageState();
 }
 
-class _VipPageState extends State<VipPage>
-    with SingleTickerProviderStateMixin {
+class _VipPageState extends State<VipPage> with SingleTickerProviderStateMixin {
   int _selectedPackage = 1;
   bool _isLoading = true;
   bool _isPurchasing = false;
@@ -697,8 +697,8 @@ class _AnimatedPackageCardState extends State<AnimatedPackageCard>
               boxShadow: widget.isSelected
                   ? [
                       BoxShadow(
-                        color: Color(0xFFFFD700).withValues(alpha: 
-                          widget.package.isRecommended
+                        color: Color(0xFFFFD700).withValues(
+                          alpha: widget.package.isRecommended
                               ? _glowAnimation.value
                               : 0.3,
                         ),
@@ -762,9 +762,7 @@ class _AnimatedPackageCardState extends State<AnimatedPackageCard>
             Text(
               widget.package.price,
               style: TextStyle(
-                color: widget.isSelected
-                    ? Color(0xFFFFD700)
-                    : context.white,
+                color: widget.isSelected ? Color(0xFFFFD700) : context.white,
                 fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
               ),

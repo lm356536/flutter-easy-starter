@@ -38,7 +38,7 @@ class StoryRingAvatar extends StatelessWidget {
                     Color(0xFFFF2D55),
                     Color(0xFFFF9500),
                     Color(0xFFFFCC00),
-                    Color(0xFFAF52DE),
+                    Color(0xFF34C759),
                     Color(0xFF007AFF),
                     Color(0xFFFF2D55),
                   ],
@@ -66,12 +66,14 @@ class StoryRingAvatar extends StatelessWidget {
                         ? Image.asset(
                             imageUrl!,
                             fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) => _buildPlaceholder(context),
+                            errorBuilder: (_, __, ___) =>
+                                _buildPlaceholder(context),
                           )
                         : Image.network(
                             imageUrl!,
                             fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) => _buildPlaceholder(context),
+                            errorBuilder: (_, __, ___) =>
+                                _buildPlaceholder(context),
                           ))
                     : placeholder ?? _buildPlaceholder(context),
               ),
@@ -162,7 +164,8 @@ class GroupAvatar extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: _buildSmallAvatar(context, members.isNotEmpty ? members[0] : null),
+          child: _buildSmallAvatar(
+              context, members.isNotEmpty ? members[0] : null),
         ),
         if (members.length > 1)
           Expanded(
@@ -179,7 +182,8 @@ class GroupAvatar extends StatelessWidget {
           child: Row(
             children: [
               Expanded(
-                child: _buildSmallAvatar(context, members.isNotEmpty ? members[0] : null),
+                child: _buildSmallAvatar(
+                    context, members.isNotEmpty ? members[0] : null),
               ),
               if (members.length > 1)
                 Expanded(

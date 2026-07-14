@@ -1425,13 +1425,44 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
             spacing: 12.w,
             runSpacing: 12.w,
             children: [
-              _buildIconButton(LucideIcons.heart, context.red),
-              _buildIconButton(LucideIcons.star, context.orange),
-              _buildIconButton(LucideIcons.share, context.blue),
-              _buildIconButton(LucideIcons.bookmark, context.green),
-              _buildIconButtonWithText(
-                  LucideIcons.download, '下载', context.primary),
-              _buildIconButtonWithText(LucideIcons.send, '发送', context.blue),
+              AppButton(
+                icon: Icon(LucideIcons.heart, color: context.red, size: 20),
+                onPressed: () => HapticFeedback.lightImpact(),
+                backgroundColor: context.red,
+              ),
+              AppButton(
+                icon: Icon(LucideIcons.star, color: context.orange, size: 20),
+                onPressed: () => HapticFeedback.lightImpact(),
+                backgroundColor: context.orange,
+              ),
+              AppButton(
+                icon: Icon(LucideIcons.share, color: context.blue, size: 20),
+                onPressed: () => HapticFeedback.lightImpact(),
+                backgroundColor: context.blue,
+              ),
+              AppButton(
+                icon:
+                    Icon(LucideIcons.bookmark, color: context.green, size: 20),
+                onPressed: () => HapticFeedback.lightImpact(),
+                backgroundColor: context.green,
+              ),
+              AppButton(
+                icon: Icon(LucideIcons.download,
+                    color: context.primary, size: 18),
+                label: '下载',
+                onPressed: () => HapticFeedback.lightImpact(),
+                backgroundColor: context.primary.withValues(alpha: 0.15),
+                foregroundColor: context.primary,
+                type: AppButtonType.outline,
+              ),
+              AppButton(
+                icon: Icon(LucideIcons.send, color: context.blue, size: 18),
+                label: '发送',
+                onPressed: () => HapticFeedback.lightImpact(),
+                backgroundColor: context.blue.withValues(alpha: 0.15),
+                foregroundColor: context.blue,
+                type: AppButtonType.outline,
+              ),
             ],
           ),
         ),
@@ -1512,50 +1543,6 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
           SizedBox(height: 12.w),
           child,
         ],
-      ),
-    );
-  }
-
-  Widget _buildIconButton(IconData icon, Color color) {
-    return GestureDetector(
-      onTap: () => HapticFeedback.lightImpact(),
-      child: Container(
-        width: 44.w,
-        height: 44.w,
-        decoration: BoxDecoration(
-          color: color.withValues(alpha: 0.15),
-          borderRadius: BorderRadius.circular(12.r),
-        ),
-        child: Icon(icon, color: color, size: 20),
-      ),
-    );
-  }
-
-  Widget _buildIconButtonWithText(IconData icon, String text, Color color) {
-    return GestureDetector(
-      onTap: () => HapticFeedback.lightImpact(),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.w),
-        decoration: BoxDecoration(
-          color: color.withValues(alpha: 0.15),
-          borderRadius: BorderRadius.circular(10.r),
-          border: Border.all(color: color.withValues(alpha: 0.3)),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, color: color, size: 18),
-            SizedBox(width: 8.w),
-            Text(
-              text,
-              style: TextStyle(
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w600,
-                color: color,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

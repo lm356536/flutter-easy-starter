@@ -149,6 +149,18 @@ class AppButton extends StatelessWidget {
     }
   }
 
+  /// 纯图标模式下更圆润的圆角
+  double get _iconBorderRadius {
+    switch (size) {
+      case AppButtonSize.small:
+        return 8.r;
+      case AppButtonSize.medium:
+        return 12.r;
+      case AppButtonSize.large:
+        return 14.r;
+    }
+  }
+
   double get _height {
     switch (size) {
       case AppButtonSize.small:
@@ -210,6 +222,25 @@ class AppButton extends StatelessWidget {
     }
   }
 
+  /// 纯图标模式下的背景色（半透明）
+  Color _iconBgColor(BuildContext context, bool isActive) {
+    if (!isActive) return context.surfaceVariant;
+    if (backgroundColor != null)
+      return backgroundColor!.withValues(alpha: 0.15);
+    switch (type) {
+      case AppButtonType.primary:
+        return context.primary.withValues(alpha: 0.15);
+      case AppButtonType.danger:
+        return context.error.withValues(alpha: 0.15);
+      case AppButtonType.secondary:
+        return context.surfaceVariant;
+      case AppButtonType.ghost:
+      case AppButtonType.outline:
+      case AppButtonType.text:
+        return Colors.transparent;
+    }
+  }
+
   Color? _bgColor(BuildContext context, bool isActive) {
     if (gradient != null) return null;
     if (backgroundColor != null) return backgroundColor!;
@@ -250,7 +281,7 @@ class AppButton extends StatelessWidget {
   BoxBorder? _border(BuildContext context, bool isActive) {
     if (type != AppButtonType.outline) return null;
     return Border.all(
-      color: isActive ? context.primary : context.divider,
+      color: foregroundColor ?? (isActive ? context.primary : context.divider),
       width: 1.5,
     );
   }
@@ -266,6 +297,8 @@ class AppButton extends StatelessWidget {
         ),
       ];
     }
+    // 自定义背景色时跳过默认阴影
+    if (backgroundColor != null) return null;
     if (type != AppButtonType.primary && type != AppButtonType.danger)
       return null;
     if (!isActive) return null;
@@ -282,18 +315,26 @@ class AppButton extends StatelessWidget {
   // ------ 构建 ------
 
   Widget _buildContainer(BuildContext context, bool isActive) {
+    // 纯图标模式：无文字、无 customChild、非加载状态
+    final isIconOnly =
+        icon != null && label == null && customChild == null && !isLoading;
     final body = customChild ?? _buildBody(context, isActive);
 
     final button = Container(
-      width: expanded ? double.infinity : null,
+      width: isIconOnly ? _height : (expanded ? double.infinity : null),
       height: _height,
-      padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
+      padding: isIconOnly
+          ? EdgeInsets.zero
+          : EdgeInsets.symmetric(horizontal: _horizontalPadding),
       decoration: BoxDecoration(
-        color: _bgColor(context, isActive),
+        color: isIconOnly
+            ? _iconBgColor(context, isActive)
+            : _bgColor(context, isActive),
         gradient: gradient,
-        borderRadius: BorderRadius.circular(_borderRadius),
+        borderRadius: BorderRadius.circular(
+            isIconOnly ? _iconBorderRadius : _borderRadius),
         border: _border(context, isActive),
-        boxShadow: _shadow(context, isActive),
+        boxShadow: isIconOnly ? null : _shadow(context, isActive),
       ),
       child: body,
     );

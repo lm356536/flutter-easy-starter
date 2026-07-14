@@ -16,8 +16,7 @@ class IntroPage extends StatefulWidget {
   State<IntroPage> createState() => _IntroPageState();
 }
 
-class _IntroPageState extends State<IntroPage>
-    with TickerProviderStateMixin {
+class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
   late AnimationController _heroController;
   late AnimationController _listController;
   bool _isLoading = true;
@@ -699,7 +698,8 @@ class _IntroPageState extends State<IntroPage>
             final slideY = Tween<double>(begin: 30, end: 0)
                 .animate(CurvedAnimation(
                   parent: _listController,
-                  curve: Interval(delay, delay + 0.3, curve: Curves.easeOutCubic),
+                  curve:
+                      Interval(delay, delay + 0.3, curve: Curves.easeOutCubic),
                 ))
                 .value;
             final opacity = Tween<double>(begin: 0.0, end: 1.0)
@@ -886,7 +886,7 @@ class _IntroPageState extends State<IntroPage>
                         style: TextStyle(
                           fontSize: 15.sp,
                           fontWeight: FontWeight.w600,
-                          color: Colors.white,
+                          color: context.textPrimary,
                         ),
                       ),
                       Text(
@@ -1273,7 +1273,8 @@ class _IntroPageState extends State<IntroPage>
   Future<void> _showSelectionDemo(BuildContext context) async {
     final languages = [
       const SelectionItem(label: '简体中文', value: 'zh', icon: LucideIcons.globe),
-      const SelectionItem(label: 'English', value: 'en', icon: LucideIcons.globe),
+      const SelectionItem(
+          label: 'English', value: 'en', icon: LucideIcons.globe),
       const SelectionItem(label: '日本語', value: 'ja', icon: LucideIcons.globe),
       const SelectionItem(label: '한국어', value: 'ko', icon: LucideIcons.globe),
     ];
@@ -1286,7 +1287,8 @@ class _IntroPageState extends State<IntroPage>
     );
     if (result != null && context.mounted) {
       final selected = languages.firstWhere((l) => l.value == result);
-      AppDialogs.showSuccess(context: context, message: '已切换到: ${selected.label}');
+      AppDialogs.showSuccess(
+          context: context, message: '已切换到: ${selected.label}');
     }
   }
 
@@ -1401,7 +1403,8 @@ class _IntroPageState extends State<IntroPage>
               _buildIconButton(LucideIcons.star, context.orange),
               _buildIconButton(LucideIcons.share, context.blue),
               _buildIconButton(LucideIcons.bookmark, context.green),
-              _buildIconButtonWithText(LucideIcons.download, '下载', context.primary),
+              _buildIconButtonWithText(
+                  LucideIcons.download, '下载', context.primary),
               _buildIconButtonWithText(LucideIcons.send, '发送', context.blue),
             ],
           ),
@@ -1759,7 +1762,12 @@ class _SwitchDemo extends StatefulWidget {
 
 class _SwitchDemoState extends State<_SwitchDemo> {
   final List<bool> _values = [true, false, true, true];
-  final List<Color> _colors = [AppColors.primary, AppColors.primary, AppColors.green, AppColors.red];
+  final List<Color> _colors = [
+    AppColors.primary,
+    AppColors.primary,
+    AppColors.green,
+    AppColors.red
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -1801,7 +1809,9 @@ class _SwitchDemoState extends State<_SwitchDemo> {
                     ),
                     child: AnimatedAlign(
                       duration: const Duration(milliseconds: 200),
-                      alignment: _values[i] ? Alignment.centerRight : Alignment.centerLeft,
+                      alignment: _values[i]
+                          ? Alignment.centerRight
+                          : Alignment.centerLeft,
                       child: Padding(
                         padding: EdgeInsets.all(3.w),
                         child: Container(
@@ -1883,7 +1893,8 @@ class _SegmentedControlDemoState extends State<_SegmentedControlDemo> {
                   },
                   child: AnimatedContainer(
                     duration: Duration(milliseconds: 200),
-                    padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.w),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.w),
                     decoration: BoxDecoration(
                       color: isSelected ? context.surface : Colors.transparent,
                       borderRadius: BorderRadius.circular(8.r),
@@ -1892,7 +1903,8 @@ class _SegmentedControlDemoState extends State<_SegmentedControlDemo> {
                       label,
                       style: TextStyle(
                         fontSize: 14.sp,
-                        fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                        fontWeight:
+                            isSelected ? FontWeight.w600 : FontWeight.w400,
                         color: isSelected ? Colors.white : context.lightGrey,
                       ),
                     ),
@@ -2165,7 +2177,8 @@ class _StepperDemoState extends State<_StepperDemo> {
                       color: context.primary,
                       borderRadius: BorderRadius.circular(8.r),
                     ),
-                    child: Icon(LucideIcons.plus, color: Colors.white, size: 16),
+                    child:
+                        Icon(LucideIcons.plus, color: Colors.white, size: 16),
                   ),
                 ),
               ],

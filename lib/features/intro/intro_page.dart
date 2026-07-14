@@ -2086,7 +2086,7 @@ class _CheckboxGroupDemoState extends State<_CheckboxGroupDemo> {
             label,
             style: TextStyle(
               fontSize: 14.sp,
-              color: isChecked ? Colors.white : context.lightGrey,
+              color: isChecked ? context.textPrimary : context.lightGrey,
             ),
           ),
         ],

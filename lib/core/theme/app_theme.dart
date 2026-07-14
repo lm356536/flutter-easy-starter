@@ -8,6 +8,9 @@ import 'package:flutter_easy_starter/core/theme/app_colors.dart';
 /// - 科技蓝强调色贯穿始终
 /// - 半透明玻璃效果
 /// - iOS 风格
+///
+/// 换主色只需修改 [AppColors.primary]，[ColorScheme.fromSeed] 自动派生整套调色板，
+/// 所有 Material 组件自动适配，无需手动配置颜色。
 class AppTheme {
   AppTheme._();
 
@@ -18,26 +21,32 @@ class AppTheme {
     final isDark = brightness == Brightness.dark;
 
     // ============================================================
-    // Color tokens — 按 brightness 切换
+    // ColorScheme — 由种子色自动派生，换主色只改 AppColors.primary
     // ============================================================
+    final colorScheme = ColorScheme.fromSeed(
+      seedColor: AppColors.primary,
+      brightness: brightness,
+      // 覆盖自动生成的值，保持精准品牌色
+      primary: AppColors.primary,
+      onPrimary: AppColors.white,
+      secondary: AppColors.pink,
+      onSecondary: AppColors.white,
+      surface: isDark ? AppColors.surface : const Color(0xFFFFFFFF),
+      onSurface: isDark ? AppColors.white : const Color(0xFF1C1C1E),
+      error: AppColors.error,
+      onError: AppColors.white,
+      outline: isDark ? AppColors.border : const Color(0xFFE5E5EA),
+    );
+
+    // 自定义 token — colorScheme 无法覆盖的细节
     final Color background =
         isDark ? AppColors.background : const Color(0xFFF5F5F7);
-    final Color surface = isDark ? AppColors.surface : const Color(0xFFFFFFFF);
-    final Color onSurface = isDark ? AppColors.white : const Color(0xFF1C1C1E);
     final Color textSecondary =
         isDark ? AppColors.lightGrey : const Color(0xFF8E8E93);
-    final Color dividerColor =
-        isDark ? AppColors.divider : const Color(0xFFE5E5EA);
-    final Color borderColor =
-        isDark ? AppColors.border : const Color(0xFFE5E5EA);
     final Color inputFill =
         isDark ? AppColors.glassWhite : const Color(0xFFF2F2F7);
-    final Color surfaceVariant =
-        isDark ? AppColors.surfaceVariant : const Color(0xFFF2F2F7);
-    final Color trackGrey =
-        isDark ? AppColors.tertiaryGrey : const Color(0xFFE5E5EA);
-    final Color thumbGrey =
-        isDark ? AppColors.lightGrey : const Color(0xFFC7C7CC);
+    final Color dividerColor =
+        isDark ? AppColors.divider : const Color(0xFFE5E5EA);
 
     // ============================================================
     // TextTheme — 按亮度切换颜色
@@ -45,7 +54,7 @@ class AppTheme {
     TextTheme buildTextTheme() {
       final TextStyle primaryText = TextStyle(
         fontFamily: AppTypography.fontFamily,
-        color: onSurface,
+        color: colorScheme.onSurface,
       );
       final TextStyle secondaryText = TextStyle(
         fontFamily: AppTypography.fontFamily,
@@ -134,36 +143,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: brightness,
-
-      // ============================================================
-      // 颜色方案
-      // ============================================================
-      colorScheme: isDark
-          ? const ColorScheme.dark(
-              primary: AppColors.primary,
-              onPrimary: AppColors.white,
-              secondary: AppColors.pink,
-              onSecondary: AppColors.white,
-              surface: AppColors.surface,
-              onSurface: AppColors.white,
-              error: AppColors.error,
-              onError: AppColors.white,
-              outline: AppColors.border,
-              background: AppColors.background,
-            )
-          : const ColorScheme.light(
-              primary: AppColors.primary,
-              onPrimary: AppColors.white,
-              secondary: AppColors.pink,
-              onSecondary: AppColors.white,
-              surface: Color(0xFFFFFFFF),
-              onSurface: Color(0xFF1C1C1E),
-              error: AppColors.error,
-              onError: AppColors.white,
-              outline: Color(0xFFE5E5EA),
-              background: Color(0xFFF5F5F7),
-            ),
-
+      colorScheme: colorScheme,
       scaffoldBackgroundColor: background,
 
       // ============================================================
@@ -174,11 +154,11 @@ class AppTheme {
         scrolledUnderElevation: 0,
         centerTitle: true,
         backgroundColor: background,
-        foregroundColor: onSurface,
+        foregroundColor: colorScheme.onSurface,
         surfaceTintColor: Colors.transparent,
         titleTextStyle: TextStyle(
           fontFamily: AppTypography.fontFamily,
-          color: onSurface,
+          color: colorScheme.onSurface,
           fontSize: AppTypography.subtitle,
           fontWeight: AppTypography.semiBold,
           letterSpacing: -0.5,
@@ -187,11 +167,11 @@ class AppTheme {
       ),
 
       // ============================================================
-      // 底部导航
+      // 底部导航 — 颜色由 colorScheme 自动处理
       // ============================================================
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: surface,
-        selectedItemColor: isDark ? AppColors.white : AppColors.primary,
+        backgroundColor: colorScheme.surface,
+        selectedItemColor: isDark ? AppColors.white : colorScheme.primary,
         unselectedItemColor: textSecondary,
         selectedLabelStyle: const TextStyle(
           fontFamily: AppTypography.fontFamily,
@@ -214,7 +194,7 @@ class AppTheme {
       // ============================================================
       cardTheme: CardThemeData(
         elevation: 0,
-        color: surface,
+        color: colorScheme.surface,
         surfaceTintColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppRadius.lg),
@@ -223,7 +203,7 @@ class AppTheme {
       ),
 
       // ============================================================
-      // ElevatedButton
+      // ElevatedButton — 颜色由 colorScheme.primary 自动处理
       // ============================================================
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -232,10 +212,6 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppRadius.md),
           ),
-          backgroundColor: AppColors.primary,
-          foregroundColor: AppColors.white,
-          disabledBackgroundColor: trackGrey,
-          disabledForegroundColor: textSecondary,
           textStyle: const TextStyle(
             fontFamily: AppTypography.fontFamily,
             fontSize: AppTypography.body,
@@ -246,7 +222,7 @@ class AppTheme {
       ),
 
       // ============================================================
-      // OutlinedButton
+      // OutlinedButton — 颜色由 colorScheme 自动处理
       // ============================================================
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
@@ -255,8 +231,6 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppRadius.md),
           ),
-          side: BorderSide(color: borderColor, width: 1),
-          foregroundColor: onSurface,
           textStyle: const TextStyle(
             fontFamily: AppTypography.fontFamily,
             fontSize: AppTypography.body,
@@ -267,11 +241,10 @@ class AppTheme {
       ),
 
       // ============================================================
-      // TextButton
+      // TextButton — 颜色由 colorScheme 自动处理
       // ============================================================
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          foregroundColor: AppColors.primary,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           textStyle: const TextStyle(
             fontFamily: AppTypography.fontFamily,
@@ -282,7 +255,7 @@ class AppTheme {
       ),
 
       // ============================================================
-      // 输入框
+      // 输入框 — 聚焦边框颜色跟随 colorScheme.primary
       // ============================================================
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
@@ -299,15 +272,15 @@ class AppTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppRadius.full),
-          borderSide: const BorderSide(color: AppColors.primary, width: 1.5),
+          borderSide: BorderSide(color: colorScheme.primary, width: 1.5),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppRadius.full),
-          borderSide: const BorderSide(color: AppColors.error, width: 1),
+          borderSide: BorderSide(color: colorScheme.error, width: 1),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppRadius.full),
-          borderSide: const BorderSide(color: AppColors.error, width: 1.5),
+          borderSide: BorderSide(color: colorScheme.error, width: 1.5),
         ),
         hintStyle: TextStyle(
           fontFamily: AppTypography.fontFamily,
@@ -358,12 +331,12 @@ class AppTheme {
           borderRadius: BorderRadius.circular(AppRadius.lg),
         ),
         iconColor: textSecondary,
-        textColor: onSurface,
+        textColor: colorScheme.onSurface,
         titleTextStyle: TextStyle(
           fontFamily: AppTypography.fontFamily,
           fontSize: AppTypography.bodyLarge,
           fontWeight: AppTypography.regular,
-          color: onSurface,
+          color: colorScheme.onSurface,
           letterSpacing: -0.3,
         ),
         subtitleTextStyle: TextStyle(
@@ -376,58 +349,10 @@ class AppTheme {
       ),
 
       // ============================================================
-      // 开关 — iOS 风格
-      // ============================================================
-      switchTheme: SwitchThemeData(
-        thumbColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) {
-            return AppColors.white;
-          }
-          return thumbGrey;
-        }),
-        trackColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) {
-            return AppColors.primary;
-          }
-          return trackGrey;
-        }),
-        trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
-      ),
-
-      // ============================================================
-      // 复选框
-      // ============================================================
-      checkboxTheme: CheckboxThemeData(
-        fillColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) {
-            return AppColors.primary;
-          }
-          return Colors.transparent;
-        }),
-        checkColor: WidgetStateProperty.all(AppColors.white),
-        side: BorderSide(color: borderColor, width: 1.5),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppRadius.sm),
-        ),
-      ),
-
-      // ============================================================
-      // 单选框
-      // ============================================================
-      radioTheme: RadioThemeData(
-        fillColor: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) {
-            return AppColors.primary;
-          }
-          return borderColor;
-        }),
-      ),
-
-      // ============================================================
       // 底部弹窗
       // ============================================================
       bottomSheetTheme: BottomSheetThemeData(
-        backgroundColor: surface,
+        backgroundColor: colorScheme.surface,
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
@@ -441,7 +366,7 @@ class AppTheme {
       // 对话框
       // ============================================================
       dialogTheme: DialogThemeData(
-        backgroundColor: surface,
+        backgroundColor: colorScheme.surface,
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppRadius.xl),
@@ -450,7 +375,7 @@ class AppTheme {
           fontFamily: AppTypography.fontFamily,
           fontSize: AppTypography.headline,
           fontWeight: AppTypography.bold,
-          color: onSurface,
+          color: colorScheme.onSurface,
           letterSpacing: -0.5,
         ),
         contentTextStyle: TextStyle(
@@ -463,11 +388,9 @@ class AppTheme {
       ),
 
       // ============================================================
-      // 浮动按钮
+      // FAB — 颜色由 colorScheme 自动处理
       // ============================================================
       floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: AppColors.primary,
-        foregroundColor: AppColors.white,
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppRadius.full),
@@ -477,10 +400,10 @@ class AppTheme {
       ),
 
       // ============================================================
-      // TabBar
+      // TabBar — indicator 颜色由 colorScheme 自动处理
       // ============================================================
       tabBarTheme: TabBarThemeData(
-        labelColor: onSurface,
+        labelColor: colorScheme.onSurface,
         unselectedLabelColor: textSecondary,
         labelStyle: const TextStyle(
           fontFamily: AppTypography.fontFamily,
@@ -492,21 +415,18 @@ class AppTheme {
           fontSize: AppTypography.body,
           fontWeight: AppTypography.regular,
         ),
-        indicatorColor: AppColors.primary,
         dividerColor: dividerColor,
       ),
 
       // ============================================================
-      // Chip
+      // Chip — 选中态颜色由 colorScheme 自动处理
       // ============================================================
       chipTheme: ChipThemeData(
-        backgroundColor: surfaceVariant,
-        selectedColor: AppColors.primary,
         labelStyle: TextStyle(
           fontFamily: AppTypography.fontFamily,
           fontSize: AppTypography.body,
           fontWeight: AppTypography.medium,
-          color: onSurface,
+          color: colorScheme.onSurface,
         ),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         shape: RoundedRectangleBorder(
@@ -516,12 +436,10 @@ class AppTheme {
       ),
 
       // ============================================================
-      // 进度指示器
+      // 进度指示器 — 颜色由 colorScheme.primary 自动处理
       // ============================================================
       progressIndicatorTheme: ProgressIndicatorThemeData(
-        color: AppColors.primary,
         linearMinHeight: 3,
-        linearTrackColor: trackGrey,
       ),
 
       // ============================================================
@@ -538,7 +456,7 @@ class AppTheme {
       // SnackBar
       // ============================================================
       snackBarTheme: SnackBarThemeData(
-        backgroundColor: onSurface,
+        backgroundColor: colorScheme.onSurface,
         contentTextStyle: TextStyle(
           fontFamily: AppTypography.fontFamily,
           fontSize: AppTypography.body,
@@ -557,7 +475,7 @@ class AppTheme {
       // ============================================================
       tooltipTheme: TooltipThemeData(
         decoration: BoxDecoration(
-          color: onSurface,
+          color: colorScheme.onSurface,
           borderRadius: BorderRadius.circular(AppRadius.sm),
         ),
         textStyle: TextStyle(
@@ -573,7 +491,7 @@ class AppTheme {
       // BottomAppBar
       // ============================================================
       bottomAppBarTheme: BottomAppBarThemeData(
-        color: surface,
+        color: colorScheme.surface,
         elevation: 0,
       ),
     );

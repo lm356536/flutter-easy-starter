@@ -626,7 +626,7 @@ class _IntroPageState extends State<IntroPage>
                     style: TextStyle(
                       fontSize: 22.sp,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: context.textPrimary,
                     ),
                   ),
                   Text(
@@ -776,7 +776,7 @@ class _IntroPageState extends State<IntroPage>
                     style: TextStyle(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
-                      color: Colors.white,
+                      color: context.textPrimary,
                     ),
                   ),
                   SizedBox(height: 4.w),
@@ -1028,7 +1028,7 @@ class _IntroPageState extends State<IntroPage>
                     style: TextStyle(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
-                      color: Colors.white,
+                      color: context.textPrimary,
                     ),
                   ),
                   SizedBox(height: 4.w),
@@ -1164,7 +1164,7 @@ class _IntroPageState extends State<IntroPage>
                     style: TextStyle(
                       fontSize: 15.sp,
                       fontWeight: FontWeight.w600,
-                      color: Colors.white,
+                      color: context.textPrimary,
                     ),
                   ),
                   SizedBox(height: 2.w),
@@ -1526,7 +1526,7 @@ class _IntroPageState extends State<IntroPage>
           style: TextStyle(
             fontSize: 14.sp,
             fontWeight: FontWeight.w500,
-            color: outlined ? Colors.white : context.lightGrey,
+            color: outlined ? context.textPrimary : context.textSecondary,
           ),
         ),
       ),
@@ -2149,7 +2149,7 @@ class _StepperDemoState extends State<_StepperDemo> {
                     style: TextStyle(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
-                      color: Colors.white,
+                      color: context.textPrimary,
                     ),
                   ),
                 ),

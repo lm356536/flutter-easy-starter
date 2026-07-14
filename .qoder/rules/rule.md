@@ -6,7 +6,7 @@ trigger: always_on
 
 ## 一、目录结构与命名规范
 
-1. **目录组织**：通用组件放 `lib/core/widgets/`（如 `selection_controls/app_switch.dart`），业务页面按 Feature-First 放 `lib/features/xxx/`，样式常量在 `lib/core/theme/`。
+1. **目录组织**：通用组件放 `lib/core/widgets/`，按**组件类型**建文件夹隔离（如 `switch/`、`checkbox/`、`radio/`），单文件组件直接平铺在 `widgets/` 下。业务页面按 Feature-First 放 `lib/features/xxx/`，样式常量在 `lib/core/theme/`。
 
 2. **组件命名**：通用组件统一使用 `App` 前缀（如 `AppSwitch`、`AppCheckbox`、`AppButton`），语义清晰且与项目主题一致。类名大驼峰（PascalCase），文件命名使用小写+下划线。
 

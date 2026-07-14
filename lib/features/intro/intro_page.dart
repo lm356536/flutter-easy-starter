@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easy_starter/core/theme/app_colors.dart';
-import 'package:flutter_easy_starter/core/widgets/animated_button.dart';
+import 'package:flutter_easy_starter/core/widgets/button/animated_button.dart';
 import 'package:flutter_easy_starter/core/widgets/dialogs/dialogs.dart';
-import 'package:flutter_easy_starter/core/widgets/shimmer_widgets.dart';
+import 'package:flutter_easy_starter/core/widgets/shimmer/shimmer_widgets.dart';
 import 'package:flutter_easy_starter/features/main/main_page.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
-import 'package:flutter_easy_starter/core/widgets/selection_controls/app_switch.dart';
-import 'package:flutter_easy_starter/core/widgets/selection_controls/app_segmented_control.dart';
-import 'package:flutter_easy_starter/core/widgets/selection_controls/app_radio_group.dart';
-import 'package:flutter_easy_starter/core/widgets/selection_controls/app_checkbox_group.dart';
+import 'package:flutter_easy_starter/core/widgets/switch/app_switch.dart';
+import 'package:flutter_easy_starter/core/widgets/segmented/app_segmented_control.dart';
+import 'package:flutter_easy_starter/core/widgets/radio/app_radio_group.dart';
+import 'package:flutter_easy_starter/core/widgets/checkbox/app_checkbox_group.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// 项目介绍页面 - 沉浸式美学设计

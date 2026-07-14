@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easy_starter/core/theme/app_colors.dart';
-import 'package:flutter_easy_starter/core/widgets/animated_button.dart';
+import 'package:flutter_easy_starter/core/widgets/button/animated_button.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'shimmer_widgets.dart';
+import 'package:flutter_easy_starter/core/widgets/shimmer/shimmer_widgets.dart';
 
 /// 空状态组件 - Dark Social 风格
 class EmptyWidget extends StatelessWidget {

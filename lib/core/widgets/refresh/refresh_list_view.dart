@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_easy_starter/core/widgets/empty_widgets.dart';
+import 'package:flutter_easy_starter/core/widgets/empty/empty_widgets.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 /// 刷新控制器封装

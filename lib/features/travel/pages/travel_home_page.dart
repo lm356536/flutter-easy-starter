@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easy_starter/core/router/app_router.dart';
 import 'package:flutter_easy_starter/core/router/route_names.dart';
 import 'package:flutter_easy_starter/core/theme/app_colors.dart';
-import 'package:flutter_easy_starter/core/widgets/animated_button.dart';
+import 'package:flutter_easy_starter/core/widgets/button/animated_button.dart';
 import 'package:flutter_easy_starter/features/travel/pages/travel_destination_details_page.dart';
 import 'package:flutter_easy_starter/features/travel/widgets/activity_tile_list_view_widget.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';

@@ -91,6 +91,9 @@ class AppButton extends StatelessWidget {
   /// 是否禁用
   final bool disabled;
 
+  /// 渐变背景（优先级高于 backgroundColor 和 type 默认色）
+  final LinearGradient? gradient;
+
   /// 自定义背景色（覆盖 type 默认色）
   final Color? backgroundColor;
 
@@ -108,6 +111,7 @@ class AppButton extends StatelessWidget {
     this.isLoading = false,
     this.expanded = false,
     this.disabled = false,
+    this.gradient,
     this.backgroundColor,
     this.foregroundColor,
   });
@@ -116,7 +120,7 @@ class AppButton extends StatelessWidget {
   bool get _canTap => onPressed != null && !disabled && !isLoading;
 
   /// 是否处于活跃视觉状态（非禁用时即为活跃，加载中保持颜色）
-  bool get _visualActive => onPressed != null && !disabled;
+  bool get _visualActive => !disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -192,6 +196,7 @@ class AppButton extends StatelessWidget {
   // ------ 颜色系统（主题感知） ------
 
   Color? _rippleColor(BuildContext context) {
+    if (gradient != null) return Colors.white;
     if (foregroundColor != null) return foregroundColor;
     switch (type) {
       case AppButtonType.primary:
@@ -205,7 +210,8 @@ class AppButton extends StatelessWidget {
     }
   }
 
-  Color _bgColor(BuildContext context, bool isActive) {
+  Color? _bgColor(BuildContext context, bool isActive) {
+    if (gradient != null) return null;
     if (backgroundColor != null) return backgroundColor!;
     switch (type) {
       case AppButtonType.primary:
@@ -226,6 +232,7 @@ class AppButton extends StatelessWidget {
   }
 
   Color _fgColor(BuildContext context, bool isActive) {
+    if (gradient != null) return Colors.white;
     if (foregroundColor != null) return foregroundColor!;
     switch (type) {
       case AppButtonType.primary:
@@ -249,12 +256,23 @@ class AppButton extends StatelessWidget {
   }
 
   List<BoxShadow>? _shadow(BuildContext context, bool isActive) {
+    if (gradient != null) {
+      if (!isActive) return null;
+      return [
+        BoxShadow(
+          color: gradient!.colors.first.withValues(alpha: 0.3),
+          blurRadius: 10,
+          spreadRadius: 0,
+        ),
+      ];
+    }
     if (type != AppButtonType.primary && type != AppButtonType.danger)
       return null;
     if (!isActive) return null;
     return [
       BoxShadow(
-        color: _bgColor(context, isActive).withValues(alpha: 0.3),
+        color: (_bgColor(context, isActive) ?? Colors.transparent)
+            .withValues(alpha: 0.3),
         blurRadius: 8,
         spreadRadius: 0,
       ),
@@ -264,30 +282,38 @@ class AppButton extends StatelessWidget {
   // ------ 构建 ------
 
   Widget _buildContainer(BuildContext context, bool isActive) {
-    final showLabel = label != null && !isLoading;
-    final showIcon = icon != null && !isLoading;
+    final body = customChild ?? _buildBody(context, isActive);
 
-    final body = customChild ??
-        (isLoading
-            ? _buildLoading(context, isActive)
-            : _buildTextContent(context, isActive, showLabel, showIcon));
-
-    return Container(
+    final button = Container(
       width: expanded ? double.infinity : null,
       height: _height,
       padding: EdgeInsets.symmetric(horizontal: _horizontalPadding),
       decoration: BoxDecoration(
         color: _bgColor(context, isActive),
+        gradient: gradient,
         borderRadius: BorderRadius.circular(_borderRadius),
         border: _border(context, isActive),
         boxShadow: _shadow(context, isActive),
       ),
       child: body,
     );
+
+    // 渐变按钮禁用时降低透明度
+    if (gradient != null && !isActive)
+      return Opacity(opacity: 0.5, child: button);
+    return button;
   }
 
-  Widget _buildTextContent(
-      BuildContext context, bool isActive, bool showLabel, bool showIcon) {
+  Widget _buildBody(BuildContext context, bool isActive) {
+    if (isLoading) return _buildLoading(context, isActive);
+    return _buildTextContent(context, isActive);
+  }
+
+  Widget _buildTextContent(BuildContext context, bool isActive) {
+    final showLabel = label != null;
+    final showIcon = icon != null;
+    if (!showLabel && !showIcon) return const SizedBox.shrink();
+
     final children = <Widget>[];
     if (showIcon) {
       children.add(icon!);
@@ -305,7 +331,6 @@ class AppButton extends StatelessWidget {
         ),
       );
     }
-    if (children.isEmpty) return const SizedBox.shrink();
     return Center(
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -316,8 +341,9 @@ class AppButton extends StatelessWidget {
   }
 
   Widget _buildLoading(BuildContext context, bool isActive) {
-    return Center(
-      child: SizedBox(
+    final showLabel = label != null;
+    final children = <Widget>[
+      SizedBox(
         width: _iconSize,
         height: _iconSize,
         child: CircularProgressIndicator(
@@ -325,6 +351,26 @@ class AppButton extends StatelessWidget {
           valueColor:
               AlwaysStoppedAnimation<Color>(_fgColor(context, isActive)),
         ),
+      ),
+    ];
+    if (showLabel) {
+      children.add(SizedBox(width: 8.w));
+      children.add(
+        Text(
+          label!,
+          style: TextStyle(
+            fontSize: _textFontSize,
+            fontWeight: FontWeight.w600,
+            color: _fgColor(context, isActive),
+          ),
+        ),
+      );
+    }
+    return Center(
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: children,
       ),
     );
   }

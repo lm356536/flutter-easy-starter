@@ -1459,17 +1459,26 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
             spacing: 12.w,
             runSpacing: 12.w,
             children: [
-              _buildGradientButton(
-                '紫色渐变',
-                [const Color(0xFF8B5CF6), const Color(0xFF6366F1)],
+              AppButton(
+                label: '紫色渐变',
+                onPressed: () => HapticFeedback.lightImpact(),
+                gradient: const LinearGradient(
+                  colors: [Color(0xFF8B5CF6), Color(0xFF6366F1)],
+                ),
               ),
-              _buildGradientButton(
-                '粉色渐变',
-                [const Color(0xFFFF2D55), const Color(0xFFFF6B6B)],
+              AppButton(
+                label: '粉色渐变',
+                onPressed: () => HapticFeedback.lightImpact(),
+                gradient: const LinearGradient(
+                  colors: [Color(0xFFFF2D55), Color(0xFFFF6B6B)],
+                ),
               ),
-              _buildGradientButton(
-                '蓝色渐变',
-                [const Color(0xFF0A84FF), const Color(0xFF5AC8FA)],
+              AppButton(
+                label: '蓝色渐变',
+                onPressed: () => HapticFeedback.lightImpact(),
+                gradient: const LinearGradient(
+                  colors: [Color(0xFF0A84FF), Color(0xFF5AC8FA)],
+                ),
               ),
             ],
           ),
@@ -1546,34 +1555,6 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildGradientButton(String text, List<Color> colors) {
-    return GestureDetector(
-      onTap: () => HapticFeedback.lightImpact(),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.w),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(colors: colors),
-          borderRadius: BorderRadius.circular(10.r),
-          boxShadow: [
-            BoxShadow(
-              color: colors.first.withValues(alpha: 0.3),
-              blurRadius: 10,
-              spreadRadius: 0,
-            ),
-          ],
-        ),
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
-          ),
         ),
       ),
     );

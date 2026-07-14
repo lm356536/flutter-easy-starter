@@ -129,9 +129,8 @@ class _UserDetailPageState extends State<UserDetailPage> {
               // Tab内容
               SliverPadding(
                 padding: EdgeInsets.all(20.w),
-                sliver: _selectedTab == 0
-                    ? _buildMomentsGrid()
-                    : _buildPhotoGrid(),
+                sliver:
+                    _selectedTab == 0 ? _buildMomentsGrid() : _buildPhotoGrid(),
               ),
 
               // 底部间距
@@ -533,7 +532,8 @@ class _UserDetailPageState extends State<UserDetailPage> {
                   style: TextStyle(
                     color: isSelected ? Colors.white : context.lightGrey,
                     fontSize: 16.sp,
-                    fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                    fontWeight:
+                        isSelected ? FontWeight.bold : FontWeight.normal,
                   ),
                 ),
               ),

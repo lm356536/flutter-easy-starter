@@ -1905,7 +1905,9 @@ class _SegmentedControlDemoState extends State<_SegmentedControlDemo> {
                         fontSize: 14.sp,
                         fontWeight:
                             isSelected ? FontWeight.w600 : FontWeight.w400,
-                        color: isSelected ? Colors.white : context.lightGrey,
+                        color: isSelected
+                            ? context.textPrimary
+                            : context.lightGrey,
                       ),
                     ),
                   ),
@@ -1994,7 +1996,7 @@ class _RadioGroupDemoState extends State<_RadioGroupDemo> {
             label,
             style: TextStyle(
               fontSize: 14.sp,
-              color: isSelected ? Colors.white : context.lightGrey,
+              color: isSelected ? context.textPrimary : context.lightGrey,
             ),
           ),
         ],

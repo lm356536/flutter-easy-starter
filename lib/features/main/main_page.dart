@@ -33,6 +33,10 @@ class MainPageState extends State<MainPage> {
     }
   }
 
+  static const double _barHeight = 64;
+  static const double _indicatorWidth = 50;
+  static const double _indicatorHeight = 36;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,10 +50,6 @@ class MainPageState extends State<MainPage> {
   }
 
   Widget _buildBottomBar() {
-    const double barHeight = 80;
-    const double indicatorWidth = 56;
-    double indicatorHeight = 42;
-
     return ClipRect(
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 25, sigmaY: 25),
@@ -66,13 +66,13 @@ class MainPageState extends State<MainPage> {
           child: SafeArea(
             top: false,
             child: SizedBox(
-              height: barHeight.w,
+              height: _barHeight.w,
               child: LayoutBuilder(
                 builder: (context, constraints) {
                   final itemWidth = constraints.maxWidth / 4;
                   final indicatorLeft = _currentIndex * itemWidth +
-                      (itemWidth - indicatorWidth) / 2;
-                  final indicatorTop = (barHeight.w - indicatorHeight) / 2;
+                      (itemWidth - _indicatorWidth) / 2;
+                  final indicatorTop = (_barHeight.w - _indicatorHeight) / 2;
 
                   return Stack(
                     children: [
@@ -83,12 +83,12 @@ class MainPageState extends State<MainPage> {
                         left: indicatorLeft,
                         top: indicatorTop,
                         child: Container(
-                          width: indicatorWidth,
-                          height: indicatorHeight,
+                          width: _indicatorWidth,
+                          height: _indicatorHeight,
                           decoration: BoxDecoration(
                             color: context.primary.withValues(alpha: 0.2),
                             borderRadius: BorderRadius.circular(
-                              indicatorHeight / 2,
+                              _indicatorHeight / 2,
                             ),
                           ),
                         ),
@@ -150,7 +150,7 @@ class MainPageState extends State<MainPage> {
       onTap: () => setState(() => _currentIndex = index),
       child: Container(
         width: itemWidth,
-        height: 80.w,
+        height: _barHeight.w,
         alignment: Alignment.center,
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -159,9 +159,9 @@ class MainPageState extends State<MainPage> {
             Icon(
               isSelected ? activeIcon : icon,
               color: isSelected ? context.primary : context.lightGrey,
-              size: 24,
+              size: 22,
             ),
-            SizedBox(height: 4.w),
+            SizedBox(height: 3.w),
             Text(
               label,
               style: TextStyle(

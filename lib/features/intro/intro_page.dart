@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easy_starter/core/theme/app_colors.dart';
 import 'package:flutter_easy_starter/core/widgets/button/animated_button.dart';
+import 'package:flutter_easy_starter/core/widgets/button/app_button.dart';
 import 'package:flutter_easy_starter/core/widgets/dialogs/dialogs.dart';
 import 'package:flutter_easy_starter/core/widgets/shimmer/shimmer_widgets.dart';
 import 'package:flutter_easy_starter/features/main/main_page.dart';
@@ -1372,10 +1373,22 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
             spacing: 12.w,
             runSpacing: 12.w,
             children: [
-              _buildPrimaryButton('主要按钮', context.primary),
-              _buildPrimaryButton('成功按钮', context.green),
-              _buildPrimaryButton('警告按钮', context.orange),
-              _buildPrimaryButton('危险按钮', context.red),
+              AppButton(
+                  label: '主要按钮', onPressed: () => HapticFeedback.lightImpact()),
+              AppButton(
+                  label: '成功按钮',
+                  onPressed: () => HapticFeedback.lightImpact(),
+                  backgroundColor: context.green,
+                  foregroundColor: Colors.white),
+              AppButton(
+                  label: '警告按钮',
+                  onPressed: () => HapticFeedback.lightImpact(),
+                  backgroundColor: context.orange,
+                  foregroundColor: Colors.white),
+              AppButton(
+                  label: '危险按钮',
+                  onPressed: () => HapticFeedback.lightImpact(),
+                  type: AppButtonType.danger),
             ],
           ),
         ),
@@ -1388,9 +1401,18 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
             spacing: 12.w,
             runSpacing: 12.w,
             children: [
-              _buildSecondaryButton('次要按钮'),
-              _buildSecondaryButton('描边按钮', outlined: true),
-              _buildGhostButton('幽灵按钮'),
+              AppButton(
+                  label: '次要按钮',
+                  onPressed: () => HapticFeedback.lightImpact(),
+                  type: AppButtonType.secondary),
+              AppButton(
+                  label: '描边按钮',
+                  onPressed: () => HapticFeedback.lightImpact(),
+                  type: AppButtonType.outline),
+              AppButton(
+                  label: '幽灵按钮',
+                  onPressed: () => HapticFeedback.lightImpact(),
+                  type: AppButtonType.ghost),
             ],
           ),
         ),
@@ -1422,8 +1444,9 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
             spacing: 12.w,
             runSpacing: 12.w,
             children: [
-              _buildLoadingButton('加载中...'),
-              _buildLoadingButton('提交中', small: true),
+              AppButton(label: '加载中...', isLoading: true),
+              AppButton(
+                  label: '提交中', isLoading: true, size: AppButtonSize.small),
             ],
           ),
         ),
@@ -1484,79 +1507,6 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildPrimaryButton(String text, Color color) {
-    return GestureDetector(
-      onTap: () => HapticFeedback.lightImpact(),
-      child: AnimatedScale(
-        scale: 1.0,
-        duration: const Duration(milliseconds: 100),
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.w),
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(10.r),
-            boxShadow: [
-              BoxShadow(
-                color: color.withValues(alpha: 0.3),
-                blurRadius: 8,
-                spreadRadius: 0,
-              ),
-            ],
-          ),
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSecondaryButton(String text, {bool outlined = false}) {
-    return GestureDetector(
-      onTap: () => HapticFeedback.lightImpact(),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.w),
-        decoration: BoxDecoration(
-          color: outlined ? Colors.transparent : context.surfaceVariant,
-          borderRadius: BorderRadius.circular(10.r),
-          border: outlined
-              ? Border.all(color: context.white.withValues(alpha: 0.2))
-              : null,
-        ),
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w500,
-            color: outlined ? context.textPrimary : context.textSecondary,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildGhostButton(String text) {
-    return GestureDetector(
-      onTap: () => HapticFeedback.lightImpact(),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.w),
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w500,
-            color: context.primary,
-          ),
-        ),
-      ),
-    );
-  }
-
   Widget _buildIconButton(IconData icon, Color color) {
     return GestureDetector(
       onTap: () => HapticFeedback.lightImpact(),
@@ -1597,41 +1547,6 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildLoadingButton(String text, {bool small = false}) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: small ? 16.w : 20.w,
-        vertical: small ? 10.w : 12.w,
-      ),
-      decoration: BoxDecoration(
-        color: context.primary.withValues(alpha: 0.8),
-        borderRadius: BorderRadius.circular(10.r),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-            width: small ? 14.w : 16.w,
-            height: small ? 14.w : 16.w,
-            child: CircularProgressIndicator(
-              strokeWidth: 2,
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-            ),
-          ),
-          SizedBox(width: 8.w),
-          Text(
-            text,
-            style: TextStyle(
-              fontSize: small ? 13.sp : 14.sp,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-            ),
-          ),
-        ],
       ),
     );
   }

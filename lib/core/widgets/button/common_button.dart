@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easy_starter/core/theme/app_colors.dart';
 
-/// 通用按钮
+/// 通用按钮。
+///
+/// **已废弃**：请使用 [AppButton] 代替。
+///
+/// ```dart
+/// // 旧写法
+/// CommonButton(text: '登录', onPressed: _login, type: ButtonType.primary);
+///
+/// // 新写法
+/// AppButton(label: '登录', onPressed: _login, type: AppButtonType.primary);
+/// ```
+@Deprecated('Use AppButton instead')
 class CommonButton extends StatelessWidget {
   final String text;
   final VoidCallback? onPressed;

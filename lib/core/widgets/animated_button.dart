@@ -119,9 +119,10 @@ class _AnimatedButtonState extends State<AnimatedButton>
           onTapUp: _handleTapUp,
           onTapCancel: _handleTapCancel,
           borderRadius: widget.borderRadius,
-          splashColor: widget.rippleColor ?? AppColors.primary.withValues(alpha: 0.2),
+          splashColor:
+              widget.rippleColor ?? context.primary.withValues(alpha: 0.2),
           highlightColor: widget.rippleColor?.withValues(alpha: 0.1) ??
-              AppColors.primary.withValues(alpha: 0.1),
+              context.primary.withValues(alpha: 0.1),
           child: button,
         ),
       );
@@ -157,7 +158,7 @@ class AnimatedGlowCard extends StatefulWidget {
   final double glowIntensity;
   final Duration duration;
 
-  const AnimatedGlowCard({
+  AnimatedGlowCard({
     super.key,
     required this.child,
     this.onTap,
@@ -193,7 +194,7 @@ class _AnimatedGlowCardState extends State<AnimatedGlowCard> {
           decoration: BoxDecoration(
             color: widget.isSelected
                 ? widget.glowColor.withValues(alpha: 0.15)
-                : AppColors.surface,
+                : context.surface,
             borderRadius: BorderRadius.circular(12.r),
             border: Border.all(
               color: showGlow
@@ -204,8 +205,9 @@ class _AnimatedGlowCardState extends State<AnimatedGlowCard> {
             boxShadow: showGlow
                 ? [
                     BoxShadow(
-                      color: widget.glowColor.withValues(alpha: 
-                          widget.isSelected ? widget.glowIntensity : 0.2),
+                      color: widget.glowColor.withValues(
+                          alpha:
+                              widget.isSelected ? widget.glowIntensity : 0.2),
                       blurRadius: widget.isSelected ? 16 : 8,
                       spreadRadius: widget.isSelected ? 2 : 0,
                     ),

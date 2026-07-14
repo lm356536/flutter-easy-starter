@@ -31,7 +31,7 @@ class CommonButton extends StatelessWidget {
       height: height ?? _getHeight(),
       child: ElevatedButton(
         onPressed: isLoading ? null : onPressed,
-        style: _getButtonStyle(),
+        style: _getButtonStyle(context),
         child: _buildContent(),
       ),
     );
@@ -48,13 +48,13 @@ class CommonButton extends StatelessWidget {
     }
   }
 
-  ButtonStyle _getButtonStyle() {
+  ButtonStyle _getButtonStyle(BuildContext context) {
     switch (type) {
       case ButtonType.primary:
         return ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
+          backgroundColor: context.primary,
           foregroundColor: Colors.white,
-          disabledBackgroundColor: AppColors.primary.withValues(alpha: 0.5),
+          disabledBackgroundColor: context.primary.withValues(alpha: 0.5),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
@@ -62,7 +62,7 @@ class CommonButton extends StatelessWidget {
       case ButtonType.secondary:
         return ElevatedButton.styleFrom(
           backgroundColor: Colors.grey.shade100,
-          foregroundColor: AppColors.textPrimary,
+          foregroundColor: context.textPrimary,
           disabledBackgroundColor: Colors.grey.shade200,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
@@ -71,9 +71,9 @@ class CommonButton extends StatelessWidget {
       case ButtonType.outline:
         return ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
-          foregroundColor: AppColors.primary,
+          foregroundColor: context.primary,
           disabledBackgroundColor: Colors.transparent,
-          side: const BorderSide(color: AppColors.primary),
+          side: BorderSide(color: context.primary),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
@@ -82,7 +82,7 @@ class CommonButton extends StatelessWidget {
       case ButtonType.text:
         return ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
-          foregroundColor: AppColors.primary,
+          foregroundColor: context.primary,
           disabledBackgroundColor: Colors.transparent,
           elevation: 0,
           padding: EdgeInsets.zero,
@@ -128,4 +128,5 @@ class CommonButton extends StatelessWidget {
 }
 
 enum ButtonType { primary, secondary, outline, text }
+
 enum ButtonSize { small, medium, large }

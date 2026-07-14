@@ -18,13 +18,13 @@ class ListingHeaderWidget extends StatelessWidget {
             width: 62.w,
             height: 62.w,
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: context.surface,
               borderRadius: BorderRadius.circular(55.r),
             ),
             child: Icon(
               Icons.menu_rounded,
               size: 30,
-              color: AppColors.white,
+              color: context.white,
             ),
           ),
           Spacer(),
@@ -32,13 +32,13 @@ class ListingHeaderWidget extends StatelessWidget {
             width: 62.w,
             height: 62.w,
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: context.surface,
               borderRadius: BorderRadius.circular(55.r),
             ),
             child: Icon(
               Icons.search_rounded,
               size: 30,
-              color: AppColors.white,
+              color: context.white,
             ),
           ),
           SizedBox(width: 5.w),
@@ -46,13 +46,13 @@ class ListingHeaderWidget extends StatelessWidget {
             width: 62.w,
             height: 62.w,
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: context.surface,
               borderRadius: BorderRadius.circular(55.r),
             ),
             child: Icon(
               Icons.notifications_none_rounded,
               size: 30,
-              color: AppColors.white,
+              color: context.white,
             ),
           ),
           SizedBox(width: 5.w),
@@ -60,7 +60,7 @@ class ListingHeaderWidget extends StatelessWidget {
             width: 62.w,
             height: 62.w,
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: context.surface,
               borderRadius: BorderRadius.circular(55.r),
             ),
             child: ClipRRect(

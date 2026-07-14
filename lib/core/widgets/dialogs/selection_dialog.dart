@@ -27,10 +27,10 @@ class SelectionDialog<T> extends StatelessWidget {
         width: 320.w,
         constraints: BoxConstraints(maxHeight: 480.w),
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: context.surface,
           borderRadius: BorderRadius.circular(20.r),
           border: Border.all(
-            color: AppColors.white.withValues(alpha: 0.1),
+            color: context.white.withValues(alpha: 0.1),
           ),
         ),
         child: Column(
@@ -49,7 +49,7 @@ class SelectionDialog<T> extends StatelessWidget {
             ),
             Divider(
               height: 1,
-              color: AppColors.white.withValues(alpha: 0.1),
+              color: context.white.withValues(alpha: 0.1),
             ),
             Flexible(
               child: ListView.builder(
@@ -70,11 +70,11 @@ class SelectionDialog<T> extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         color: isSelected
-                            ? AppColors.primary.withValues(alpha: 0.1)
+                            ? context.primary.withValues(alpha: 0.1)
                             : null,
                         border: Border(
                           bottom: BorderSide(
-                            color: AppColors.white.withValues(alpha: 0.05),
+                            color: context.white.withValues(alpha: 0.05),
                           ),
                         ),
                       ),
@@ -86,15 +86,15 @@ class SelectionDialog<T> extends StatelessWidget {
                               height: 36.w,
                               decoration: BoxDecoration(
                                 color: isSelected
-                                    ? AppColors.primary.withValues(alpha: 0.2)
-                                    : AppColors.background,
+                                    ? context.primary.withValues(alpha: 0.2)
+                                    : context.background,
                                 borderRadius: BorderRadius.circular(10.r),
                               ),
                               child: Icon(
                                 item.icon,
                                 color: isSelected
-                                    ? AppColors.primary
-                                    : AppColors.lightGrey,
+                                    ? context.primary
+                                    : context.lightGrey,
                                 size: 18,
                               ),
                             ),
@@ -112,7 +112,7 @@ class SelectionDialog<T> extends StatelessWidget {
                                         ? FontWeight.w600
                                         : FontWeight.w400,
                                     color: isSelected
-                                        ? AppColors.primary
+                                        ? context.primary
                                         : Colors.white,
                                   ),
                                 ),
@@ -122,7 +122,7 @@ class SelectionDialog<T> extends StatelessWidget {
                                     item.subtitle!,
                                     style: TextStyle(
                                       fontSize: 13.sp,
-                                      color: AppColors.lightGrey,
+                                      color: context.lightGrey,
                                     ),
                                   ),
                                 ],
@@ -132,7 +132,7 @@ class SelectionDialog<T> extends StatelessWidget {
                           if (isSelected)
                             Icon(
                               LucideIcons.check,
-                              color: AppColors.primary,
+                              color: context.primary,
                               size: 22,
                             ),
                         ],

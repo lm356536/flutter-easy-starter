@@ -21,7 +21,7 @@ class _TravelHomePageState extends State<TravelHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: ListView(
         padding: EdgeInsets.only(top: 42.w, bottom: 24.w),
         children: [
@@ -36,7 +36,7 @@ class _TravelHomePageState extends State<TravelHomePage> {
                   style: TextStyle(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.white,
+                    color: context.white,
                   ),
                 ),
                 SizedBox(height: 6.w),
@@ -44,7 +44,7 @@ class _TravelHomePageState extends State<TravelHomePage> {
                   '探索世界各地的精彩旅程',
                   style: TextStyle(
                     fontSize: 14.sp,
-                    color: AppColors.lightGrey,
+                    color: context.lightGrey,
                   ),
                 ),
               ],
@@ -67,7 +67,7 @@ class _TravelHomePageState extends State<TravelHomePage> {
                   style: TextStyle(
                     fontSize: 18.sp,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.white,
+                    color: context.white,
                   ),
                 ),
                 AnimatedButton(
@@ -80,7 +80,7 @@ class _TravelHomePageState extends State<TravelHomePage> {
                     style: TextStyle(
                       fontSize: 13.sp,
                       fontWeight: FontWeight.w600,
-                      color: AppColors.primary,
+                      color: context.primary,
                     ),
                   ),
                 ),
@@ -166,7 +166,7 @@ class _TravelHomePageState extends State<TravelHomePage> {
                                     children: [
                                       Icon(
                                         LucideIcons.star,
-                                        color: AppColors.yellow,
+                                        color: context.yellow,
                                         size: 14,
                                       ),
                                       SizedBox(width: 4.w),
@@ -220,10 +220,10 @@ class _TravelHomePageState extends State<TravelHomePage> {
                                     width: 44.w,
                                     height: 44.w,
                                     decoration: BoxDecoration(
-                                      color: AppColors.white.withValues(alpha: 0.2),
+                                      color: context.white.withValues(alpha: 0.2),
                                       borderRadius: BorderRadius.circular(12.r),
                                       border: Border.all(
-                                        color: AppColors.white.withValues(alpha: 0.3),
+                                        color: context.white.withValues(alpha: 0.3),
                                       ),
                                     ),
                                     child: Icon(
@@ -253,7 +253,7 @@ class _TravelHomePageState extends State<TravelHomePage> {
       children: [
         Icon(
           LucideIcons.calendar,
-          color: AppColors.white.withValues(alpha: 0.8),
+          color: context.white.withValues(alpha: 0.8),
           size: 14,
         ),
         SizedBox(width: 6.w),
@@ -261,7 +261,7 @@ class _TravelHomePageState extends State<TravelHomePage> {
           '${Random.secure().nextInt(5) + 3} 天',
           style: TextStyle(
             fontSize: 13.sp,
-            color: AppColors.white.withValues(alpha: 0.8),
+            color: context.white.withValues(alpha: 0.8),
           ),
         ),
         SizedBox(width: 12.w),
@@ -269,7 +269,7 @@ class _TravelHomePageState extends State<TravelHomePage> {
           width: 4.w,
           height: 4.w,
           decoration: BoxDecoration(
-            color: AppColors.white.withValues(alpha: 0.5),
+            color: context.white.withValues(alpha: 0.5),
             shape: BoxShape.circle,
           ),
         ),
@@ -279,7 +279,7 @@ class _TravelHomePageState extends State<TravelHomePage> {
           style: TextStyle(
             fontSize: 13.sp,
             fontWeight: FontWeight.bold,
-            color: AppColors.white,
+            color: context.white,
           ),
         ),
       ],
@@ -325,7 +325,7 @@ class _TravelHomePageState extends State<TravelHomePage> {
           '${Random.secure().nextInt(50) + 10} 人已参加',
           style: TextStyle(
             fontSize: 12.sp,
-            color: AppColors.white.withValues(alpha: 0.7),
+            color: context.white.withValues(alpha: 0.7),
           ),
         ),
       ],

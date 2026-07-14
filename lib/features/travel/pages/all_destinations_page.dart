@@ -125,7 +125,7 @@ class _AllDestinationsPageState extends State<AllDestinationsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: SmartRefresher(
         controller: _refreshController,
         enablePullDown: true,
@@ -167,7 +167,7 @@ class _AllDestinationsPageState extends State<AllDestinationsPage> {
                 children: [
                   Icon(
                     Icons.check_circle_outline,
-                    color: AppColors.lightGrey.withValues(alpha: 0.5),
+                    color: context.lightGrey.withValues(alpha: 0.5),
                     size: 32,
                   ),
                   SizedBox(height: 8.w),
@@ -175,7 +175,7 @@ class _AllDestinationsPageState extends State<AllDestinationsPage> {
                     '已经到底了，没有更多目的地',
                     style: TextStyle(
                       fontSize: 13.sp,
-                      color: AppColors.lightGrey.withValues(alpha: 0.5),
+                      color: context.lightGrey.withValues(alpha: 0.5),
                     ),
                   ),
                 ],
@@ -194,7 +194,7 @@ class _AllDestinationsPageState extends State<AllDestinationsPage> {
               largeTitle: Text('热门目的地',
                 style: TextStyle(color: Colors.white),
               ),
-              backgroundColor: AppColors.background,
+              backgroundColor: context.background,
               border: Border(
                 bottom: BorderSide(
                   color: Colors.white.withValues(alpha: 0.1),
@@ -202,7 +202,7 @@ class _AllDestinationsPageState extends State<AllDestinationsPage> {
                 ),
               ),
               leading: CupertinoNavigationBarBackButton(
-                color: AppColors.primary,
+                color: context.primary,
                 onPressed: () => AppRouter.pop(),
               ),
             ),
@@ -298,7 +298,7 @@ class _AllDestinationsPageState extends State<AllDestinationsPage> {
                     children: [
                       Icon(
                         Icons.star,
-                        color: AppColors.yellow,
+                        color: context.yellow,
                         size: 16,
                       ),
                       SizedBox(width: 4.w),
@@ -340,7 +340,7 @@ class _AllDestinationsPageState extends State<AllDestinationsPage> {
                           children: [
                             Icon(
                               Icons.location_on_outlined,
-                              color: AppColors.lightGrey,
+                              color: context.lightGrey,
                               size: 16,
                             ),
                             SizedBox(width: 4.w),
@@ -348,7 +348,7 @@ class _AllDestinationsPageState extends State<AllDestinationsPage> {
                               '葡萄牙',
                               style: TextStyle(
                                 fontSize: 14.sp,
-                                color: AppColors.lightGrey,
+                                color: context.lightGrey,
                               ),
                             ),
                           ],
@@ -358,7 +358,7 @@ class _AllDestinationsPageState extends State<AllDestinationsPage> {
                           children: [
                             Icon(
                               Icons.access_time_outlined,
-                              color: AppColors.lightGrey,
+                              color: context.lightGrey,
                               size: 16,
                             ),
                             SizedBox(width: 4.w),
@@ -366,7 +366,7 @@ class _AllDestinationsPageState extends State<AllDestinationsPage> {
                               '${destination['days']} 天',
                               style: TextStyle(
                                 fontSize: 14.sp,
-                                color: AppColors.lightGrey,
+                                color: context.lightGrey,
                               ),
                             ),
                           ],
@@ -375,7 +375,7 @@ class _AllDestinationsPageState extends State<AllDestinationsPage> {
                           '${destination['price']}€',
                           style: TextStyle(fontSize: 16.sp,
                             fontWeight: FontWeight.bold,
-                            color: AppColors.primary,
+                            color: context.primary,
                           ),
                         ),
                       ],
@@ -385,7 +385,7 @@ class _AllDestinationsPageState extends State<AllDestinationsPage> {
                       '${destination['reviews']} 条评价',
                       style: TextStyle(
                         fontSize: 13.sp,
-                        color: AppColors.lightGrey.withValues(alpha: 0.8),
+                        color: context.lightGrey.withValues(alpha: 0.8),
                       ),
                     ),
                   ],

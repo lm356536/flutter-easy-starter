@@ -254,9 +254,9 @@ class _GiftShopPageState extends State<GiftShopPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       appBar: AppBar(
-        backgroundColor: AppColors.background,
+        backgroundColor: context.background,
         title: const Text('礼物商城'),
         centerTitle: true,
         actions: [
@@ -268,11 +268,11 @@ class _GiftShopPageState extends State<GiftShopPage>
                 margin: EdgeInsets.only(right: 16.w),
                 padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.w),
                 decoration: BoxDecoration(
-                  color: AppColors.surface,
+                  color: context.surface,
                   borderRadius: BorderRadius.circular(20.r),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.yellow.withValues(alpha: 0.2),
+                      color: context.yellow.withValues(alpha: 0.2),
                       blurRadius: 8,
                       spreadRadius: 0,
                     ),
@@ -282,14 +282,14 @@ class _GiftShopPageState extends State<GiftShopPage>
                   children: [
                     Icon(
                       LucideIcons.coins,
-                      color: AppColors.yellow,
+                      color: context.yellow,
                       size: 18.sp,
                     ),
                     SizedBox(width: 4.w),
                     Text(
                       '$_coins',
                       style: TextStyle(
-                        color: AppColors.white,
+                        color: context.white,
                         fontSize: 14.sp,
                         fontWeight: FontWeight.bold,
                       ),
@@ -339,15 +339,15 @@ class _GiftShopPageState extends State<GiftShopPage>
                 onTap: () => setState(() => _selectedCategory = index),
                 borderRadius: BorderRadius.circular(8.r),
                 child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
+                  duration: Duration(milliseconds: 200),
                   padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.w),
                   decoration: BoxDecoration(
-                    color: isSelected ? AppColors.primary : AppColors.surface,
+                    color: isSelected ? context.primary : context.surface,
                     borderRadius: BorderRadius.circular(8.r),
                     boxShadow: isSelected
                         ? [
                             BoxShadow(
-                              color: AppColors.primary.withValues(alpha: 0.3),
+                              color: context.primary.withValues(alpha: 0.3),
                               blurRadius: 8,
                               spreadRadius: 0,
                             ),
@@ -358,7 +358,7 @@ class _GiftShopPageState extends State<GiftShopPage>
                     child: Text(
                       categories[index],
                       style: TextStyle(
-                        color: isSelected ? Colors.white : AppColors.lightGrey,
+                        color: isSelected ? Colors.white : context.lightGrey,
                         fontSize: 14.sp,
                         fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                       ),
@@ -385,11 +385,11 @@ class _GiftShopPageState extends State<GiftShopPage>
       itemCount: 9,
       itemBuilder: (context, index) {
         return Shimmer.fromColors(
-          baseColor: AppColors.surface,
-          highlightColor: AppColors.tertiaryGrey,
+          baseColor: context.surface,
+          highlightColor: context.tertiaryGrey,
           child: Container(
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: context.surface,
               borderRadius: BorderRadius.circular(12.r),
             ),
           ),
@@ -426,10 +426,10 @@ class _GiftShopPageState extends State<GiftShopPage>
               },
               borderRadius: BorderRadius.circular(12.r),
               child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
+                duration: Duration(milliseconds: 200),
                 curve: Curves.easeOutCubic,
                 decoration: BoxDecoration(
-                  color: AppColors.surface,
+                  color: context.surface,
                   borderRadius: BorderRadius.circular(12.r),
                   border: Border.all(
                     color: isSelected ? gift.gradient[0] : Colors.transparent,
@@ -480,7 +480,7 @@ class _GiftShopPageState extends State<GiftShopPage>
                     Text(
                       gift.name,
                       style: TextStyle(
-                        color: AppColors.white,
+                        color: context.white,
                         fontSize: 13.sp,
                         fontWeight: FontWeight.w500,
                       ),
@@ -492,14 +492,14 @@ class _GiftShopPageState extends State<GiftShopPage>
                       children: [
                         Icon(
                           LucideIcons.coins,
-                          color: AppColors.yellow,
+                          color: context.yellow,
                           size: 12.sp,
                         ),
                         SizedBox(width: 2.w),
                         Text(
                           '${gift.coins}',
                           style: TextStyle(
-                            color: isSelected ? gift.gradient[0] : AppColors.lightGrey,
+                            color: isSelected ? gift.gradient[0] : context.lightGrey,
                             fontSize: 12.sp,
                             fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                           ),
@@ -523,7 +523,7 @@ class _GiftShopPageState extends State<GiftShopPage>
         id: '',
         name: '',
         icon: LucideIcons.gift,
-        gradient: [AppColors.tertiaryGrey, AppColors.tertiaryGrey],
+        gradient: [context.tertiaryGrey, context.tertiaryGrey],
         coins: 0,
         category: '',
       ),
@@ -532,11 +532,11 @@ class _GiftShopPageState extends State<GiftShopPage>
     final totalCost = selectedGift.coins * _selectedQuantity;
 
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
+      duration: Duration(milliseconds: 300),
       curve: Curves.easeOutCubic,
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.surface,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24.r)),
         boxShadow: [
           BoxShadow(
@@ -612,7 +612,7 @@ class _GiftShopPageState extends State<GiftShopPage>
                 margin: EdgeInsets.only(bottom: 16.w),
                 padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.w),
                 decoration: BoxDecoration(
-                  color: AppColors.background,
+                  color: context.background,
                   borderRadius: BorderRadius.circular(12.r),
                 ),
                 child: Row(
@@ -627,12 +627,12 @@ class _GiftShopPageState extends State<GiftShopPage>
                     ),
                     SizedBox(width: 24.w),
                     AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 200),
+                      duration: Duration(milliseconds: 200),
                       child: Text(
                         '$_selectedQuantity',
                         key: ValueKey<int>(_selectedQuantity),
                         style: TextStyle(
-                          color: AppColors.white,
+                          color: context.white,
                           fontSize: 24.sp,
                           fontWeight: FontWeight.bold,
                         ),
@@ -662,14 +662,14 @@ class _GiftShopPageState extends State<GiftShopPage>
                       child: Container(
                         height: 48.w,
                         decoration: BoxDecoration(
-                          color: AppColors.background,
+                          color: context.background,
                           borderRadius: BorderRadius.circular(12.r),
                         ),
                         child: Center(
                           child: Text(
                             '取消',
                             style: TextStyle(
-                              color: AppColors.lightGrey,
+                              color: context.lightGrey,
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w600,
                             ),
@@ -708,7 +708,7 @@ class _GiftShopPageState extends State<GiftShopPage>
                                   title: '赠送成功',
                                   message: '已送出 ${selectedGift.name} x$_selectedQuantity',
                                 );
-                                Future.delayed(const Duration(seconds: 1), () {
+                                Future.delayed(Duration(seconds: 1), () {
                                   if (mounted) context.pop();
                                 });
                               },
@@ -718,7 +718,7 @@ class _GiftShopPageState extends State<GiftShopPage>
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: _selectedGiftId == null
-                                  ? [AppColors.tertiaryGrey, AppColors.tertiaryGrey]
+                                  ? [context.tertiaryGrey, context.tertiaryGrey]
                                   : selectedGift.gradient,
                             ),
                             borderRadius: BorderRadius.circular(12.r),
@@ -789,7 +789,7 @@ class _GiftShopPageState extends State<GiftShopPage>
             gradient: isActive && gradient != null
                 ? LinearGradient(colors: gradient)
                 : null,
-            color: isActive && gradient == null ? AppColors.primary : AppColors.tertiaryGrey,
+            color: isActive && gradient == null ? context.primary : context.tertiaryGrey,
             borderRadius: BorderRadius.circular(8.r),
           ),
           child: Icon(

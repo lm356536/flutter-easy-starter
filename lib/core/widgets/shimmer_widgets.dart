@@ -27,8 +27,8 @@ class ShimmerContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: baseColor ?? AppColors.surface,
-      highlightColor: highlightColor ?? AppColors.surfaceVariant,
+      baseColor: baseColor ?? context.surface,
+      highlightColor: highlightColor ?? context.surfaceVariant,
       child: Container(
         width: width,
         height: height,
@@ -187,8 +187,8 @@ class ShimmerCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: AppColors.surface,
-      highlightColor: AppColors.surfaceVariant,
+      baseColor: context.surface,
+      highlightColor: context.surfaceVariant,
       child: Container(
         width: size.w,
         height: size.w,

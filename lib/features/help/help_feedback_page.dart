@@ -135,11 +135,11 @@ class _HelpFeedbackPageState extends State<HelpFeedbackPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       appBar: AppBar(
-        backgroundColor: AppColors.background,
+        backgroundColor: context.background,
         elevation: 0,
-        title: const Text('帮助与反馈'),
+        title: Text('帮助与反馈'),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -153,14 +153,14 @@ class _HelpFeedbackPageState extends State<HelpFeedbackPage>
 
           // 分类标签
           Container(
-            color: AppColors.surface,
+            color: context.surface,
             child: TabBar(
               controller: _tabController,
               isScrollable: true,
-              indicatorColor: AppColors.primary,
+              indicatorColor: context.primary,
               indicatorWeight: 3,
-              labelColor: AppColors.primary,
-              unselectedLabelColor: AppColors.lightGrey,
+              labelColor: context.primary,
+              unselectedLabelColor: context.lightGrey,
               tabs: _faqData.map((c) => Tab(text: c.title)).toList(),
             ),
           ),
@@ -176,7 +176,7 @@ class _HelpFeedbackPageState extends State<HelpFeedbackPage>
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _showFeedbackDialog,
-        backgroundColor: AppColors.primary,
+        backgroundColor: context.primary,
         icon: Icon(Icons.edit, color: Colors.white),
         label: Text('意见反馈',
           style: TextStyle(color: Colors.white),
@@ -191,8 +191,8 @@ class _HelpFeedbackPageState extends State<HelpFeedbackPage>
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            AppColors.primary.withValues(alpha: 0.1),
-            AppColors.background,
+            context.primary.withValues(alpha: 0.1),
+            context.background,
           ],
         ),
       ),
@@ -202,12 +202,12 @@ class _HelpFeedbackPageState extends State<HelpFeedbackPage>
             width: 64.w,
             height: 64.w,
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: context.surface,
               borderRadius: BorderRadius.circular(16.r),
             ),
             child: Icon(
               Icons.headset_mic,
-              color: AppColors.primary,
+              color: context.primary,
               size: 32,
             ),
           ),
@@ -215,7 +215,7 @@ class _HelpFeedbackPageState extends State<HelpFeedbackPage>
           Text(
             'Hi，有什么可以帮您？',
             style: TextStyle(
-              color: AppColors.white,
+              color: context.white,
               fontSize: 20.sp,
               fontWeight: FontWeight.bold,
             ),
@@ -224,7 +224,7 @@ class _HelpFeedbackPageState extends State<HelpFeedbackPage>
           Text(
             '遇到问题可以先查看常见问题',
             style: TextStyle(
-              color: AppColors.lightGrey,
+              color: context.lightGrey,
               fontSize: 14.sp,
             ),
           ),
@@ -273,17 +273,17 @@ class _HelpFeedbackPageState extends State<HelpFeedbackPage>
       child: Container(
         padding: EdgeInsets.all(16.w),
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: context.surface,
           borderRadius: BorderRadius.circular(16.r),
         ),
         child: Column(
           children: [
-            Icon(icon, color: AppColors.primary, size: 28),
+            Icon(icon, color: context.primary, size: 28),
             SizedBox(height: 8.w),
             Text(
               title,
               style: TextStyle(
-                color: AppColors.white,
+                color: context.white,
                 fontSize: 13.sp,
                 fontWeight: FontWeight.w600,
               ),
@@ -292,7 +292,7 @@ class _HelpFeedbackPageState extends State<HelpFeedbackPage>
               Text(
                 subtitle,
                 style: TextStyle(
-                  color: AppColors.lightGrey,
+                  color: context.lightGrey,
                   fontSize: 11.sp,
                 ),
               ),
@@ -311,17 +311,17 @@ class _HelpFeedbackPageState extends State<HelpFeedbackPage>
         return Container(
           margin: EdgeInsets.only(bottom: 12),
           decoration: BoxDecoration(
-            color: AppColors.surface,
+            color: context.surface,
             borderRadius: BorderRadius.circular(16.r),
           ),
           child: ExpansionTile(
             tilePadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            collapsedIconColor: AppColors.lightGrey,
-            iconColor: AppColors.primary,
+            collapsedIconColor: context.lightGrey,
+            iconColor: context.primary,
             title: Text(
               item.question,
               style: TextStyle(
-                color: AppColors.white,
+                color: context.white,
                 fontSize: 15.sp,
                 fontWeight: FontWeight.w600,
               ),
@@ -332,7 +332,7 @@ class _HelpFeedbackPageState extends State<HelpFeedbackPage>
                 child: Text(
                   item.answer,
                   style: TextStyle(
-                    color: AppColors.lightGrey,
+                    color: context.lightGrey,
                     fontSize: 14.sp,
                     height: 1.6,
                   ),
@@ -359,7 +359,7 @@ class _HelpFeedbackPageState extends State<HelpFeedbackPage>
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      backgroundColor: AppColors.surface,
+      backgroundColor: context.surface,
       shape: null,
       builder: (context) {
         String? selectedTag;
@@ -378,7 +378,7 @@ class _HelpFeedbackPageState extends State<HelpFeedbackPage>
                         Text(
                           '意见反馈',
                           style: TextStyle(
-                            color: AppColors.white,
+                            color: context.white,
                             fontSize: 20.sp,
                             fontWeight: FontWeight.bold,
                           ),
@@ -387,7 +387,7 @@ class _HelpFeedbackPageState extends State<HelpFeedbackPage>
                         IconButton(
                           onPressed: () => Navigator.pop(context),
                           icon: Icon(Icons.close),
-                          color: AppColors.lightGrey,
+                          color: context.lightGrey,
                         ),
                       ],
                     ),
@@ -400,15 +400,15 @@ class _HelpFeedbackPageState extends State<HelpFeedbackPage>
                       keyboardType: TextInputType.multiline,
                       textAlignVertical: TextAlignVertical.top,
                       style: TextStyle(
-                        color: AppColors.white,
+                        color: context.white,
                         fontSize: 15.sp,
                       ),
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: AppColors.background,
+                        fillColor: context.background,
                         hintText: '请详细描述您遇到的问题或建议...',
                         hintStyle: TextStyle(
-                          color: AppColors.tertiaryGrey,
+                          color: context.tertiaryGrey,
                           fontSize: 15.sp,
                         ),
                         border: OutlineInputBorder(
@@ -430,7 +430,7 @@ class _HelpFeedbackPageState extends State<HelpFeedbackPage>
                     Text(
                       '常见问题类型',
                       style: TextStyle(
-                        color: AppColors.lightGrey,
+                        color: context.lightGrey,
                         fontSize: 14.sp,
                       ),
                     ),
@@ -453,16 +453,16 @@ class _HelpFeedbackPageState extends State<HelpFeedbackPage>
                             ),
                             decoration: BoxDecoration(
                               color: isSelected
-                                  ? AppColors.primary
-                                  : AppColors.tertiaryGrey,
+                                  ? context.primary
+                                  : context.tertiaryGrey,
                               borderRadius: BorderRadius.zero,
                             ),
                             child: Text(
                               label,
                               style: TextStyle(
                                 color: isSelected
-                                    ? AppColors.white
-                                    : AppColors.lightGrey,
+                                    ? context.white
+                                    : context.lightGrey,
                                 fontSize: 12.sp,
                               ),
                             ),
@@ -484,7 +484,7 @@ class _HelpFeedbackPageState extends State<HelpFeedbackPage>
                           DialogUtils.showSuccess(context, message: '感谢您的反馈！');
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.primary,
+                          backgroundColor: context.primary,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.zero,
                           ),

@@ -29,10 +29,10 @@ class BottomActionSheet<T> extends StatelessWidget {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: AppColors.surface,
+                color: context.surface,
                 borderRadius: BorderRadius.circular(16.r),
                 border: Border.all(
-                  color: AppColors.white.withValues(alpha: 0.1),
+                  color: context.white.withValues(alpha: 0.1),
                 ),
               ),
               child: Column(
@@ -44,7 +44,7 @@ class BottomActionSheet<T> extends StatelessWidget {
                       decoration: BoxDecoration(
                         border: Border(
                           bottom: BorderSide(
-                            color: AppColors.white.withValues(alpha: 0.1),
+                            color: context.white.withValues(alpha: 0.1),
                           ),
                         ),
                       ),
@@ -52,7 +52,7 @@ class BottomActionSheet<T> extends StatelessWidget {
                         title!,
                         style: TextStyle(
                           fontSize: 13.sp,
-                          color: AppColors.lightGrey,
+                          color: context.lightGrey,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -69,10 +69,10 @@ class BottomActionSheet<T> extends StatelessWidget {
                   width: double.infinity,
                   padding: EdgeInsets.symmetric(vertical: 16.w),
                   decoration: BoxDecoration(
-                    color: AppColors.surface,
+                    color: context.surface,
                     borderRadius: BorderRadius.circular(16.r),
                     border: Border.all(
-                      color: AppColors.white.withValues(alpha: 0.1),
+                      color: context.white.withValues(alpha: 0.1),
                     ),
                   ),
                   child: Text(
@@ -80,7 +80,7 @@ class BottomActionSheet<T> extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 17.sp,
                       fontWeight: FontWeight.w600,
-                      color: AppColors.primary,
+                      color: context.primary,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -105,7 +105,7 @@ class BottomActionSheet<T> extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
-              color: AppColors.white.withValues(alpha: 0.05),
+              color: context.white.withValues(alpha: 0.05),
             ),
           ),
         ),
@@ -114,7 +114,7 @@ class BottomActionSheet<T> extends StatelessWidget {
             if (action.icon != null) ...[
               Icon(
                 action.icon,
-                color: action.iconColor ?? AppColors.lightGrey,
+                color: action.iconColor ?? context.lightGrey,
                 size: 22,
               ),
               SizedBox(width: 12.w),
@@ -125,14 +125,14 @@ class BottomActionSheet<T> extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 17.sp,
                   fontWeight: action.isBold ? FontWeight.w600 : FontWeight.w400,
-                  color: action.isDestructive ? AppColors.red : Colors.white,
+                  color: action.isDestructive ? context.red : Colors.white,
                 ),
               ),
             ),
             if (action.isSelected)
               Icon(
                 LucideIcons.check,
-                color: AppColors.primary,
+                color: context.primary,
                 size: 20,
               ),
           ],

@@ -59,7 +59,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: Stack(
         children: [
           // 背景渐变
@@ -70,7 +70,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
                   center: const Alignment(0, -0.5),
                   radius: 0.8,
                   colors: [
-                    AppColors.primary.withValues(alpha: 0.1),
+                    context.primary.withValues(alpha: 0.1),
                     Colors.transparent,
                   ],
                 ),
@@ -115,7 +115,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: context.surface,
               borderRadius: BorderRadius.circular(20.r),
             ),
             child: Row(
@@ -129,7 +129,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
                 Text(
                   '1250',
                   style: TextStyle(
-                    color: AppColors.white,
+                    color: context.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -138,7 +138,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
           ),
           _iconButton(
             isLiked ? Icons.favorite : Icons.favorite_border,
-            color: isLiked ? AppColors.pink : AppColors.lightGrey,
+            color: isLiked ? context.pink : context.lightGrey,
             onPressed: () {
               setState(() {
                 isLiked = !isLiked;
@@ -158,9 +158,9 @@ class _GiftDetailPageState extends State<GiftDetailPage>
         width: 44.w,
         height: 44.w,
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: context.surface,
           borderRadius: BorderRadius.circular(14.r),
-          border: Border.all(color: AppColors.border),
+          border: Border.all(color: context.border),
         ),
         child: Icon(icon, color: color, size: 20),
       ),
@@ -191,7 +191,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
                 decoration: BoxDecoration(
                   gradient: RadialGradient(
                     colors: [
-                      AppColors.primary.withValues(alpha: 0.3),
+                      context.primary.withValues(alpha: 0.3),
                       Colors.transparent,
                     ],
                   ),
@@ -203,15 +203,15 @@ class _GiftDetailPageState extends State<GiftDetailPage>
                 width: 200.w,
                 height: 200.w,
                 decoration: BoxDecoration(
-                  color: AppColors.surface,
+                  color: context.surface,
                   borderRadius: BorderRadius.circular(40.r),
                   border: Border.all(
-                    color: AppColors.primary.withValues(alpha: 0.3),
+                    color: context.primary.withValues(alpha: 0.3),
                     width: 2.w,
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.primary.withValues(alpha: 0.2),
+                      color: context.primary.withValues(alpha: 0.2),
                       blurRadius: 40,
                       spreadRadius: 5,
                     ),
@@ -220,7 +220,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
                 child: Icon(
                   Icons.card_giftcard,
                   size: 100,
-                  color: AppColors.primary,
+                  color: context.primary,
                 ),
               ),
               // 装饰元素
@@ -233,7 +233,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: AppColors.pink,
+                    color: context.pink,
                     borderRadius: BorderRadius.circular(12.r),
                   ),
                   child: Text(
@@ -261,7 +261,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
       builder: (context, scrollController) {
         return Container(
           decoration: BoxDecoration(
-            color: AppColors.surface,
+            color: context.surface,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(40.r),
               topRight: Radius.circular(40.r),
@@ -286,7 +286,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
                     width: 50.w,
                     height: 5.w,
                     decoration: BoxDecoration(
-                      color: AppColors.tertiaryGrey,
+                      color: context.tertiaryGrey,
                       borderRadius: BorderRadius.circular(10.r),
                     ),
                   ),
@@ -304,7 +304,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
                           Text(
                             giftData['name'],
                             style: TextStyle(
-                              color: AppColors.white,
+                              color: context.white,
                               fontSize: 24.sp,
                               fontWeight: FontWeight.bold,
                             ),
@@ -313,7 +313,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
                           Text(
                             giftData['category'],
                             style: TextStyle(
-                              color: AppColors.lightGrey,
+                              color: context.lightGrey,
                               fontSize: 14.sp,
                             ),
                           ),
@@ -333,7 +333,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
                             Text(
                               '${giftData['price']}',
                               style: TextStyle(
-                                color: AppColors.white,
+                                color: context.white,
                                 fontSize: 28.sp,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -351,14 +351,14 @@ class _GiftDetailPageState extends State<GiftDetailPage>
                             Text(
                               '${giftData['rating']}',
                               style: TextStyle(
-                                color: AppColors.lightGrey,
+                                color: context.lightGrey,
                                 fontSize: 14.sp,
                               ),
                             ),
                             Text(
                               ' (${giftData['reviews']})',
                               style: TextStyle(
-                                color: AppColors.tertiaryGrey,
+                                color: context.tertiaryGrey,
                                 fontSize: 12.sp,
                               ),
                             ),
@@ -385,7 +385,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
                 Text(
                   '礼物描述',
                   style: TextStyle(
-                    color: AppColors.white,
+                    color: context.white,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                   ),
@@ -394,7 +394,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
                 Text(
                   giftData['description'],
                   style: TextStyle(
-                    color: AppColors.lightGrey,
+                    color: context.lightGrey,
                     fontSize: 14.sp,
                     height: 1.6,
                   ),
@@ -424,7 +424,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
             Text(
               '选择颜色',
               style: TextStyle(
-                color: AppColors.white,
+                color: context.white,
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w600,
               ),
@@ -445,7 +445,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: isSelected
-                          ? Border.all(color: AppColors.white, width: 2)
+                          ? Border.all(color: context.white, width: 2)
                           : null,
                     ),
                     child: CircleAvatar(
@@ -469,7 +469,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
         Text(
           '数量',
           style: TextStyle(
-            color: AppColors.white,
+            color: context.white,
             fontSize: 16.sp,
             fontWeight: FontWeight.w600,
           ),
@@ -489,12 +489,12 @@ class _GiftDetailPageState extends State<GiftDetailPage>
                 width: 40.w,
                 height: 40.w,
                 decoration: BoxDecoration(
-                  color: AppColors.tertiaryGrey,
+                  color: context.tertiaryGrey,
                   borderRadius: BorderRadius.circular(12.r),
                 ),
                 child: Icon(
                   Icons.remove,
-                  color: AppColors.white,
+                  color: context.white,
                 ),
               ),
             ),
@@ -504,7 +504,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
               child: Text(
                 '$quantity',
                 style: TextStyle(
-                  color: AppColors.white,
+                  color: context.white,
                   fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
                 ),
@@ -520,7 +520,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
                 width: 40.w,
                 height: 40.w,
                 decoration: BoxDecoration(
-                  color: AppColors.primary,
+                  color: context.primary,
                   borderRadius: BorderRadius.circular(12.r),
                 ),
                 child: Icon(
@@ -539,9 +539,9 @@ class _GiftDetailPageState extends State<GiftDetailPage>
     return Container(
       padding: EdgeInsets.symmetric(vertical: 16),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.surface,
         border: Border(
-          top: BorderSide(color: AppColors.divider),
+          top: BorderSide(color: context.divider),
         ),
       ),
       child: Row(
@@ -554,7 +554,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
                 Text(
                   '总计',
                   style: TextStyle(
-                    color: AppColors.lightGrey,
+                    color: context.lightGrey,
                     fontSize: 14.sp,
                   ),
                 ),
@@ -569,7 +569,7 @@ class _GiftDetailPageState extends State<GiftDetailPage>
                     Text(
                       '${giftData['price'] * quantity}',
                       style: TextStyle(
-                        color: AppColors.white,
+                        color: context.white,
                         fontSize: 28.sp,
                         fontWeight: FontWeight.bold,
                       ),
@@ -593,13 +593,13 @@ class _GiftDetailPageState extends State<GiftDetailPage>
               child: Container(
                 height: 56.w,
                 decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [AppColors.primary, AppColors.accent],
+                  gradient: LinearGradient(
+                    colors: [context.primary, context.accent],
                   ),
                   borderRadius: BorderRadius.circular(16.r),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.primary.withValues(alpha: 0.4),
+                      color: context.primary.withValues(alpha: 0.4),
                       blurRadius: 20,
                       spreadRadius: 2,
                     ),

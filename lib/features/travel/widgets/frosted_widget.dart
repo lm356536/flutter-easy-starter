@@ -51,11 +51,11 @@ class FrostedWidget extends StatelessWidget {
             padding: padding,
             decoration: BoxDecoration(
               color: backgroundColor ??
-                  AppColors.glassWhite.withValues(alpha: 0.15),
+                  context.glassWhite.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(borderRadius.r),
               border: border ??
                   Border.all(
-                    color: AppColors.white.withValues(alpha: 0.1),
+                    color: context.white.withValues(alpha: 0.1),
                     width: 1,
                   ),
             ),
@@ -81,7 +81,7 @@ class FrostedCard extends StatelessWidget {
   final Color glowColor;
   final bool enableGradientBorder;
 
-  const FrostedCard({
+  FrostedCard({
     super.key,
     required this.child,
     this.borderRadius = 20,
@@ -129,15 +129,15 @@ class FrostedCard extends StatelessWidget {
                 end: Alignment.bottomRight,
                 colors: gradientColors ??
                     [
-                      AppColors.glassWhite.withValues(alpha: 0.2),
-                      AppColors.glassWhite.withValues(alpha: 0.05),
+                      context.glassWhite.withValues(alpha: 0.2),
+                      context.glassWhite.withValues(alpha: 0.05),
                     ],
               ),
               borderRadius: BorderRadius.circular(borderRadius.r),
               border: enableGradientBorder
-                  ? _buildGradientBorder()
+                  ? _buildGradientBorder(context)
                   : Border.all(
-                      color: AppColors.white.withValues(alpha: 0.1),
+                      color: context.white.withValues(alpha: 0.1),
                       width: 1,
                     ),
             ),
@@ -148,9 +148,9 @@ class FrostedCard extends StatelessWidget {
     );
   }
 
-  Border _buildGradientBorder() {
+  Border _buildGradientBorder(BuildContext context) {
     return Border.all(
-      color: AppColors.white.withValues(alpha: 0.2),
+      color: context.white.withValues(alpha: 0.2),
       width: 1.5,
     );
   }
@@ -182,13 +182,13 @@ class FrostedBottomSheet extends StatelessWidget {
         ),
         child: Container(
           decoration: BoxDecoration(
-            color: AppColors.surface.withValues(alpha: 0.8),
+            color: context.surface.withValues(alpha: 0.8),
             borderRadius: BorderRadius.vertical(
               top: Radius.circular(borderRadius.r),
             ),
             border: Border(
               top: BorderSide(
-                color: AppColors.white.withValues(alpha: 0.1),
+                color: context.white.withValues(alpha: 0.1),
                 width: 1,
               ),
             ),
@@ -243,10 +243,10 @@ class FrostedAppBar extends StatelessWidget implements PreferredSizeWidget {
           height: height.w + MediaQuery.of(context).padding.top,
           padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
           decoration: BoxDecoration(
-            color: backgroundColor ?? AppColors.background.withValues(alpha: 0.8),
+            color: backgroundColor ?? context.background.withValues(alpha: 0.8),
             border: Border(
               bottom: BorderSide(
-                color: AppColors.divider.withValues(alpha: 0.5),
+                color: context.divider.withValues(alpha: 0.5),
                 width: 0.5,
               ),
             ),
@@ -258,7 +258,7 @@ class FrostedAppBar extends StatelessWidget implements PreferredSizeWidget {
                         onPressed: onBackTap,
                         icon: Icon(
                           Icons.arrow_back,
-                          color: AppColors.white,
+                          color: context.white,
                         ),
                       )
                     : null),
@@ -267,7 +267,7 @@ class FrostedAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ? Text(
                         title!,
                         style: TextStyle(
-                          color: AppColors.white,
+                          color: context.white,
                           fontSize: 17.sp,
                           fontWeight: FontWeight.w600,
                         ),

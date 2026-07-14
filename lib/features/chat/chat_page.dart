@@ -224,7 +224,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       appBar: _buildAppBar(),
       body: SafeArea(
         child: Column(
@@ -295,7 +295,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
 
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       elevation: 0,
       leading: IconButton(
         icon: Icon(Icons.arrow_back),
@@ -321,7 +321,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
                   Text(
                     _userName,
                     style: TextStyle(
-                      color: AppColors.white,
+                      color: context.white,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
                     ),
@@ -331,7 +331,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
                   Text(
                     _isOnline ? '在线' : '离线',
                     style: TextStyle(
-                      color: _isOnline ? AppColors.green : AppColors.lightGrey,
+                      color: _isOnline ? context.green : context.lightGrey,
                       fontSize: 12.sp,
                     ),
                   ),
@@ -363,7 +363,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
         margin: EdgeInsets.only(top: 8, bottom: 8),
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: context.surface,
           borderRadius: BorderRadius.circular(20.r),
         ),
         child: const TypingIndicator(),
@@ -410,7 +410,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
   void _showOptionsMenu() {
     showModalBottomSheet(
       context: context,
-      backgroundColor: AppColors.surface,
+      backgroundColor: context.surface,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
       ),
@@ -424,14 +424,14 @@ class _ChatPageState extends ConsumerState<ChatPage> {
                 width: 40.w,
                 height: 4.w,
                 decoration: BoxDecoration(
-                  color: AppColors.tertiaryGrey,
+                  color: context.tertiaryGrey,
                   borderRadius: BorderRadius.circular(2.r),
                 ),
               ),
               ListTile(
-                leading: Icon(Icons.person, color: AppColors.white),
+                leading: Icon(Icons.person, color: context.white),
                 title: Text('查看资料',
-                  style: TextStyle(color: AppColors.white),
+                  style: TextStyle(color: context.white),
                 ),
                 onTap: () {
                   Navigator.pop(context);
@@ -439,9 +439,9 @@ class _ChatPageState extends ConsumerState<ChatPage> {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.search, color: AppColors.white),
+                leading: Icon(Icons.search, color: context.white),
                 title: Text('搜索聊天记录',
-                  style: TextStyle(color: AppColors.white),
+                  style: TextStyle(color: context.white),
                 ),
                 onTap: () {
                   Navigator.pop(context);
@@ -449,23 +449,23 @@ class _ChatPageState extends ConsumerState<ChatPage> {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.notifications_off, color: AppColors.lightGrey),
+                leading: Icon(Icons.notifications_off, color: context.lightGrey),
                 title: Text(
                   '消息免打扰',
-                  style: TextStyle(color: AppColors.lightGrey),
+                  style: TextStyle(color: context.lightGrey),
                 ),
                 trailing: Switch(
                   value: false,
                   onChanged: (_) {},
-                  activeColor: AppColors.primary,
+                  activeColor: context.primary,
                 ),
                 onTap: () {},
               ),
-              const Divider(color: AppColors.divider),
+              Divider(color: context.divider),
               ListTile(
-                leading: Icon(Icons.block, color: AppColors.red),
+                leading: Icon(Icons.block, color: context.red),
                 title: Text('屏蔽用户',
-                  style: TextStyle(color: AppColors.red),
+                  style: TextStyle(color: context.red),
                 ),
                 onTap: () {
                   Navigator.pop(context);
@@ -473,10 +473,10 @@ class _ChatPageState extends ConsumerState<ChatPage> {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.report, color: AppColors.orange),
-                title: const Text(
+                leading: Icon(Icons.report, color: context.orange),
+                title: Text(
                   '举报',
-                  style: TextStyle(color: AppColors.orange),
+                  style: TextStyle(color: context.orange),
                 ),
                 onTap: () {
                   Navigator.pop(context);
@@ -495,13 +495,13 @@ class _ChatPageState extends ConsumerState<ChatPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: AppColors.surface,
+          backgroundColor: context.surface,
           title: Text('屏蔽用户',
-            style: TextStyle(color: AppColors.white),
+            style: TextStyle(color: context.white),
           ),
           content: Text(
             '确定要屏蔽 $_userName 吗？屏蔽后你将不再收到对方的消息。',
-            style: const TextStyle(color: AppColors.lightGrey),
+            style: TextStyle(color: context.lightGrey),
           ),
           actions: [
             TextButton(
@@ -514,7 +514,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
                 context.pop();
               },
               style: TextButton.styleFrom(
-                foregroundColor: AppColors.red,
+                foregroundColor: context.red,
               ),
               child: Text('屏蔽'),
             ),
@@ -547,7 +547,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
               width: 36.w,
               height: 36.w,
               decoration: BoxDecoration(
-                color: AppColors.surface,
+                color: context.surface,
                 borderRadius: BorderRadius.circular(18.r),
               ),
             ),
@@ -556,7 +556,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
             width: 150 + (isMe ? 50 : 0),
             height: 48.w,
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: context.surface,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20.r),
                 topRight: Radius.circular(20.r),
@@ -571,7 +571,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
               width: 36.w,
               height: 36.w,
               decoration: BoxDecoration(
-                color: AppColors.surface,
+                color: context.surface,
                 borderRadius: BorderRadius.circular(18.r),
               ),
             ),
@@ -589,20 +589,20 @@ class _ChatPageState extends ConsumerState<ChatPage> {
             width: 120.w,
             height: 120.w,
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: context.surface,
               borderRadius: BorderRadius.circular(60.r),
             ),
             child: Icon(
               Icons.chat_bubble_outline,
               size: 48,
-              color: AppColors.lightGrey,
+              color: context.lightGrey,
             ),
           ),
           SizedBox(height: 24.w),
           Text(
             '还没有消息',
             style: TextStyle(
-              color: AppColors.white,
+              color: context.white,
               fontSize: 18.sp,
               fontWeight: FontWeight.w600,
             ),
@@ -611,7 +611,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
           Text(
             '发送一条消息开始聊天吧',
             style: TextStyle(
-              color: AppColors.lightGrey,
+              color: context.lightGrey,
               fontSize: 14.sp,
             ),
           ),
@@ -623,7 +623,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
               decoration: BoxDecoration(
-                color: AppColors.primary,
+                color: context.primary,
                 borderRadius: BorderRadius.circular(24.r),
               ),
               child: Text(

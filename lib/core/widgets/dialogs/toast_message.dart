@@ -79,7 +79,7 @@ class _ToastMessageState extends State<ToastMessage>
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.w),
               constraints: BoxConstraints(maxWidth: 320.w),
               decoration: BoxDecoration(
-                color: AppColors.surface,
+                color: context.surface,
                 borderRadius: BorderRadius.circular(12.r),
                 border: Border.all(
                   color: widget.color.withValues(alpha: 0.3),
@@ -125,7 +125,7 @@ class _ToastMessageState extends State<ToastMessage>
                   SizedBox(width: 12.w),
                   Icon(
                     LucideIcons.x,
-                    color: AppColors.lightGrey,
+                    color: context.lightGrey,
                     size: 16,
                   ),
                 ],

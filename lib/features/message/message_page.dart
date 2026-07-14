@@ -52,7 +52,7 @@ class _MessagePageState extends ConsumerState<MessagePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
@@ -78,7 +78,7 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                     Text(
                       '消息',
                       style: TextStyle(
-                        color: AppColors.white,
+                        color: context.white,
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
                       ),
@@ -91,7 +91,7 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                           vertical: 6.w,
                         ),
                         decoration: BoxDecoration(
-                          color: AppColors.primary.withValues(alpha: 0.15),
+                          color: context.primary.withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(20.r),
                         ),
                         child: Row(
@@ -100,13 +100,13 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                             Icon(
                               LucideIcons.check_check,
                               size: 16,
-                              color: AppColors.primary,
+                              color: context.primary,
                             ),
                             SizedBox(width: 6.w),
                             Text(
                               '全部已读',
                               style: TextStyle(
-                                color: AppColors.primary,
+                                color: context.primary,
                                 fontSize: 13.sp,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -166,17 +166,17 @@ class _MessagePageState extends ConsumerState<MessagePage> {
               height: 44.w,
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               decoration: BoxDecoration(
-                color: AppColors.surface,
+                color: context.surface,
                 borderRadius: BorderRadius.circular(22.r),
                 border: Border.all(
-                  color: AppColors.white.withValues(alpha: 0.05),
+                  color: context.white.withValues(alpha: 0.05),
                 ),
               ),
               child: Row(
                 children: [
                   Icon(
                     LucideIcons.search,
-                    color: AppColors.lightGrey,
+                    color: context.lightGrey,
                     size: 20,
                   ),
                   SizedBox(width: 10.w),
@@ -185,16 +185,16 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                       controller: _searchController,
                       autofocus: false,
                       style: TextStyle(
-                        color: AppColors.white,
+                        color: context.white,
                         fontSize: 15.sp,
                         height: 1.2,
                       ),
-                      cursorColor: AppColors.primary,
+                      cursorColor: context.primary,
                       cursorHeight: 18,
                       decoration: InputDecoration(
                         hintText: '搜索',
                         hintStyle: TextStyle(
-                          color: AppColors.lightGrey,
+                          color: context.lightGrey,
                           fontSize: 15.sp,
                         ),
                         border: InputBorder.none,
@@ -222,12 +222,12 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                         width: 20.w,
                         height: 20.w,
                         decoration: BoxDecoration(
-                          color: AppColors.tertiaryGrey,
+                          color: context.tertiaryGrey,
                           borderRadius: BorderRadius.circular(10.r),
                         ),
                         child: Icon(
                           LucideIcons.x,
-                          color: AppColors.lightGrey,
+                          color: context.lightGrey,
                           size: 14,
                         ),
                       ),
@@ -253,8 +253,8 @@ class _MessagePageState extends ConsumerState<MessagePage> {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    AppColors.primary,
-                    AppColors.primaryLight,
+                    context.primary,
+                    context.primaryLight,
                   ],
                 ),
                 borderRadius: BorderRadius.circular(22.r),
@@ -339,8 +339,8 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                   width: 64.w,
                   height: 64.w,
                   decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: [AppColors.primary, AppColors.accent],
+                    gradient: LinearGradient(
+                      colors: [context.primary, context.accent],
                     ),
                     borderRadius: BorderRadius.circular(32.r),
                     boxShadow: AppShadows.purpleGlow(opacity: 0.3),
@@ -358,13 +358,13 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                     width: 24.w,
                     height: 24.w,
                     decoration: BoxDecoration(
-                      color: AppColors.surface,
+                      color: context.surface,
                       borderRadius: BorderRadius.circular(12.r),
-                      border: Border.all(color: AppColors.background, width: 2),
+                      border: Border.all(color: context.background, width: 2),
                     ),
                     child: Icon(
                       LucideIcons.camera,
-                      color: AppColors.primary,
+                      color: context.primary,
                       size: 12,
                     ),
                   ),
@@ -375,7 +375,7 @@ class _MessagePageState extends ConsumerState<MessagePage> {
             Text(
               '我的故事',
               style: TextStyle(
-                color: AppColors.lightGrey,
+                color: context.lightGrey,
                 fontSize: 12.sp,
               ),
               maxLines: 1,
@@ -410,7 +410,7 @@ class _MessagePageState extends ConsumerState<MessagePage> {
             Text(
               conversation.name,
               style: TextStyle(
-                color: AppColors.white,
+                color: context.white,
                 fontSize: 12.sp,
               ),
               maxLines: 1,
@@ -464,8 +464,8 @@ class _MessagePageState extends ConsumerState<MessagePage> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                AppColors.surface,
-                AppColors.red.withValues(alpha: 0.8),
+                context.surface,
+                context.red.withValues(alpha: 0.8),
               ],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
@@ -481,12 +481,12 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                 margin: EdgeInsets.only(right: 20.w),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [AppColors.red, const Color(0xFFFF453A)],
+                    colors: [context.red, const Color(0xFFFF453A)],
                   ),
                   borderRadius: BorderRadius.circular(36.r),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.red.withValues(alpha: 0.4),
+                      color: context.red.withValues(alpha: 0.4),
                       blurRadius: 12,
                       offset: const Offset(0, 4),
                     ),
@@ -558,7 +558,7 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                           child: Text(
                             conversation.name,
                             style: TextStyle(
-                              color: AppColors.white,
+                              color: context.white,
                               fontSize: 16.sp,
                               fontWeight: conversation.unreadCount > 0
                                   ? FontWeight.bold
@@ -573,8 +573,8 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                           style: TextStyle(
                             fontSize: 12.sp,
                             color: conversation.unreadCount > 0
-                                ? AppColors.primary
-                                : AppColors.lightGrey,
+                                ? context.primary
+                                : context.lightGrey,
                           ),
                         ),
                       ],
@@ -592,8 +592,8 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                                   _getLastMessagePreview(conversation),
                                   style: TextStyle(
                                     color: conversation.unreadCount > 0
-                                        ? AppColors.lightGrey
-                                        : AppColors.tertiaryGrey,
+                                        ? context.lightGrey
+                                        : context.tertiaryGrey,
                                     fontWeight: conversation.unreadCount > 0
                                         ? FontWeight.w500
                                         : FontWeight.normal,
@@ -613,8 +613,8 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
                                 colors: [
-                                  AppColors.primary,
-                                  AppColors.primaryLight,
+                                  context.primary,
+                                  context.primaryLight,
                                 ],
                               ),
                               borderRadius: BorderRadius.circular(12.r),
@@ -634,7 +634,7 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                           Icon(
                             LucideIcons.check_check,
                             size: 16,
-                            color: AppColors.tertiaryGrey,
+                            color: context.tertiaryGrey,
                           ),
                       ],
                     ),
@@ -701,7 +701,7 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                 // 主菜单
                 Container(
                   decoration: BoxDecoration(
-                    color: AppColors.surface,
+                    color: context.surface,
                     borderRadius: BorderRadius.circular(16.r),
                   ),
                   child: Column(
@@ -717,15 +717,15 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
-                                    AppColors.red.withValues(alpha: 0.2),
-                                    AppColors.red.withValues(alpha: 0.05),
+                                    context.red.withValues(alpha: 0.2),
+                                    context.red.withValues(alpha: 0.05),
                                   ],
                                 ),
                                 borderRadius: BorderRadius.circular(24.r),
                               ),
                               child: Icon(
                                 LucideIcons.trash_2,
-                                color: AppColors.red,
+                                color: context.red,
                                 size: 24,
                               ),
                             ),
@@ -733,7 +733,7 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                             Text(
                               '删除对话',
                               style: TextStyle(
-                                color: AppColors.white,
+                                color: context.white,
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -743,14 +743,14 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                               '确定要删除与 ${conversation.name} 的对话吗？\n删除后将无法恢复。',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                color: AppColors.lightGrey,
+                                color: context.lightGrey,
                                 fontSize: 14.sp,
                               ),
                             ),
                           ],
                         ),
                       ),
-                      Divider(color: AppColors.divider, height: 1),
+                      Divider(color: context.divider, height: 1),
                       // 删除按钮
                       AnimatedButton(
                         onTap: () => Navigator.pop(context, true),
@@ -761,7 +761,7 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                             '删除',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              color: AppColors.red,
+                              color: context.red,
                               fontSize: 17.sp,
                               fontWeight: FontWeight.w600,
                             ),
@@ -779,14 +779,14 @@ class _MessagePageState extends ConsumerState<MessagePage> {
                     width: double.infinity,
                     padding: EdgeInsets.symmetric(vertical: 16.w),
                     decoration: BoxDecoration(
-                      color: AppColors.surface,
+                      color: context.surface,
                       borderRadius: BorderRadius.circular(16.r),
                     ),
                     child: Text(
                       '取消',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: AppColors.primary,
+                        color: context.primary,
                         fontSize: 17.sp,
                         fontWeight: FontWeight.w600,
                       ),
@@ -807,7 +807,7 @@ class _MessagePageState extends ConsumerState<MessagePage> {
           children: [
             Icon(
               LucideIcons.circle_check,
-              color: AppColors.green,
+              color: context.green,
               size: 20,
             ),
             SizedBox(width: 12.w),
@@ -817,7 +817,7 @@ class _MessagePageState extends ConsumerState<MessagePage> {
             ),
           ],
         ),
-        backgroundColor: AppColors.surface,
+        backgroundColor: context.surface,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
         margin: EdgeInsets.all(16.w),

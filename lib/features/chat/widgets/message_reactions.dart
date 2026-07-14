@@ -28,7 +28,7 @@ class MessageReactions extends StatelessWidget {
             margin: EdgeInsets.symmetric(horizontal: 32),
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: context.surface,
               borderRadius: BorderRadius.circular(32.r),
               boxShadow: [
                 BoxShadow(
@@ -51,7 +51,7 @@ class MessageReactions extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.all(8.w),
                     decoration: BoxDecoration(
-                      color: AppColors.darkGrey.withValues(alpha: 0.3),
+                      color: context.darkGrey.withValues(alpha: 0.3),
                       borderRadius: BorderRadius.circular(20.r),
                     ),
                     child: Text(
@@ -100,12 +100,12 @@ class ReactionChips extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
               color: hasMyReaction
-                  ? AppColors.primary.withValues(alpha: 0.3)
-                  : AppColors.tertiaryGrey.withValues(alpha: 0.5),
+                  ? context.primary.withValues(alpha: 0.3)
+                  : context.tertiaryGrey.withValues(alpha: 0.5),
               borderRadius: BorderRadius.circular(12.r),
               border: hasMyReaction
                   ? Border.all(
-                      color: AppColors.primary.withValues(alpha: 0.5),
+                      color: context.primary.withValues(alpha: 0.5),
                       width: 1.w,
                     )
                   : null,
@@ -118,7 +118,7 @@ class ReactionChips extends StatelessWidget {
                 Text(
                   '$count',
                   style: TextStyle(
-                    color: hasMyReaction ? AppColors.primary : AppColors.lightGrey,
+                    color: hasMyReaction ? context.primary : context.lightGrey,
                     fontSize: 12.sp,
                     fontWeight: hasMyReaction ? FontWeight.bold : FontWeight.normal,
                   ),

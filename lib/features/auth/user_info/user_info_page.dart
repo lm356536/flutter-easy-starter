@@ -40,14 +40,14 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
     final authState = ref.watch(authProvider);
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       appBar: AppBar(
-        backgroundColor: AppColors.background,
+        backgroundColor: context.background,
         elevation: 0,
-        title: const Text('个人信息'),
+        title: Text('个人信息'),
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: AppColors.white),
+          icon: Icon(Icons.arrow_back, color: context.white),
           onPressed: () => context.pop(),
         ),
         actions: [
@@ -56,7 +56,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
             child: Text(
               '保存',
               style: TextStyle(
-                color: AppColors.primary,
+                color: context.primary,
                 fontWeight: FontWeight.w600,
                 fontSize: 15.sp,
               ),
@@ -124,8 +124,8 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        AppColors.primary,
-                        AppColors.primary.withValues(alpha: 0.7),
+                        context.primary,
+                        context.primary.withValues(alpha: 0.7),
                       ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
@@ -133,7 +133,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                        color: AppColors.primary.withValues(alpha: 0.3),
+                        color: context.primary.withValues(alpha: 0.3),
                         blurRadius: 20,
                         offset: const Offset(0, 10),
                       ),
@@ -179,10 +179,10 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
                     width: 40.w,
                     height: 40.w,
                     decoration: BoxDecoration(
-                      color: AppColors.primary,
+                      color: context.primary,
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: AppColors.background,
+                        color: context.background,
                         width: 3.w,
                       ),
                     ),
@@ -200,7 +200,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
           Text(
             '点击更换头像',
             style: TextStyle(
-              color: AppColors.lightGrey.withValues(alpha: 0.8),
+              color: context.lightGrey.withValues(alpha: 0.8),
               fontSize: 14.sp,
             ),
           ),
@@ -215,7 +215,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
       child: Text(
         title,
         style: TextStyle(
-          color: AppColors.white,
+          color: context.white,
           fontSize: 16.sp,
           fontWeight: FontWeight.w600,
         ),
@@ -233,17 +233,17 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
     return TextFormField(
       controller: controller,
       maxLength: maxLength,
-      style: TextStyle(color: AppColors.white),
+      style: TextStyle(color: context.white),
       decoration: InputDecoration(
         filled: true,
-        fillColor: AppColors.surface,
+        fillColor: context.surface,
         hintText: hintText,
         hintStyle: TextStyle(
-          color: AppColors.tertiaryGrey,
+          color: context.tertiaryGrey,
         ),
         prefixIcon: Icon(
           prefixIcon,
-          color: AppColors.lightGrey,
+          color: context.lightGrey,
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.r),
@@ -254,7 +254,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
           vertical: 16,
         ),
         counterStyle: TextStyle(
-          color: AppColors.tertiaryGrey,
+          color: context.tertiaryGrey,
           fontSize: 12.sp,
         ),
       ),
@@ -275,7 +275,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
                 decoration: BoxDecoration(
                   color: _selectedGender == i
                       ? _genderColors[i].withValues(alpha: 0.15)
-                      : AppColors.surface,
+                      : context.surface,
                   borderRadius: BorderRadius.circular(14.r),
                   border: Border.all(
                     color: _selectedGender == i
@@ -291,7 +291,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
                       size: 20,
                       color: _selectedGender == i
                           ? _genderColors[i]
-                          : AppColors.lightGrey,
+                          : context.lightGrey,
                     ),
                     SizedBox(width: 8.w),
                     Text(
@@ -299,7 +299,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
                       style: TextStyle(
                         color: _selectedGender == i
                             ? _genderColors[i]
-                            : AppColors.lightGrey,
+                            : context.lightGrey,
                         fontWeight: _selectedGender == i
                             ? FontWeight.w600
                             : FontWeight.normal,
@@ -321,13 +321,13 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
       minLines: 5,
       keyboardType: TextInputType.multiline,
       textAlignVertical: TextAlignVertical.top,
-      style: TextStyle(color: AppColors.white),
+      style: TextStyle(color: context.white),
       decoration: InputDecoration(
         filled: true,
-        fillColor: AppColors.surface,
+        fillColor: context.surface,
         hintText: '介绍一下自己...',
         hintStyle: TextStyle(
-          color: AppColors.tertiaryGrey,
+          color: context.tertiaryGrey,
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.zero,
@@ -353,7 +353,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
       builder: (context) {
         return Container(
           decoration: BoxDecoration(
-            color: AppColors.surface,
+            color: context.surface,
             borderRadius: BorderRadius.vertical(top: Radius.circular(24.r)),
           ),
           child: SafeArea(
@@ -368,7 +368,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
                     width: 40.w,
                     height: 4.w,
                     decoration: BoxDecoration(
-                      color: AppColors.tertiaryGrey,
+                      color: context.tertiaryGrey,
                       borderRadius: BorderRadius.circular(2.r),
                     ),
                   ),
@@ -376,7 +376,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
                   Text(
                     '更换头像',
                     style: TextStyle(
-                      color: AppColors.white,
+                      color: context.white,
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w600,
                     ),
@@ -402,7 +402,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
                     icon: LucideIcons.image_plus,
                     title: '从相册选择',
                     subtitle: '选择已有照片',
-                    gradient: [AppColors.primary, AppColors.primaryLight],
+                    gradient: [context.primary, context.primaryLight],
                     onTap: () async {
                       Navigator.pop(context);
                       final result = await ImagePickerUtils.pickFromGallery(context);
@@ -419,7 +419,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
                       icon: LucideIcons.trash_2,
                       title: '删除头像',
                       subtitle: '恢复默认头像',
-                      gradient: [AppColors.red, const Color(0xFFFF453A)],
+                      gradient: [context.red, const Color(0xFFFF453A)],
                       onTap: () {
                         Navigator.pop(context);
                         setState(() {
@@ -435,14 +435,14 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
                       width: double.infinity,
                       padding: EdgeInsets.symmetric(vertical: 16.w),
                       decoration: BoxDecoration(
-                        color: AppColors.tertiaryGrey,
+                        color: context.tertiaryGrey,
                         borderRadius: BorderRadius.circular(12.r),
                       ),
                       child: Text(
                         '取消',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: AppColors.white,
+                          color: context.white,
                           fontSize: 16.sp,
                           fontWeight: FontWeight.w500,
                         ),
@@ -500,7 +500,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
                   Text(
                     title,
                     style: TextStyle(
-                      color: AppColors.white,
+                      color: context.white,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
                     ),
@@ -509,7 +509,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
                   Text(
                     subtitle,
                     style: TextStyle(
-                      color: AppColors.lightGrey,
+                      color: context.lightGrey,
                       fontSize: 13.sp,
                     ),
                   ),
@@ -545,9 +545,9 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
       if (mounted) {
         context.pop();
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
+          SnackBar(
             content: Text('保存成功'),
-            backgroundColor: AppColors.primary,
+            backgroundColor: context.primary,
           ),
         );
       }
@@ -557,7 +557,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(error ?? '保存失败'),
-            backgroundColor: AppColors.red,
+            backgroundColor: context.red,
           ),
         );
       }

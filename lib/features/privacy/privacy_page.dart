@@ -51,16 +51,16 @@ class _PrivacyPageState extends State<PrivacyPage> {
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        backgroundColor: AppColors.surface,
-        title: Text('温馨提示', style: TextStyle(color: AppColors.white)),
-        content: const Text(
+        backgroundColor: context.surface,
+        title: Text('温馨提示', style: TextStyle(color: context.white)),
+        content: Text(
           '您需要同意隐私政策后才能继续使用本应用。如果不同意，我们将无法为您提供服务。',
-          style: TextStyle(color: AppColors.lightGrey),
+          style: TextStyle(color: context.lightGrey),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: Text('返回查看', style: TextStyle(color: AppColors.lightGrey)),
+            child: Text('返回查看', style: TextStyle(color: context.lightGrey)),
           ),
           TextButton(
             onPressed: () {
@@ -71,7 +71,7 @@ class _PrivacyPageState extends State<PrivacyPage> {
                 exit(0);
               }
             },
-            child: Text('退出应用', style: TextStyle(color: AppColors.red)),
+            child: Text('退出应用', style: TextStyle(color: context.red)),
           ),
         ],
       ),
@@ -106,11 +106,11 @@ class _PrivacyPageState extends State<PrivacyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       appBar: _isFromSettings ? AppBar(
-        backgroundColor: AppColors.background,
+        backgroundColor: context.background,
         elevation: 0,
-        title: const Text('隐私政策'),
+        title: Text('隐私政策'),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -130,13 +130,13 @@ class _PrivacyPageState extends State<PrivacyPage> {
                       width: 60.w,
                       height: 60.w,
                       decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          colors: [AppColors.primary, AppColors.accent],
+                        gradient: LinearGradient(
+                          colors: [context.primary, context.accent],
                         ),
                         borderRadius: BorderRadius.circular(16.r),
                         boxShadow: [
                           BoxShadow(
-                            color: AppColors.primary.withValues(alpha: 0.3),
+                            color: context.primary.withValues(alpha: 0.3),
                             blurRadius: 20,
                             spreadRadius: 2,
                           ),
@@ -154,7 +154,7 @@ class _PrivacyPageState extends State<PrivacyPage> {
                       style: TextStyle(
                         fontSize: 20.sp,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.white,
+                        color: context.white,
                       ),
                     ),
                     SizedBox(height: 8.w),
@@ -162,7 +162,7 @@ class _PrivacyPageState extends State<PrivacyPage> {
                       '请仔细阅读并同意我们的隐私政策',
                       style: TextStyle(
                         fontSize: 14.sp,
-                        color: AppColors.lightGrey,
+                        color: context.lightGrey,
                       ),
                     ),
                   ],
@@ -175,17 +175,17 @@ class _PrivacyPageState extends State<PrivacyPage> {
                 margin: EdgeInsets.all(16.w),
                 padding: EdgeInsets.all(16.w),
                 decoration: BoxDecoration(
-                  color: AppColors.primary.withValues(alpha: 0.1),
+                  color: context.primary.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12.r),
                   border: Border.all(
-                    color: AppColors.primary.withValues(alpha: 0.3),
+                    color: context.primary.withValues(alpha: 0.3),
                   ),
                 ),
                 child: Row(
                   children: [
                     Icon(
                       Icons.check_circle,
-                      color: AppColors.primary,
+                      color: context.primary,
                       size: 24,
                     ),
                     SizedBox(width: 12.w),
@@ -196,7 +196,7 @@ class _PrivacyPageState extends State<PrivacyPage> {
                           Text(
                             '您已同意隐私政策',
                             style: TextStyle(
-                              color: AppColors.white,
+                              color: context.white,
                               fontWeight: FontWeight.w600,
                               fontSize: 15.sp,
                             ),
@@ -204,7 +204,7 @@ class _PrivacyPageState extends State<PrivacyPage> {
                           Text(
                             '您可以在下方查看完整的隐私政策内容',
                             style: TextStyle(
-                              color: AppColors.lightGrey,
+                              color: context.lightGrey,
                               fontSize: 13.sp,
                             ),
                           ),
@@ -220,9 +220,9 @@ class _PrivacyPageState extends State<PrivacyPage> {
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
-                  color: AppColors.surface,
+                  color: context.surface,
                   borderRadius: BorderRadius.circular(12.r),
-                  border: Border.all(color: AppColors.divider),
+                  border: Border.all(color: context.divider),
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.r),
@@ -234,13 +234,13 @@ class _PrivacyPageState extends State<PrivacyPage> {
                         "body": Style(
                           margin: Margins.all(0),
                           padding: HtmlPaddings.all(16),
-                          color: AppColors.white,
+                          color: context.white,
                         ),
-                        "h1": Style(color: AppColors.white),
-                        "h2": Style(color: AppColors.white),
-                        "h3": Style(color: AppColors.white),
-                        "p": Style(color: AppColors.lightGrey),
-                        "li": Style(color: AppColors.lightGrey),
+                        "h1": Style(color: context.white),
+                        "h2": Style(color: context.white),
+                        "h3": Style(color: context.white),
+                        "p": Style(color: context.lightGrey),
+                        "li": Style(color: context.lightGrey),
                       },
                     ),
                   ),
@@ -256,7 +256,7 @@ class _PrivacyPageState extends State<PrivacyPage> {
                   '点击"同意并继续"即表示您已阅读并同意上述隐私政策',
                   style: TextStyle(
                     fontSize: 12.sp,
-                    color: AppColors.lightGrey,
+                    color: context.lightGrey,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -266,7 +266,7 @@ class _PrivacyPageState extends State<PrivacyPage> {
             Container(
               padding: EdgeInsets.all(24.w),
               decoration: BoxDecoration(
-                color: AppColors.surface,
+                color: context.surface,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withValues(alpha: 0.2),
@@ -284,7 +284,7 @@ class _PrivacyPageState extends State<PrivacyPage> {
                       child: ElevatedButton(
                         onPressed: () => context.pop(),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.primary,
+                          backgroundColor: context.primary,
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.r),
@@ -309,7 +309,7 @@ class _PrivacyPageState extends State<PrivacyPage> {
                             onPressed: _isLoading ? null : _onReject,
                             style: OutlinedButton.styleFrom(
                               padding: EdgeInsets.symmetric(vertical: 14),
-                              side: const BorderSide(color: AppColors.divider),
+                              side: BorderSide(color: context.divider),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12.r),
                               ),
@@ -317,7 +317,7 @@ class _PrivacyPageState extends State<PrivacyPage> {
                             child: Text(
                               '不同意',
                               style: TextStyle(
-                                color: AppColors.lightGrey,
+                                color: context.lightGrey,
                                 fontSize: 16.sp,
                               ),
                             ),
@@ -330,7 +330,7 @@ class _PrivacyPageState extends State<PrivacyPage> {
                             onPressed: _isLoading ? null : _onAccept,
                             style: ElevatedButton.styleFrom(
                               padding: EdgeInsets.symmetric(vertical: 14),
-                              backgroundColor: AppColors.primary,
+                              backgroundColor: context.primary,
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12.r),

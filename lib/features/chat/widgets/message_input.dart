@@ -78,7 +78,7 @@ class _MessageInputState extends State<MessageInput> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.surface,
       ),
       child: SafeArea(
         child: Column(
@@ -100,7 +100,7 @@ class _MessageInputState extends State<MessageInput> {
                         widget.focusNode.unfocus();
                       }
                     },
-                    color: _showAttachments ? AppColors.primary : null,
+                    color: _showAttachments ? context.primary : null,
                   ),
 
                   // 输入框
@@ -108,7 +108,7 @@ class _MessageInputState extends State<MessageInput> {
                     child: Container(
                       margin: EdgeInsets.symmetric(horizontal: 8),
                       decoration: BoxDecoration(
-                        color: AppColors.background,
+                        color: context.background,
                         borderRadius: BorderRadius.circular(24.r),
                         border: Border.all(color: Colors.transparent, width: 0),
                       ),
@@ -117,11 +117,11 @@ class _MessageInputState extends State<MessageInput> {
                           Expanded(
                             child: TextField(
                               controller: widget.controller,
-                              style: TextStyle(color: AppColors.white),
+                              style: TextStyle(color: context.white),
                               decoration: InputDecoration(
                                 hintText: '输入消息...',
                                 hintStyle:
-                                    TextStyle(color: AppColors.tertiaryGrey),
+                                    TextStyle(color: context.tertiaryGrey),
                                 border: InputBorder.none,
                                 contentPadding:
                                     EdgeInsets.symmetric(vertical: 12),
@@ -149,7 +149,7 @@ class _MessageInputState extends State<MessageInput> {
                               _showEmojiPicker
                                 ? Icons.keyboard_outlined
                                 : Icons.emoji_emotions_outlined,
-                              color: _showEmojiPicker ? AppColors.primary : AppColors.lightGrey,
+                              color: _showEmojiPicker ? context.primary : context.lightGrey,
                               size: 24,
                             ),
                           ),
@@ -198,7 +198,7 @@ class _MessageInputState extends State<MessageInput> {
         ),
         child: Icon(
           icon,
-          color: color ?? AppColors.lightGrey,
+          color: color ?? context.lightGrey,
           size: 26,
         ),
       ),
@@ -212,13 +212,13 @@ class _MessageInputState extends State<MessageInput> {
         width: 44.w,
         height: 44.w,
         decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            colors: [AppColors.primary, AppColors.accent],
+          gradient: LinearGradient(
+            colors: [context.primary, context.accent],
           ),
           borderRadius: BorderRadius.circular(22.r),
           boxShadow: [
             BoxShadow(
-              color: AppColors.primary.withValues(alpha: 0.4),
+              color: context.primary.withValues(alpha: 0.4),
               blurRadius: 10,
               spreadRadius: 1,
             ),
@@ -301,7 +301,7 @@ class _MessageInputState extends State<MessageInput> {
           Text(
             label,
             style: TextStyle(
-              color: AppColors.lightGrey,
+              color: context.lightGrey,
               fontSize: 12.sp,
             ),
           ),

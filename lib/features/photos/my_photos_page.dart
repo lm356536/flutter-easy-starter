@@ -125,14 +125,14 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       appBar: AppBar(
-        backgroundColor: AppColors.background,
+        backgroundColor: context.background,
         elevation: 0,
         title: Text(
           '我的相册',
           style: TextStyle(
-            color: AppColors.white,
+            color: context.white,
             fontSize: 17.sp,
             fontWeight: FontWeight.w600,
           ),
@@ -144,12 +144,12 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
           child: Container(
             margin: EdgeInsets.all(8.w),
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: context.surface,
               borderRadius: BorderRadius.circular(10.r),
             ),
             child: Icon(
               LucideIcons.arrow_left,
-              color: AppColors.white,
+              color: context.white,
               size: 20,
             ),
           ),
@@ -162,17 +162,17 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
               padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.w),
               decoration: BoxDecoration(
                 color: _isEditMode
-                    ? AppColors.primary.withValues(alpha: 0.2)
-                    : AppColors.surface,
+                    ? context.primary.withValues(alpha: 0.2)
+                    : context.surface,
                 borderRadius: BorderRadius.circular(8.r),
                 border: _isEditMode
-                    ? Border.all(color: AppColors.primary.withValues(alpha: 0.3))
+                    ? Border.all(color: context.primary.withValues(alpha: 0.3))
                     : null,
               ),
               child: Text(
                 _isEditMode ? '完成' : '管理',
                 style: TextStyle(
-                  color: _isEditMode ? AppColors.primary : AppColors.white,
+                  color: _isEditMode ? context.primary : context.white,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                 ),
@@ -258,8 +258,8 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        AppColors.primary,
-                        AppColors.primaryLight,
+                        context.primary,
+                        context.primaryLight,
                       ],
                     ),
                     shape: BoxShape.circle,
@@ -350,13 +350,13 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                AppColors.surface,
-                AppColors.surfaceVariant.withValues(alpha: 0.5),
+                context.surface,
+                context.surfaceVariant.withValues(alpha: 0.5),
               ],
             ),
             borderRadius: BorderRadius.circular(16.r),
             border: Border.all(
-              color: AppColors.white.withValues(alpha: 0.05),
+              color: context.white.withValues(alpha: 0.05),
             ),
           ),
           child: Column(
@@ -364,12 +364,12 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
               Container(
                 padding: EdgeInsets.all(10.w),
                 decoration: BoxDecoration(
-                  color: AppColors.primary.withValues(alpha: 0.15),
+                  color: context.primary.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(12.r),
                 ),
                 child: Icon(
                   icon,
-                  color: AppColors.primary,
+                  color: context.primary,
                   size: 22,
                 ),
               ),
@@ -377,7 +377,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
               Text(
                 value,
                 style: TextStyle(
-                  color: AppColors.white,
+                  color: context.white,
                   fontSize: 20.sp,
                   fontWeight: FontWeight.bold,
                 ),
@@ -386,7 +386,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
               Text(
                 label,
                 style: TextStyle(
-                  color: AppColors.lightGrey,
+                  color: context.lightGrey,
                   fontSize: 12.sp,
                 ),
               ),
@@ -408,17 +408,17 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              AppColors.primary.withValues(alpha: 0.15),
-              AppColors.surface,
+              context.primary.withValues(alpha: 0.15),
+              context.surface,
             ],
           ),
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
-            color: AppColors.primary.withValues(alpha: 0.2),
+            color: context.primary.withValues(alpha: 0.2),
           ),
           boxShadow: [
             BoxShadow(
-              color: AppColors.primary.withValues(alpha: 0.1),
+              color: context.primary.withValues(alpha: 0.1),
               blurRadius: 20,
               spreadRadius: 0,
             ),
@@ -432,8 +432,8 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    AppColors.primary,
-                    AppColors.primaryLight,
+                    context.primary,
+                    context.primaryLight,
                   ],
                 ),
                 borderRadius: BorderRadius.circular(16.r),
@@ -453,7 +453,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                   Text(
                     '上传照片',
                     style: TextStyle(
-                      color: AppColors.white,
+                      color: context.white,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
                     ),
@@ -462,7 +462,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                   Text(
                     '支持上传 9 张照片，展示你的精彩生活',
                     style: TextStyle(
-                      color: AppColors.lightGrey,
+                      color: context.lightGrey,
                       fontSize: 13.sp,
                     ),
                   ),
@@ -471,7 +471,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
             ),
             Icon(
               LucideIcons.chevron_right,
-              color: AppColors.primary,
+              color: context.primary,
               size: 24,
             ),
           ],
@@ -504,12 +504,12 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
       child: AnimatedContainer(
         duration: AppDurations.fast,
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: context.surface,
           borderRadius: BorderRadius.circular(12.r),
           border: Border.all(
             color: isSelected
-                ? AppColors.primary
-                : AppColors.white.withValues(alpha: 0.05),
+                ? context.primary
+                : context.white.withValues(alpha: 0.05),
             width: isSelected ? 2.w : 1.w,
           ),
           boxShadow: isSelected
@@ -522,10 +522,10 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
           children: [
             // 照片占位
             Container(
-              color: AppColors.tertiaryGrey,
+              color: context.tertiaryGrey,
               child: Icon(
                 LucideIcons.image,
-                color: AppColors.lightGrey,
+                color: context.lightGrey,
                 size: 32,
               ),
             ),
@@ -543,8 +543,8 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        AppColors.primary,
-                        AppColors.primaryLight,
+                        context.primary,
+                        context.primaryLight,
                       ],
                     ),
                     borderRadius: BorderRadius.circular(8.r),
@@ -582,8 +582,8 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        AppColors.primary,
-                        AppColors.primaryLight,
+                        context.primary,
+                        context.primaryLight,
                       ],
                     ),
                     shape: BoxShape.circle,
@@ -615,7 +615,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                     children: [
                       Icon(
                         LucideIcons.heart,
-                        color: AppColors.pink,
+                        color: context.pink,
                         size: 12,
                       ),
                       SizedBox(width: 4.w),
@@ -653,13 +653,13 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                AppColors.surface,
-                AppColors.surfaceVariant.withValues(alpha: 0.3),
+                context.surface,
+                context.surfaceVariant.withValues(alpha: 0.3),
               ],
             ),
             borderRadius: BorderRadius.circular(12.r),
             border: Border.all(
-              color: AppColors.white.withValues(alpha: 0.05),
+              color: context.white.withValues(alpha: 0.05),
             ),
           ),
           child: Row(
@@ -667,12 +667,12 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
               Container(
                 padding: EdgeInsets.all(10.w),
                 decoration: BoxDecoration(
-                  color: AppColors.primary.withValues(alpha: 0.15),
+                  color: context.primary.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
                 child: Icon(
                   LucideIcons.lightbulb,
-                  color: AppColors.primary,
+                  color: context.primary,
                   size: 20,
                 ),
               ),
@@ -681,7 +681,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                 child: Text(
                   '小贴士：清晰的正面照片能让你获得更多匹配机会',
                   style: TextStyle(
-                    color: AppColors.lightGrey,
+                    color: context.lightGrey,
                     fontSize: 13.sp,
                   ),
                 ),
@@ -697,11 +697,11 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
     return Container(
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.surface,
         borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
         border: Border(
           top: BorderSide(
-            color: AppColors.white.withValues(alpha: 0.05),
+            color: context.white.withValues(alpha: 0.05),
           ),
         ),
       ),
@@ -713,7 +713,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
             Text(
               '已选择 ${_selectedPhotos.length} 张照片',
               style: TextStyle(
-                color: AppColors.white,
+                color: context.white,
                 fontSize: 15.sp,
                 fontWeight: FontWeight.w500,
               ),
@@ -734,10 +734,10 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 14.w),
                       decoration: BoxDecoration(
-                        color: AppColors.primary.withValues(alpha: 0.2),
+                        color: context.primary.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(12.r),
                         border: Border.all(
-                          color: AppColors.primary.withValues(alpha: 0.3),
+                          color: context.primary.withValues(alpha: 0.3),
                         ),
                       ),
                       child: Row(
@@ -746,13 +746,13 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                           Icon(
                             LucideIcons.user,
                             size: 18,
-                            color: AppColors.primary,
+                            color: context.primary,
                           ),
                           SizedBox(width: 8.w),
                           Text(
                             '设为头像',
                             style: TextStyle(
-                              color: AppColors.primary,
+                              color: context.primary,
                               fontSize: 15.sp,
                               fontWeight: FontWeight.w600,
                             ),
@@ -788,10 +788,10 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 14.w),
                       decoration: BoxDecoration(
-                        color: AppColors.red.withValues(alpha: 0.2),
+                        color: context.red.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(12.r),
                         border: Border.all(
-                          color: AppColors.red.withValues(alpha: 0.3),
+                          color: context.red.withValues(alpha: 0.3),
                         ),
                       ),
                       child: Row(
@@ -800,13 +800,13 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                           Icon(
                             LucideIcons.trash_2,
                             size: 18,
-                            color: AppColors.red,
+                            color: context.red,
                           ),
                           SizedBox(width: 8.w),
                           Text(
                             '删除',
                             style: TextStyle(
-                              color: AppColors.red,
+                              color: context.red,
                               fontSize: 15.sp,
                               fontWeight: FontWeight.w600,
                             ),
@@ -831,7 +831,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
       builder: (context) {
         return Container(
           decoration: BoxDecoration(
-            color: AppColors.surface,
+            color: context.surface,
             borderRadius: BorderRadius.vertical(top: Radius.circular(24.r)),
           ),
           child: SafeArea(
@@ -846,7 +846,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                     width: 40.w,
                     height: 4.w,
                     decoration: BoxDecoration(
-                      color: AppColors.tertiaryGrey,
+                      color: context.tertiaryGrey,
                       borderRadius: BorderRadius.circular(2.r),
                     ),
                   ),
@@ -854,7 +854,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                   Text(
                     '添加照片',
                     style: TextStyle(
-                      color: AppColors.white,
+                      color: context.white,
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w600,
                     ),
@@ -875,7 +875,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                     icon: LucideIcons.image_plus,
                     title: '从相册选择',
                     subtitle: '选择已有照片',
-                    gradient: [AppColors.primary, AppColors.primaryLight],
+                    gradient: [context.primary, context.primaryLight],
                     onTap: () {
                       Navigator.pop(context);
                       _pickImageFromGallery();
@@ -888,14 +888,14 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                       width: double.infinity,
                       padding: EdgeInsets.symmetric(vertical: 16.w),
                       decoration: BoxDecoration(
-                        color: AppColors.tertiaryGrey,
+                        color: context.tertiaryGrey,
                         borderRadius: BorderRadius.circular(12.r),
                       ),
                       child: Text(
                         '取消',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: AppColors.white,
+                          color: context.white,
                           fontSize: 16.sp,
                           fontWeight: FontWeight.w500,
                         ),
@@ -953,7 +953,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                   Text(
                     title,
                     style: TextStyle(
-                      color: AppColors.white,
+                      color: context.white,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
                     ),
@@ -962,7 +962,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                   Text(
                     subtitle,
                     style: TextStyle(
-                      color: AppColors.lightGrey,
+                      color: context.lightGrey,
                       fontSize: 13.sp,
                     ),
                   ),
@@ -987,7 +987,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
       builder: (context) {
         return Container(
           decoration: BoxDecoration(
-            color: AppColors.surface,
+            color: context.surface,
             borderRadius: BorderRadius.vertical(top: Radius.circular(24.r)),
           ),
           child: SafeArea(
@@ -1001,7 +1001,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                     width: 40.w,
                     height: 4.w,
                     decoration: BoxDecoration(
-                      color: AppColors.tertiaryGrey,
+                      color: context.tertiaryGrey,
                       borderRadius: BorderRadius.circular(2.r),
                     ),
                   ),
@@ -1009,7 +1009,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                   Text(
                     '照片操作',
                     style: TextStyle(
-                      color: AppColors.white,
+                      color: context.white,
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w600,
                     ),
@@ -1019,7 +1019,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                     _buildPhotoOption(
                       icon: LucideIcons.user,
                       title: '设为头像',
-                      gradient: [AppColors.primary, AppColors.primaryLight],
+                      gradient: [context.primary, context.primaryLight],
                       onTap: () {
                         Navigator.pop(context);
                         _setAsAvatar(photo);
@@ -1037,7 +1037,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                   _buildPhotoOption(
                     icon: LucideIcons.trash_2,
                     title: '删除',
-                    gradient: [AppColors.red, const Color(0xFFFF453A)],
+                    gradient: [context.red, const Color(0xFFFF453A)],
                     isDestructive: true,
                     onTap: () {
                       Navigator.pop(context);
@@ -1051,14 +1051,14 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                       width: double.infinity,
                       padding: EdgeInsets.symmetric(vertical: 16.w),
                       decoration: BoxDecoration(
-                        color: AppColors.tertiaryGrey,
+                        color: context.tertiaryGrey,
                         borderRadius: BorderRadius.circular(12.r),
                       ),
                       child: Text(
                         '取消',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: AppColors.white,
+                          color: context.white,
                           fontSize: 16.sp,
                           fontWeight: FontWeight.w500,
                         ),
@@ -1095,11 +1095,11 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                     gradient.last.withValues(alpha: 0.05),
                   ],
                 ),
-          color: isDestructive ? AppColors.red.withValues(alpha: 0.1) : null,
+          color: isDestructive ? context.red.withValues(alpha: 0.1) : null,
           borderRadius: BorderRadius.circular(12.r),
           border: Border.all(
             color: isDestructive
-                ? AppColors.red.withValues(alpha: 0.2)
+                ? context.red.withValues(alpha: 0.2)
                 : gradient.first.withValues(alpha: 0.2),
           ),
         ),
@@ -1119,7 +1119,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
               child: Text(
                 title,
                 style: TextStyle(
-                  color: isDestructive ? AppColors.red : AppColors.white,
+                  color: isDestructive ? context.red : context.white,
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w500,
                 ),
@@ -1127,7 +1127,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
             ),
             Icon(
               LucideIcons.chevron_right,
-              color: isDestructive ? AppColors.red : gradient.first,
+              color: isDestructive ? context.red : gradient.first,
               size: 20,
             ),
           ],
@@ -1168,7 +1168,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
       builder: (context) {
         return Container(
           decoration: BoxDecoration(
-            color: AppColors.surface,
+            color: context.surface,
             borderRadius: BorderRadius.vertical(top: Radius.circular(24.r)),
           ),
           child: SafeArea(
@@ -1182,7 +1182,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                     width: 40.w,
                     height: 4.w,
                     decoration: BoxDecoration(
-                      color: AppColors.tertiaryGrey,
+                      color: context.tertiaryGrey,
                       borderRadius: BorderRadius.circular(2.r),
                     ),
                   ),
@@ -1191,20 +1191,20 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                     width: 120.w,
                     height: 120.w,
                     decoration: BoxDecoration(
-                      color: AppColors.tertiaryGrey,
+                      color: context.tertiaryGrey,
                       borderRadius: BorderRadius.circular(16.r),
                     ),
                     child: Icon(
                       LucideIcons.image,
                       size: 48,
-                      color: AppColors.lightGrey,
+                      color: context.lightGrey,
                     ),
                   ),
                   SizedBox(height: 24.w),
                   Text(
                     '照片详情',
                     style: TextStyle(
-                      color: AppColors.white,
+                      color: context.white,
                       fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
                     ),
@@ -1219,14 +1219,14 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                     LucideIcons.heart,
                     '获得点赞',
                     '${photo.likes} 个',
-                    valueColor: AppColors.pink,
+                    valueColor: context.pink,
                   ),
                   if (photo.isAvatar)
                     _buildDetailItem(
                       LucideIcons.user,
                       '状态',
                       '当前头像',
-                      valueColor: AppColors.primary,
+                      valueColor: context.primary,
                     ),
                   SizedBox(height: 16.w),
                   AnimatedButton(
@@ -1237,8 +1237,8 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            AppColors.primary,
-                            AppColors.primaryLight,
+                            context.primary,
+                            context.primaryLight,
                           ],
                         ),
                         borderRadius: BorderRadius.circular(12.r),
@@ -1269,17 +1269,17 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
       margin: EdgeInsets.only(bottom: 12.w),
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: AppColors.background,
+        color: context.background,
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Row(
         children: [
-          Icon(icon, color: AppColors.lightGrey, size: 20),
+          Icon(icon, color: context.lightGrey, size: 20),
           SizedBox(width: 12.w),
           Text(
             label,
             style: TextStyle(
-              color: AppColors.lightGrey,
+              color: context.lightGrey,
               fontSize: 14.sp,
             ),
           ),
@@ -1287,7 +1287,7 @@ class _MyPhotosPageState extends State<MyPhotosPage> {
           Text(
             value,
             style: TextStyle(
-              color: valueColor ?? AppColors.white,
+              color: valueColor ?? context.white,
               fontSize: 15.sp,
               fontWeight: FontWeight.w600,
             ),

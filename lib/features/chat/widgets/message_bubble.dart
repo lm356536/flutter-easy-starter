@@ -36,7 +36,7 @@ class MessageBubble extends StatelessWidget {
               child: Text(
                 _formatTime(message.time),
                 style: TextStyle(
-                  color: AppColors.tertiaryGrey,
+                  color: context.tertiaryGrey,
                   fontSize: 10.sp,
                 ),
               ),
@@ -51,7 +51,7 @@ class MessageBubble extends StatelessWidget {
                 if (showTime)
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 16),
-                    child: _buildTimeSeparator(),
+                    child: _buildTimeSeparator(context),
                   ),
 
                 // 消息内容
@@ -67,7 +67,7 @@ class MessageBubble extends StatelessWidget {
                           : CrossAxisAlignment.start,
                       children: [
                         // 消息气泡
-                        _buildBubble(),
+                        _buildBubble(context),
 
                         // 反应表情
                         if (message.reactions != null &&
@@ -98,11 +98,11 @@ class MessageBubble extends StatelessWidget {
                   Text(
                     _formatTime(message.time),
                     style: TextStyle(
-                      color: AppColors.tertiaryGrey,
+                      color: context.tertiaryGrey,
                       fontSize: 10.sp,
                     ),
                   ),
-                  _buildStatusIndicator(),
+                  _buildStatusIndicator(context),
                 ],
               ),
             ),
@@ -111,11 +111,11 @@ class MessageBubble extends StatelessWidget {
     );
   }
 
-  Widget _buildTimeSeparator() {
+  Widget _buildTimeSeparator(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
-        color: AppColors.tertiaryGrey.withValues(alpha: 0.5),
+        color: context.tertiaryGrey.withValues(alpha: 0.5),
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Text(
@@ -128,33 +128,33 @@ class MessageBubble extends StatelessWidget {
     );
   }
 
-  Widget _buildBubble() {
+  Widget _buildBubble(BuildContext context) {
     switch (message.type) {
       case MessageType.image:
-        return _buildImageBubble();
+        return _buildImageBubble(context);
       case MessageType.voice:
-        return _buildVoiceBubble();
+        return _buildVoiceBubble(context);
       case MessageType.location:
-        return _buildLocationBubble();
+        return _buildLocationBubble(context);
       case MessageType.text:
       default:
-        return _buildTextBubble();
+        return _buildTextBubble(context);
     }
   }
 
-  Widget _buildTextBubble() {
+  Widget _buildTextBubble(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 2),
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
         gradient: message.isMe
-            ? const LinearGradient(
-                colors: [AppColors.primary, AppColors.accent],
+            ? LinearGradient(
+                colors: [context.primary, context.accent],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
               )
             : null,
-        color: message.isMe ? null : AppColors.surface,
+        color: message.isMe ? null : context.surface,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20.r),
           topRight: Radius.circular(20.r),
@@ -164,7 +164,7 @@ class MessageBubble extends StatelessWidget {
         boxShadow: message.isMe
             ? [
                 BoxShadow(
-                  color: AppColors.primary.withValues(alpha: 0.3),
+                  color: context.primary.withValues(alpha: 0.3),
                   blurRadius: 8,
                   offset: const Offset(0, 2),
                 ),
@@ -174,7 +174,7 @@ class MessageBubble extends StatelessWidget {
       child: Text(
         message.text ?? '',
         style: TextStyle(
-          color: message.isMe ? Colors.white : AppColors.white,
+          color: message.isMe ? Colors.white : context.white,
           fontSize: 15.sp,
           height: 1.4,
         ),
@@ -182,7 +182,7 @@ class MessageBubble extends StatelessWidget {
     );
   }
 
-  Widget _buildImageBubble() {
+  Widget _buildImageBubble(BuildContext context) {
     return Builder(
       builder: (ctx) {
         return GestureDetector(
@@ -207,7 +207,7 @@ class MessageBubble extends StatelessWidget {
                 Container(
                   width: 200.w,
                   height: 200.w,
-                  color: AppColors.tertiaryGrey,
+                  color: context.tertiaryGrey,
                   child: message.mediaUrl != null
                       ? _buildImage(message.mediaUrl!, fit: BoxFit.cover)
                       : Icon(
@@ -226,7 +226,7 @@ class MessageBubble extends StatelessWidget {
                           width: 24.w,
                           height: 24.w,
                           child: CircularProgressIndicator(
-                            color: AppColors.white,
+                            color: context.white,
                             strokeWidth: 2,
                           ),
                         ),
@@ -327,7 +327,7 @@ class MessageBubble extends StatelessWidget {
     }
   }
 
-  Widget _buildVoiceBubble() {
+  Widget _buildVoiceBubble(BuildContext context) {
     final duration = message.voiceDuration ?? 0;
     final width = 80 + (duration * 3).clamp(0, 120).toDouble();
 
@@ -337,11 +337,11 @@ class MessageBubble extends StatelessWidget {
       width: width,
       decoration: BoxDecoration(
         gradient: message.isMe
-            ? const LinearGradient(
-                colors: [AppColors.primary, AppColors.accent],
+            ? LinearGradient(
+                colors: [context.primary, context.accent],
               )
             : null,
-        color: message.isMe ? null : AppColors.surface,
+        color: message.isMe ? null : context.surface,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20.r),
           topRight: Radius.circular(20.r),
@@ -393,12 +393,12 @@ class MessageBubble extends StatelessWidget {
     );
   }
 
-  Widget _buildLocationBubble() {
+  Widget _buildLocationBubble(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 2),
       width: 220.w,
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.surface,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20.r),
           topRight: Radius.circular(20.r),
@@ -412,7 +412,7 @@ class MessageBubble extends StatelessWidget {
         children: [
           Container(
             height: 120.w,
-            color: AppColors.tertiaryGrey,
+            color: context.tertiaryGrey,
             child: Center(
               child: Icon(
                 Icons.map,
@@ -435,7 +435,7 @@ class MessageBubble extends StatelessWidget {
                   child: Text(
                     message.locationName ?? '未知位置',
                     style: TextStyle(
-                      color: AppColors.white,
+                      color: context.white,
                       fontSize: 14.sp,
                     ),
                     maxLines: 1,
@@ -450,7 +450,7 @@ class MessageBubble extends StatelessWidget {
     );
   }
 
-  Widget _buildStatusIndicator() {
+  Widget _buildStatusIndicator(BuildContext context) {
     IconData statusIcon;
     Color statusColor;
 

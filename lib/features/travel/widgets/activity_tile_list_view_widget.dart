@@ -42,16 +42,16 @@ class _ActivityTileListViewState extends State<ActivityTileListView> {
                 gradient: isSelected
                     ? LinearGradient(
                         colors: [
-                          AppColors.primary.withValues(alpha: 0.2),
-                          AppColors.primary.withValues(alpha: 0.05),
+                          context.primary.withValues(alpha: 0.2),
+                          context.primary.withValues(alpha: 0.05),
                         ],
                       )
                     : null,
-                color: isSelected ? null : AppColors.surface,
+                color: isSelected ? null : context.surface,
                 border: Border.all(
                   color: isSelected
-                      ? AppColors.primary
-                      : AppColors.white.withValues(alpha: 0.05),
+                      ? context.primary
+                      : context.white.withValues(alpha: 0.05),
                   width: isSelected ? 1.5.w : 1.w,
                 ),
                 borderRadius: BorderRadius.circular(26.r),
@@ -66,7 +66,7 @@ class _ActivityTileListViewState extends State<ActivityTileListView> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: AppColors.background,
+                      color: context.background,
                       borderRadius: BorderRadius.circular(22.r),
                     ),
                     height: 44.w,
@@ -85,7 +85,7 @@ class _ActivityTileListViewState extends State<ActivityTileListView> {
                     style: TextStyle(
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w600,
-                      color: isSelected ? AppColors.primary : AppColors.white,
+                      color: isSelected ? context.primary : context.white,
                     ),
                   ),
                 ],

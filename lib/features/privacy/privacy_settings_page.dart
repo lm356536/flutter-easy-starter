@@ -93,20 +93,20 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        backgroundColor: AppColors.surface,
+        backgroundColor: context.surface,
         title: Text('撤销隐私政策同意',
-          style: TextStyle(color: AppColors.white),
+          style: TextStyle(color: context.white),
         ),
-        content: const Text(
+        content: Text(
           '撤销同意后，您将无法继续使用本应用。确定要撤销吗？',
-          style: TextStyle(color: AppColors.lightGrey),
+          style: TextStyle(color: context.lightGrey),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
             child: Text(
               '取消',
-              style: TextStyle(color: AppColors.lightGrey),
+              style: TextStyle(color: context.lightGrey),
             ),
           ),
           TextButton(
@@ -126,7 +126,7 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
             },
             child: Text(
               '确定撤销',
-              style: TextStyle(color: AppColors.red),
+              style: TextStyle(color: context.red),
             ),
           ),
         ],
@@ -137,11 +137,11 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       appBar: AppBar(
-        backgroundColor: AppColors.background,
+        backgroundColor: context.background,
         elevation: 0,
-        title: const Text('隐私设置'),
+        title: Text('隐私设置'),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -167,7 +167,7 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
               child: Text(
                 '功能隐私设置',
                 style: TextStyle(
-                  color: AppColors.lightGrey,
+                  color: context.lightGrey,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ),
@@ -209,12 +209,12 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
             width: 80.w,
             height: 80.w,
             decoration: BoxDecoration(
-              color: AppColors.primary.withValues(alpha: 0.2),
+              color: context.primary.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(20.r),
             ),
             child: Icon(
               Icons.shield,
-              color: AppColors.primary,
+              color: context.primary,
               size: 40,
             ),
           ),
@@ -222,7 +222,7 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
           Text(
             '保护你的隐私',
             style: TextStyle(
-              color: AppColors.white,
+              color: context.white,
               fontSize: 20.sp,
               fontWeight: FontWeight.bold,
             ),
@@ -231,7 +231,7 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
           Text(
             '这些设置决定其他用户能看到哪些信息',
             style: TextStyle(
-              color: AppColors.lightGrey,
+              color: context.lightGrey,
               fontSize: 14.sp,
             ),
           ),
@@ -245,7 +245,7 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Container(
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: context.surface,
           borderRadius: BorderRadius.circular(16.r),
         ),
         child: Column(
@@ -257,34 +257,34 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
                 width: 48.w,
                 height: 48.w,
                 decoration: BoxDecoration(
-                  color: AppColors.primary.withValues(alpha: 0.15),
+                  color: context.primary.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(12.r),
                 ),
                 child: Icon(
                   Icons.policy,
-                  color: AppColors.primary,
+                  color: context.primary,
                 ),
               ),
               title: Text('隐私政策',
                 style: TextStyle(
-                  color: AppColors.white,
+                  color: context.white,
                   fontWeight: FontWeight.w600,
                 ),
               ),
               subtitle: Text('查看完整的隐私政策内容',
                 style: TextStyle(
-                  color: AppColors.lightGrey,
+                  color: context.lightGrey,
                   fontSize: 13.sp,
                 ),
               ),
               trailing: Icon(
                 Icons.chevron_right,
-                color: AppColors.lightGrey,
+                color: context.lightGrey,
               ),
               onTap: _viewPrivacyPolicy,
             ),
 
-            Divider(height: 1.w, indent: 72, color: AppColors.tertiaryGrey),
+            Divider(height: 1.w, indent: 72, color: context.tertiaryGrey),
 
             // 撤销同意
             ListTile(
@@ -293,29 +293,29 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
                 width: 48.w,
                 height: 48.w,
                 decoration: BoxDecoration(
-                  color: AppColors.red.withValues(alpha: 0.15),
+                  color: context.red.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(12.r),
                 ),
                 child: Icon(
                   Icons.logout,
-                  color: AppColors.red,
+                  color: context.red,
                 ),
               ),
               title: Text('撤销隐私政策同意',
                 style: TextStyle(
-                  color: AppColors.red,
+                  color: context.red,
                   fontWeight: FontWeight.w600,
                 ),
               ),
               subtitle: Text('撤销后将无法继续使用应用',
                 style: TextStyle(
-                  color: AppColors.lightGrey,
+                  color: context.lightGrey,
                   fontSize: 13.sp,
                 ),
               ),
               trailing: Icon(
                 Icons.chevron_right,
-                color: AppColors.lightGrey,
+                color: context.lightGrey,
               ),
               onTap: _revokePrivacyConsent,
             ),
@@ -330,7 +330,7 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
       margin: EdgeInsets.only(bottom: 12),
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.surface,
         borderRadius: BorderRadius.circular(16.r),
       ),
       child: Row(
@@ -339,12 +339,12 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
             width: 48.w,
             height: 48.w,
             decoration: BoxDecoration(
-              color: AppColors.tertiaryGrey,
+              color: context.tertiaryGrey,
               borderRadius: BorderRadius.circular(12.r),
             ),
             child: Icon(
               setting.icon,
-              color: AppColors.white,
+              color: context.white,
             ),
           ),
           SizedBox(width: 16.w),
@@ -355,7 +355,7 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
                 Text(
                   setting.title,
                   style: TextStyle(
-                    color: AppColors.white,
+                    color: context.white,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                   ),
@@ -364,7 +364,7 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
                 Text(
                   setting.subtitle,
                   style: TextStyle(
-                    color: AppColors.lightGrey,
+                    color: context.lightGrey,
                     fontSize: 13.sp,
                   ),
                 ),
@@ -378,10 +378,10 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
                 _values[index] = value;
               });
             },
-            activeColor: AppColors.primary,
-            activeTrackColor: AppColors.primary.withValues(alpha: 0.3),
+            activeColor: context.primary,
+            activeTrackColor: context.primary.withValues(alpha: 0.3),
             inactiveThumbColor: Colors.white,
-            inactiveTrackColor: AppColors.tertiaryGrey,
+            inactiveTrackColor: context.tertiaryGrey,
           ),
         ],
       ),
@@ -399,7 +399,7 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
             child: Text(
               '高级设置',
               style: TextStyle(
-                color: AppColors.lightGrey,
+                color: context.lightGrey,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
               ),
@@ -407,7 +407,7 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
           ),
           Container(
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: context.surface,
               borderRadius: BorderRadius.circular(16.r),
             ),
             child: Column(
@@ -418,14 +418,14 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
                   subtitle: '管理已屏蔽的用户',
                   onTap: () {},
                 ),
-                Divider(height: 1.w, indent: 72, color: AppColors.tertiaryGrey),
+                Divider(height: 1.w, indent: 72, color: context.tertiaryGrey),
                 _buildActionTile(
                   icon: Icons.delete,
                   title: '清除聊天记录',
                   subtitle: '删除所有聊天历史',
                   onTap: () {},
                 ),
-                Divider(height: 1.w, indent: 72, color: AppColors.tertiaryGrey),
+                Divider(height: 1.w, indent: 72, color: context.tertiaryGrey),
                 _buildActionTile(
                   icon: Icons.delete_forever,
                   title: '注销账号',
@@ -455,32 +455,32 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
         height: 48.w,
         decoration: BoxDecoration(
           color: isDestructive
-              ? AppColors.red.withValues(alpha: 0.2)
-              : AppColors.tertiaryGrey,
+              ? context.red.withValues(alpha: 0.2)
+              : context.tertiaryGrey,
           borderRadius: BorderRadius.circular(12.r),
         ),
         child: Icon(
           icon,
-          color: isDestructive ? AppColors.red : AppColors.white,
+          color: isDestructive ? context.red : context.white,
         ),
       ),
       title: Text(
         title,
         style: TextStyle(
-          color: isDestructive ? AppColors.red : AppColors.white,
+          color: isDestructive ? context.red : context.white,
           fontWeight: FontWeight.w600,
         ),
       ),
       subtitle: Text(
         subtitle,
         style: TextStyle(
-          color: AppColors.lightGrey,
+          color: context.lightGrey,
           fontSize: 13.sp,
         ),
       ),
       trailing: Icon(
         Icons.chevron_right,
-        color: AppColors.lightGrey,
+        color: context.lightGrey,
       ),
       onTap: onTap,
     );

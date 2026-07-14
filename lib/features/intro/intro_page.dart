@@ -57,7 +57,7 @@ class _IntroPageState extends State<IntroPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: _isLoading ? _buildSkeletonView() : _buildContentView(),
     );
   }
@@ -193,8 +193,8 @@ class _IntroPageState extends State<IntroPage>
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            AppColors.primary.withValues(alpha: 0.15),
-            AppColors.background,
+            context.primary.withValues(alpha: 0.15),
+            context.background,
           ],
         ),
       ),
@@ -327,8 +327,8 @@ class _IntroPageState extends State<IntroPage>
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              AppColors.primary,
-              AppColors.primaryLight,
+              context.primary,
+              context.primaryLight,
               const Color(0xFF8B5CF6),
             ],
           ),
@@ -415,7 +415,7 @@ class _IntroPageState extends State<IntroPage>
           '开箱即用的 Flutter 快速开发框架',
           style: TextStyle(
             fontSize: 17.sp,
-            color: AppColors.lightGrey,
+            color: context.lightGrey,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -425,7 +425,7 @@ class _IntroPageState extends State<IntroPage>
             Container(
               padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.w),
               decoration: BoxDecoration(
-                color: AppColors.primary.withValues(alpha: 0.15),
+                color: context.primary.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(6.r),
               ),
               child: Row(
@@ -433,7 +433,7 @@ class _IntroPageState extends State<IntroPage>
                 children: [
                   Icon(
                     LucideIcons.zap,
-                    color: AppColors.primary,
+                    color: context.primary,
                     size: 14,
                   ),
                   SizedBox(width: 4.w),
@@ -441,7 +441,7 @@ class _IntroPageState extends State<IntroPage>
                     '30分钟搭建完整应用',
                     style: TextStyle(
                       fontSize: 13.sp,
-                      color: AppColors.primary,
+                      color: context.primary,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -458,10 +458,10 @@ class _IntroPageState extends State<IntroPage>
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.w),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.surface,
         borderRadius: BorderRadius.circular(8.r),
         border: Border.all(
-          color: AppColors.white.withValues(alpha: 0.1),
+          color: context.white.withValues(alpha: 0.1),
         ),
       ),
       child: Row(
@@ -471,7 +471,7 @@ class _IntroPageState extends State<IntroPage>
             width: 8.w,
             height: 8.w,
             decoration: BoxDecoration(
-              color: AppColors.green,
+              color: context.green,
               borderRadius: BorderRadius.circular(4.r),
             ),
           ),
@@ -481,7 +481,7 @@ class _IntroPageState extends State<IntroPage>
             style: TextStyle(
               fontSize: 13.sp,
               fontWeight: FontWeight.w600,
-              color: AppColors.primary,
+              color: context.primary,
             ),
           ),
         ],
@@ -499,7 +499,7 @@ class _IntroPageState extends State<IntroPage>
             child: _buildActionCard(
               icon: LucideIcons.eye,
               label: '浏览演示',
-              gradient: [AppColors.primary, AppColors.primaryLight],
+              gradient: [context.primary, context.primaryLight],
               onTap: () {
                 HapticFeedback.mediumImpact();
                 _switchToTab(1);
@@ -583,7 +583,7 @@ class _IntroPageState extends State<IntroPage>
             Text(
               label,
               style: TextStyle(
-                color: AppColors.white,
+                color: context.white,
                 fontSize: 13.sp,
                 fontWeight: FontWeight.w500,
               ),
@@ -612,7 +612,7 @@ class _IntroPageState extends State<IntroPage>
                 height: 24.w,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [AppColors.primary, AppColors.primaryLight],
+                    colors: [context.primary, context.primaryLight],
                   ),
                   borderRadius: BorderRadius.circular(2.r),
                 ),
@@ -633,7 +633,7 @@ class _IntroPageState extends State<IntroPage>
                     subtitle,
                     style: TextStyle(
                       fontSize: 13.sp,
-                      color: AppColors.lightGrey,
+                      color: context.lightGrey,
                     ),
                   ),
                 ],
@@ -739,13 +739,13 @@ class _IntroPageState extends State<IntroPage>
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              AppColors.surface,
-              AppColors.surfaceVariant.withValues(alpha: 0.3),
+              context.surface,
+              context.surfaceVariant.withValues(alpha: 0.3),
             ],
           ),
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
-            color: AppColors.white.withValues(alpha: 0.05),
+            color: context.white.withValues(alpha: 0.05),
           ),
         ),
         child: Row(
@@ -784,7 +784,7 @@ class _IntroPageState extends State<IntroPage>
                     feature.desc,
                     style: TextStyle(
                       fontSize: 13.sp,
-                      color: AppColors.lightGrey,
+                      color: context.lightGrey,
                     ),
                   ),
                 ],
@@ -792,7 +792,7 @@ class _IntroPageState extends State<IntroPage>
             ),
             Icon(
               LucideIcons.chevron_right,
-              color: AppColors.lightGrey.withValues(alpha: 0.5),
+              color: context.lightGrey.withValues(alpha: 0.5),
               size: 20,
             ),
           ],
@@ -850,13 +850,13 @@ class _IntroPageState extends State<IntroPage>
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              AppColors.surface,
-              AppColors.surfaceVariant.withValues(alpha: 0.2),
+              context.surface,
+              context.surfaceVariant.withValues(alpha: 0.2),
             ],
           ),
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
-            color: AppColors.white.withValues(alpha: 0.05),
+            color: context.white.withValues(alpha: 0.05),
           ),
         ),
         child: Column(
@@ -867,12 +867,12 @@ class _IntroPageState extends State<IntroPage>
                 Container(
                   padding: EdgeInsets.all(10.w),
                   decoration: BoxDecoration(
-                    color: AppColors.primary.withValues(alpha: 0.15),
+                    color: context.primary.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(12.r),
                   ),
                   child: Icon(
                     pattern.icon,
-                    color: AppColors.primary,
+                    color: context.primary,
                     size: 20,
                   ),
                 ),
@@ -893,7 +893,7 @@ class _IntroPageState extends State<IntroPage>
                         pattern.subtitle,
                         style: TextStyle(
                           fontSize: 12.sp,
-                          color: AppColors.lightGrey,
+                          color: context.lightGrey,
                         ),
                       ),
                     ],
@@ -901,7 +901,7 @@ class _IntroPageState extends State<IntroPage>
                 ),
                 Icon(
                   LucideIcons.circle_check,
-                  color: AppColors.primary,
+                  color: context.primary,
                   size: 20,
                 ),
               ],
@@ -912,7 +912,7 @@ class _IntroPageState extends State<IntroPage>
               style: TextStyle(
                 fontSize: 13.sp,
                 height: 1.5,
-                color: AppColors.lightGrey.withValues(alpha: 0.8),
+                color: context.lightGrey.withValues(alpha: 0.8),
               ),
             ),
           ],
@@ -979,15 +979,15 @@ class _IntroPageState extends State<IntroPage>
                     demo.gradient.last.withValues(alpha: 0.05),
                   ]
                 : [
-                    AppColors.surface,
-                    AppColors.surfaceVariant.withValues(alpha: 0.3),
+                    context.surface,
+                    context.surfaceVariant.withValues(alpha: 0.3),
                   ],
           ),
           borderRadius: BorderRadius.circular(16.r),
           border: Border.all(
             color: isSelected
                 ? demo.gradient.first
-                : AppColors.white.withValues(alpha: 0.05),
+                : context.white.withValues(alpha: 0.05),
             width: isSelected ? 1.5 : 1,
           ),
           boxShadow: isSelected
@@ -1036,7 +1036,7 @@ class _IntroPageState extends State<IntroPage>
                     demo.desc,
                     style: TextStyle(
                       fontSize: 13.sp,
-                      color: AppColors.lightGrey,
+                      color: context.lightGrey,
                     ),
                   ),
                 ],
@@ -1047,13 +1047,13 @@ class _IntroPageState extends State<IntroPage>
               decoration: BoxDecoration(
                 color: isSelected
                     ? demo.gradient.first.withValues(alpha: 0.2)
-                    : AppColors.surfaceVariant,
+                    : context.surfaceVariant,
                 borderRadius: BorderRadius.circular(20.r),
               ),
               child: Text(
                 'Tab ${demo.index}',
                 style: TextStyle(
-                  color: isSelected ? demo.gradient.first : AppColors.lightGrey,
+                  color: isSelected ? demo.gradient.first : context.lightGrey,
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w600,
                 ),
@@ -1130,13 +1130,13 @@ class _IntroPageState extends State<IntroPage>
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              AppColors.surface,
-              AppColors.surfaceVariant.withValues(alpha: 0.2),
+              context.surface,
+              context.surfaceVariant.withValues(alpha: 0.2),
             ],
           ),
           borderRadius: BorderRadius.circular(14.r),
           border: Border.all(
-            color: AppColors.white.withValues(alpha: 0.05),
+            color: context.white.withValues(alpha: 0.05),
           ),
         ),
         child: Row(
@@ -1172,7 +1172,7 @@ class _IntroPageState extends State<IntroPage>
                     dialog.desc,
                     style: TextStyle(
                       fontSize: 12.sp,
-                      color: AppColors.lightGrey,
+                      color: context.lightGrey,
                     ),
                   ),
                 ],
@@ -1230,11 +1230,11 @@ class _IntroPageState extends State<IntroPage>
           value: 'favorite',
           icon: LucideIcons.heart,
         ),
-        const BottomSheetAction(
+        BottomSheetAction(
           label: '举报违规',
           value: 'report',
           icon: LucideIcons.flag,
-          iconColor: AppColors.orange,
+          iconColor: context.orange,
         ),
         const BottomSheetAction(
           label: '删除项目',
@@ -1297,7 +1297,7 @@ class _IntroPageState extends State<IntroPage>
       title: '系统更新',
       content: '发现新版本 v2.0，包含多项功能优化和问题修复，建议立即更新。',
       icon: LucideIcons.download,
-      iconColor: AppColors.blue,
+      iconColor: context.blue,
       actionText: '立即更新',
       onAction: () {
         AppDialogs.showLoading(context: context, message: '下载更新中...');
@@ -1319,25 +1319,25 @@ class _IntroPageState extends State<IntroPage>
           label: '成功提示',
           value: 'success',
           icon: LucideIcons.circle_check,
-          iconColor: AppColors.green,
+          iconColor: context.green,
         ),
         BottomSheetAction(
           label: '错误提示',
           value: 'error',
           icon: LucideIcons.circle_x,
-          iconColor: AppColors.red,
+          iconColor: context.red,
         ),
         BottomSheetAction(
           label: '警告提示',
           value: 'warning',
           icon: LucideIcons.triangle_alert,
-          iconColor: AppColors.orange,
+          iconColor: context.orange,
         ),
         BottomSheetAction(
           label: '信息提示',
           value: 'info',
           icon: LucideIcons.info,
-          iconColor: AppColors.blue,
+          iconColor: context.blue,
         ),
       ],
     ).then((type) {
@@ -1366,10 +1366,10 @@ class _IntroPageState extends State<IntroPage>
             spacing: 12.w,
             runSpacing: 12.w,
             children: [
-              _buildPrimaryButton('主要按钮', AppColors.primary),
-              _buildPrimaryButton('成功按钮', AppColors.green),
-              _buildPrimaryButton('警告按钮', AppColors.orange),
-              _buildPrimaryButton('危险按钮', AppColors.red),
+              _buildPrimaryButton('主要按钮', context.primary),
+              _buildPrimaryButton('成功按钮', context.green),
+              _buildPrimaryButton('警告按钮', context.orange),
+              _buildPrimaryButton('危险按钮', context.red),
             ],
           ),
         ),
@@ -1397,12 +1397,12 @@ class _IntroPageState extends State<IntroPage>
             spacing: 12.w,
             runSpacing: 12.w,
             children: [
-              _buildIconButton(LucideIcons.heart, AppColors.red),
-              _buildIconButton(LucideIcons.star, AppColors.orange),
-              _buildIconButton(LucideIcons.share, AppColors.blue),
-              _buildIconButton(LucideIcons.bookmark, AppColors.green),
-              _buildIconButtonWithText(LucideIcons.download, '下载', AppColors.primary),
-              _buildIconButtonWithText(LucideIcons.send, '发送', AppColors.blue),
+              _buildIconButton(LucideIcons.heart, context.red),
+              _buildIconButton(LucideIcons.star, context.orange),
+              _buildIconButton(LucideIcons.share, context.blue),
+              _buildIconButton(LucideIcons.bookmark, context.green),
+              _buildIconButtonWithText(LucideIcons.download, '下载', context.primary),
+              _buildIconButtonWithText(LucideIcons.send, '发送', context.blue),
             ],
           ),
         ),
@@ -1453,10 +1453,10 @@ class _IntroPageState extends State<IntroPage>
       width: double.infinity,
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.surface,
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(
-          color: AppColors.white.withValues(alpha: 0.05),
+          color: context.white.withValues(alpha: 0.05),
         ),
       ),
       child: Column(
@@ -1467,7 +1467,7 @@ class _IntroPageState extends State<IntroPage>
             style: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.w600,
-              color: AppColors.lightGrey,
+              color: context.lightGrey,
             ),
           ),
           SizedBox(height: 12.w),
@@ -1515,10 +1515,10 @@ class _IntroPageState extends State<IntroPage>
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.w),
         decoration: BoxDecoration(
-          color: outlined ? Colors.transparent : AppColors.surfaceVariant,
+          color: outlined ? Colors.transparent : context.surfaceVariant,
           borderRadius: BorderRadius.circular(10.r),
           border: outlined
-              ? Border.all(color: AppColors.white.withValues(alpha: 0.2))
+              ? Border.all(color: context.white.withValues(alpha: 0.2))
               : null,
         ),
         child: Text(
@@ -1526,7 +1526,7 @@ class _IntroPageState extends State<IntroPage>
           style: TextStyle(
             fontSize: 14.sp,
             fontWeight: FontWeight.w500,
-            color: outlined ? Colors.white : AppColors.lightGrey,
+            color: outlined ? Colors.white : context.lightGrey,
           ),
         ),
       ),
@@ -1543,7 +1543,7 @@ class _IntroPageState extends State<IntroPage>
           style: TextStyle(
             fontSize: 14.sp,
             fontWeight: FontWeight.w500,
-            color: AppColors.primary,
+            color: context.primary,
           ),
         ),
       ),
@@ -1601,7 +1601,7 @@ class _IntroPageState extends State<IntroPage>
         vertical: small ? 10.w : 12.w,
       ),
       decoration: BoxDecoration(
-        color: AppColors.primary.withValues(alpha: 0.8),
+        color: context.primary.withValues(alpha: 0.8),
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Row(
@@ -1694,13 +1694,13 @@ class _IntroPageState extends State<IntroPage>
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  AppColors.surface,
-                  AppColors.surfaceVariant.withValues(alpha: 0.2),
+                  context.surface,
+                  context.surfaceVariant.withValues(alpha: 0.2),
                 ],
               ),
               borderRadius: BorderRadius.circular(20.r),
               border: Border.all(
-                color: AppColors.white.withValues(alpha: 0.05),
+                color: context.white.withValues(alpha: 0.05),
               ),
             ),
             child: Column(
@@ -1710,7 +1710,7 @@ class _IntroPageState extends State<IntroPage>
                   children: [
                     Icon(
                       LucideIcons.code,
-                      color: AppColors.primary,
+                      color: context.primary,
                       size: 18,
                     ),
                     SizedBox(width: 8.w),
@@ -1718,7 +1718,7 @@ class _IntroPageState extends State<IntroPage>
                       '开源框架 · 自由使用',
                       style: TextStyle(
                         fontSize: 14.sp,
-                        color: AppColors.lightGrey,
+                        color: context.lightGrey,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -1730,7 +1730,7 @@ class _IntroPageState extends State<IntroPage>
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 13.sp,
-                    color: AppColors.lightGrey.withValues(alpha: 0.7),
+                    color: context.lightGrey.withValues(alpha: 0.7),
                   ),
                 ),
               ],
@@ -1767,9 +1767,9 @@ class _SwitchDemoState extends State<_SwitchDemo> {
       width: double.infinity,
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.surface,
         borderRadius: BorderRadius.circular(16.r),
-        border: Border.all(color: AppColors.white.withValues(alpha: 0.05)),
+        border: Border.all(color: context.white.withValues(alpha: 0.05)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1779,7 +1779,7 @@ class _SwitchDemoState extends State<_SwitchDemo> {
             style: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.w600,
-              color: AppColors.lightGrey,
+              color: context.lightGrey,
             ),
           ),
           SizedBox(height: 16.w),
@@ -1792,11 +1792,11 @@ class _SwitchDemoState extends State<_SwitchDemo> {
                     setState(() => _values[i] = !_values[i]);
                   },
                   child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 200),
+                    duration: Duration(milliseconds: 200),
                     width: 52.w,
                     height: 32.w,
                     decoration: BoxDecoration(
-                      color: _values[i] ? _colors[i] : AppColors.surfaceVariant,
+                      color: _values[i] ? _colors[i] : context.surfaceVariant,
                       borderRadius: BorderRadius.circular(16.r),
                     ),
                     child: AnimatedAlign(
@@ -1848,9 +1848,9 @@ class _SegmentedControlDemoState extends State<_SegmentedControlDemo> {
       width: double.infinity,
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.surface,
         borderRadius: BorderRadius.circular(16.r),
-        border: Border.all(color: AppColors.white.withValues(alpha: 0.05)),
+        border: Border.all(color: context.white.withValues(alpha: 0.05)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1860,14 +1860,14 @@ class _SegmentedControlDemoState extends State<_SegmentedControlDemo> {
             style: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.w600,
-              color: AppColors.lightGrey,
+              color: context.lightGrey,
             ),
           ),
           SizedBox(height: 16.w),
           Container(
             padding: EdgeInsets.all(4.w),
             decoration: BoxDecoration(
-              color: AppColors.background,
+              color: context.background,
               borderRadius: BorderRadius.circular(10.r),
             ),
             child: Row(
@@ -1882,10 +1882,10 @@ class _SegmentedControlDemoState extends State<_SegmentedControlDemo> {
                     setState(() => _selectedIndex = index);
                   },
                   child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 200),
+                    duration: Duration(milliseconds: 200),
                     padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.w),
                     decoration: BoxDecoration(
-                      color: isSelected ? AppColors.surface : Colors.transparent,
+                      color: isSelected ? context.surface : Colors.transparent,
                       borderRadius: BorderRadius.circular(8.r),
                     ),
                     child: Text(
@@ -1893,7 +1893,7 @@ class _SegmentedControlDemoState extends State<_SegmentedControlDemo> {
                       style: TextStyle(
                         fontSize: 14.sp,
                         fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-                        color: isSelected ? Colors.white : AppColors.lightGrey,
+                        color: isSelected ? Colors.white : context.lightGrey,
                       ),
                     ),
                   ),
@@ -1921,9 +1921,9 @@ class _RadioGroupDemoState extends State<_RadioGroupDemo> {
       width: double.infinity,
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.surface,
         borderRadius: BorderRadius.circular(16.r),
-        border: Border.all(color: AppColors.white.withValues(alpha: 0.05)),
+        border: Border.all(color: context.white.withValues(alpha: 0.05)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -1933,7 +1933,7 @@ class _RadioGroupDemoState extends State<_RadioGroupDemo> {
             style: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.w600,
-              color: AppColors.lightGrey,
+              color: context.lightGrey,
             ),
           ),
           SizedBox(height: 16.w),
@@ -1962,14 +1962,14 @@ class _RadioGroupDemoState extends State<_RadioGroupDemo> {
         mainAxisSize: MainAxisSize.min,
         children: [
           AnimatedContainer(
-            duration: const Duration(milliseconds: 200),
+            duration: Duration(milliseconds: 200),
             width: 22.w,
             height: 22.w,
             decoration: BoxDecoration(
-              color: isSelected ? AppColors.primary : Colors.transparent,
+              color: isSelected ? context.primary : Colors.transparent,
               borderRadius: BorderRadius.circular(11.r),
               border: Border.all(
-                color: isSelected ? AppColors.primary : AppColors.lightGrey,
+                color: isSelected ? context.primary : context.lightGrey,
                 width: 2,
               ),
             ),
@@ -1982,7 +1982,7 @@ class _RadioGroupDemoState extends State<_RadioGroupDemo> {
             label,
             style: TextStyle(
               fontSize: 14.sp,
-              color: isSelected ? Colors.white : AppColors.lightGrey,
+              color: isSelected ? Colors.white : context.lightGrey,
             ),
           ),
         ],
@@ -2005,9 +2005,9 @@ class _CheckboxGroupDemoState extends State<_CheckboxGroupDemo> {
       width: double.infinity,
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.surface,
         borderRadius: BorderRadius.circular(16.r),
-        border: Border.all(color: AppColors.white.withValues(alpha: 0.05)),
+        border: Border.all(color: context.white.withValues(alpha: 0.05)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -2017,7 +2017,7 @@ class _CheckboxGroupDemoState extends State<_CheckboxGroupDemo> {
             style: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.w600,
-              color: AppColors.lightGrey,
+              color: context.lightGrey,
             ),
           ),
           SizedBox(height: 16.w),
@@ -2052,14 +2052,14 @@ class _CheckboxGroupDemoState extends State<_CheckboxGroupDemo> {
         mainAxisSize: MainAxisSize.min,
         children: [
           AnimatedContainer(
-            duration: const Duration(milliseconds: 200),
+            duration: Duration(milliseconds: 200),
             width: 22.w,
             height: 22.w,
             decoration: BoxDecoration(
-              color: isChecked ? AppColors.primary : Colors.transparent,
+              color: isChecked ? context.primary : Colors.transparent,
               borderRadius: BorderRadius.circular(6.r),
               border: Border.all(
-                color: isChecked ? AppColors.primary : AppColors.lightGrey,
+                color: isChecked ? context.primary : context.lightGrey,
                 width: 2,
               ),
             ),
@@ -2072,7 +2072,7 @@ class _CheckboxGroupDemoState extends State<_CheckboxGroupDemo> {
             label,
             style: TextStyle(
               fontSize: 14.sp,
-              color: isChecked ? Colors.white : AppColors.lightGrey,
+              color: isChecked ? Colors.white : context.lightGrey,
             ),
           ),
         ],
@@ -2095,9 +2095,9 @@ class _StepperDemoState extends State<_StepperDemo> {
       width: double.infinity,
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.surface,
         borderRadius: BorderRadius.circular(16.r),
-        border: Border.all(color: AppColors.white.withValues(alpha: 0.05)),
+        border: Border.all(color: context.white.withValues(alpha: 0.05)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -2107,14 +2107,14 @@ class _StepperDemoState extends State<_StepperDemo> {
             style: TextStyle(
               fontSize: 14.sp,
               fontWeight: FontWeight.w600,
-              color: AppColors.lightGrey,
+              color: context.lightGrey,
             ),
           ),
           SizedBox(height: 16.w),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 4.w),
             decoration: BoxDecoration(
-              color: AppColors.background,
+              color: context.background,
               borderRadius: BorderRadius.circular(10.r),
             ),
             child: Row(
@@ -2131,12 +2131,12 @@ class _StepperDemoState extends State<_StepperDemo> {
                     width: 32.w,
                     height: 32.w,
                     decoration: BoxDecoration(
-                      color: _count > 1 ? AppColors.surface : Colors.transparent,
+                      color: _count > 1 ? context.surface : Colors.transparent,
                       borderRadius: BorderRadius.circular(8.r),
                     ),
                     child: Icon(
                       LucideIcons.minus,
-                      color: _count > 1 ? Colors.white : AppColors.lightGrey,
+                      color: _count > 1 ? Colors.white : context.lightGrey,
                       size: 16,
                     ),
                   ),
@@ -2162,7 +2162,7 @@ class _StepperDemoState extends State<_StepperDemo> {
                     width: 32.w,
                     height: 32.w,
                     decoration: BoxDecoration(
-                      color: AppColors.primary,
+                      color: context.primary,
                       borderRadius: BorderRadius.circular(8.r),
                     ),
                     child: Icon(LucideIcons.plus, color: Colors.white, size: 16),

@@ -54,10 +54,10 @@ class StoryRingAvatar extends StatelessWidget {
             padding: hasStory ? EdgeInsets.all(3.w) : EdgeInsets.zero,
             child: Container(
               decoration: BoxDecoration(
-                color: AppColors.surface,
+                color: context.surface,
                 borderRadius: BorderRadius.circular(size / 2),
                 border: hasStory
-                    ? Border.all(color: AppColors.background, width: 2)
+                    ? Border.all(color: context.background, width: 2)
                     : null,
               ),
               child: ClipOval(
@@ -66,14 +66,14 @@ class StoryRingAvatar extends StatelessWidget {
                         ? Image.asset(
                             imageUrl!,
                             fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) => _buildPlaceholder(),
+                            errorBuilder: (_, __, ___) => _buildPlaceholder(context),
                           )
                         : Image.network(
                             imageUrl!,
                             fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) => _buildPlaceholder(),
+                            errorBuilder: (_, __, ___) => _buildPlaceholder(context),
                           ))
-                    : placeholder ?? _buildPlaceholder(),
+                    : placeholder ?? _buildPlaceholder(context),
               ),
             ),
           ),
@@ -87,15 +87,15 @@ class StoryRingAvatar extends StatelessWidget {
                 width: size * 0.25,
                 height: size * 0.25,
                 decoration: BoxDecoration(
-                  color: AppColors.green,
+                  color: context.green,
                   borderRadius: BorderRadius.circular(size * 0.125),
                   border: Border.all(
-                    color: AppColors.background,
+                    color: context.background,
                     width: 2.w,
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.green.withValues(alpha: 0.4),
+                      color: context.green.withValues(alpha: 0.4),
                       blurRadius: 4,
                       spreadRadius: 1,
                     ),
@@ -108,13 +108,13 @@ class StoryRingAvatar extends StatelessWidget {
     );
   }
 
-  Widget _buildPlaceholder() {
+  Widget _buildPlaceholder(BuildContext context) {
     return Container(
-      color: AppColors.tertiaryGrey,
+      color: context.tertiaryGrey,
       child: Center(
         child: Icon(
           Icons.person,
-          color: AppColors.lightGrey,
+          color: context.lightGrey,
           size: size * 0.5,
         ),
       ),
@@ -145,45 +145,45 @@ class GroupAvatar extends StatelessWidget {
         width: size,
         height: size,
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: context.surface,
           borderRadius: BorderRadius.circular(size * 0.2),
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(size * 0.2),
           child: displayMembers.length <= 2
-              ? _buildTwoAvatars(displayMembers)
-              : _buildFourAvatars(displayMembers),
+              ? _buildTwoAvatars(context, displayMembers)
+              : _buildFourAvatars(context, displayMembers),
         ),
       ),
     );
   }
 
-  Widget _buildTwoAvatars(List<String?> members) {
+  Widget _buildTwoAvatars(BuildContext context, List<String?> members) {
     return Row(
       children: [
         Expanded(
-          child: _buildSmallAvatar(members.isNotEmpty ? members[0] : null),
+          child: _buildSmallAvatar(context, members.isNotEmpty ? members[0] : null),
         ),
         if (members.length > 1)
           Expanded(
-            child: _buildSmallAvatar(members[1]),
+            child: _buildSmallAvatar(context, members[1]),
           ),
       ],
     );
   }
 
-  Widget _buildFourAvatars(List<String?> members) {
+  Widget _buildFourAvatars(BuildContext context, List<String?> members) {
     return Column(
       children: [
         Expanded(
           child: Row(
             children: [
               Expanded(
-                child: _buildSmallAvatar(members.isNotEmpty ? members[0] : null),
+                child: _buildSmallAvatar(context, members.isNotEmpty ? members[0] : null),
               ),
               if (members.length > 1)
                 Expanded(
-                  child: _buildSmallAvatar(members[1]),
+                  child: _buildSmallAvatar(context, members[1]),
                 ),
             ],
           ),
@@ -193,11 +193,11 @@ class GroupAvatar extends StatelessWidget {
             children: [
               if (members.length > 2)
                 Expanded(
-                  child: _buildSmallAvatar(members[2]),
+                  child: _buildSmallAvatar(context, members[2]),
                 ),
               if (members.length > 3)
                 Expanded(
-                  child: _buildSmallAvatar(members[3]),
+                  child: _buildSmallAvatar(context, members[3]),
                 ),
             ],
           ),
@@ -206,17 +206,17 @@ class GroupAvatar extends StatelessWidget {
     );
   }
 
-  Widget _buildSmallAvatar(String? imageUrl) {
+  Widget _buildSmallAvatar(BuildContext context, String? imageUrl) {
     return Container(
       margin: EdgeInsets.all(1.w),
-      color: AppColors.tertiaryGrey,
+      color: context.tertiaryGrey,
       child: imageUrl != null
           ? (imageUrl.startsWith('assets/')
               ? Image.asset(imageUrl, fit: BoxFit.cover)
               : Image.network(imageUrl, fit: BoxFit.cover))
           : Icon(
               Icons.person,
-              color: AppColors.lightGrey,
+              color: context.lightGrey,
               size: size * 0.25,
             ),
     );

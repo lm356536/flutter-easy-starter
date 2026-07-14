@@ -44,7 +44,7 @@ class _TravelDestinationDetailsPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: Stack(
         children: [
           Positioned.fill(
@@ -129,7 +129,7 @@ class _TravelDestinationDetailsPageState
                                           children: [
                                             Icon(
                                               CupertinoIcons.star_fill,
-                                              color: AppColors.yellow,
+                                              color: context.yellow,
                                               size: 24,
                                             ),
                                             SizedBox(width: 6.w),
@@ -223,7 +223,7 @@ class _TravelDestinationDetailsPageState
                 ),
                 Container(
                   height: 100.w,
-                  color: AppColors.background,
+                  color: context.background,
                   padding: EdgeInsets.symmetric(horizontal: 25),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -242,7 +242,7 @@ class _TravelDestinationDetailsPageState
                   ),
                 ),
                 Container(
-                  color: AppColors.background,
+                  color: context.background,
                   padding: EdgeInsets.symmetric(horizontal: 25),
                   child: Text(
                     '罗卡角是辛特拉山脉的最西端，也是葡萄牙大陆、'
@@ -254,7 +254,7 @@ class _TravelDestinationDetailsPageState
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontSize: 16.sp,
-                      color: AppColors.lightGrey,
+                      color: context.lightGrey,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -281,7 +281,7 @@ class _TravelDestinationDetailsPageState
                     height: 65 * value,
                     width: 65 * value,
                     decoration: BoxDecoration(
-                      color: AppColors.darkGrey,
+                      color: context.darkGrey,
                       borderRadius: BorderRadius.circular(50.r),
                     ),
                     child: Icon(
@@ -303,9 +303,9 @@ class _TravelDestinationDetailsPageState
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    AppColors.background,
-                    AppColors.background.withValues(alpha: 0.67),
-                    AppColors.background.withValues(alpha: 0.0),
+                    context.background,
+                    context.background.withValues(alpha: 0.67),
+                    context.background.withValues(alpha: 0.0),
                   ],
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
@@ -320,7 +320,7 @@ class _TravelDestinationDetailsPageState
             child: Container(
               height: 54.w,
               decoration: BoxDecoration(
-                color: AppColors.primary,
+                color: context.primary,
                 borderRadius: BorderRadius.circular(20.r),
               ),
               alignment: Alignment.center,
@@ -363,10 +363,10 @@ class DestinationStatsWidget extends StatelessWidget {
             width: 60.w,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: context.surface,
               borderRadius: BorderRadius.circular(50.r),
             ),
-            child: Icon(iconData, color: AppColors.white),
+            child: Icon(iconData, color: context.white),
           ),
           SizedBox(width: 15.w),
           Column(
@@ -377,7 +377,7 @@ class DestinationStatsWidget extends StatelessWidget {
                 title,
                 style: TextStyle(
                   fontSize: 18.sp,
-                  color: AppColors.lightGrey,
+                  color: context.lightGrey,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -385,7 +385,7 @@ class DestinationStatsWidget extends StatelessWidget {
                 value,
                 style: TextStyle(fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.white,
+                  color: context.white,
                 ),
               ),
             ],
@@ -421,7 +421,7 @@ class _ListViewHeaderState extends State<ListViewHeader> {
               height: 80.w,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: AppColors.background,
+                color: context.background,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(45.r),
                   topRight: Radius.circular(45.r),
@@ -450,8 +450,8 @@ class _ListViewHeaderState extends State<ListViewHeader> {
                                 style: TextStyle(
                                   fontSize: 20.sp,
                                   color: i == _selectedIndex
-                                      ? AppColors.primary
-                                      : AppColors.lightGrey,
+                                      ? context.primary
+                                      : context.lightGrey,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -462,8 +462,8 @@ class _ListViewHeaderState extends State<ListViewHeader> {
                                 width: i == _selectedIndex ? 9 : 0,
                                 decoration: BoxDecoration(
                                   color: i == _selectedIndex
-                                      ? AppColors.primary
-                                      : AppColors.lightGrey,
+                                      ? context.primary
+                                      : context.lightGrey,
                                   borderRadius: BorderRadius.circular(10.r),
                                 ),
                               ),
@@ -495,7 +495,7 @@ class _ListViewHeaderState extends State<ListViewHeader> {
               ),
               child: Icon(
                 Icons.bookmark_rounded,
-                color: AppColors.primary,
+                color: context.primary,
                 size: 35,
               ),
             ),

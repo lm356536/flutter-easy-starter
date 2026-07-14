@@ -122,6 +122,74 @@ class AppColors {
   static const Color border = Color(0xFF3A3A3C);
 }
 
+/// BuildContext 主题感知颜色扩展
+///
+/// 使用方式：context.background / context.surface / context.white
+/// 替代 AppColors.xxx 静态常量，根据当前主题自动返回对应色值。
+/// 只需在 widget 的 build 方法中用 context.xxx 即可获得正确的暗色/亮色。
+/// 品牌色（primary、red、green 等）不随主题变化，保持原值。
+extension ThemeColorsX on BuildContext {
+  ThemeData get _t => Theme.of(this);
+  bool get _isDark => _t.brightness == Brightness.dark;
+
+  Color _c(Color dark, Color light) => _isDark ? dark : light;
+
+  // === 基础色 ===
+  Color get black => AppColors.black;
+  Color get darkGrey => _c(AppColors.darkGrey, const Color(0xFFF5F5F7));
+  Color get secondaryDark =>
+      _c(AppColors.secondaryDark, const Color(0xFFE5E5EA));
+  Color get tertiaryGrey => _c(AppColors.tertiaryGrey, const Color(0xFFE5E5EA));
+  Color get mediumGrey => _c(AppColors.mediumGrey, const Color(0xFFC7C7CC));
+  Color get lightGrey => AppColors.lightGrey;
+  Color get lighterGrey => AppColors.lighterGrey;
+  Color get white => _c(AppColors.white, const Color(0xFF1C1C1E));
+
+  // === 强调色（品牌色，不随主题变化） ===
+  Color get primary => AppColors.primary;
+  Color get primaryLight => AppColors.primaryLight;
+  Color get primaryDark => AppColors.primaryDark;
+  Color get pink => AppColors.pink;
+  Color get red => AppColors.red;
+  Color get orange => AppColors.orange;
+  Color get accent => AppColors.accent;
+  Color get yellow => AppColors.yellow;
+  Color get green => AppColors.green;
+  Color get teal => AppColors.teal;
+  Color get blue => AppColors.blue;
+
+  // === 功能色 ===
+  Color get success => AppColors.success;
+  Color get warning => AppColors.warning;
+  Color get error => AppColors.error;
+  Color get info => AppColors.info;
+
+  // === 玻璃效果 ===
+  Color get glassWhite => _c(AppColors.glassWhite, const Color(0x1A000000));
+  Color get glassWhiteStrong =>
+      _c(AppColors.glassWhiteStrong, const Color(0x33000000));
+  Color get glassBlack => AppColors.glassBlack;
+
+  // === 页面背景 ===
+  Color get background => _c(AppColors.background, const Color(0xFFF5F5F7));
+  Color get surface => _c(AppColors.surface, const Color(0xFFFFFFFF));
+  Color get surfaceVariant =>
+      _c(AppColors.surfaceVariant, const Color(0xFFF2F2F7));
+
+  // === 文字色 ===
+  Color get textPrimary => _c(AppColors.textPrimary, const Color(0xFF1C1C1E));
+  Color get textSecondary => AppColors.textSecondary;
+  Color get textTertiary => _c(AppColors.textTertiary, const Color(0xFFC7C7CC));
+  Color get textDisabled => _c(AppColors.textDisabled, const Color(0xFFE5E5EA));
+
+  // === 边框与分隔 ===
+  Color get divider => _c(AppColors.divider, const Color(0xFFE5E5EA));
+  Color get border => _c(AppColors.border, const Color(0xFFE5E5EA));
+}
+
+// 保持 AppShadows 中引用的 AppColors 兼容
+// 注意：AppShadows 中的方法不是 getter，暂时不动
+
 /// 间距系统 - 8pt 网格
 class AppSpacing {
   AppSpacing._();

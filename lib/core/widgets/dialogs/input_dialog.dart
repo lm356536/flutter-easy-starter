@@ -69,10 +69,10 @@ class _InputDialogState extends State<InputDialog> {
         width: 320.w,
         padding: EdgeInsets.all(24.w),
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: context.surface,
           borderRadius: BorderRadius.circular(20.r),
           border: Border.all(
-            color: AppColors.white.withValues(alpha: 0.1),
+            color: context.white.withValues(alpha: 0.1),
           ),
         ),
         child: Column(
@@ -82,12 +82,12 @@ class _InputDialogState extends State<InputDialog> {
               width: 56.w,
               height: 56.w,
               decoration: BoxDecoration(
-                color: AppColors.primary.withValues(alpha: 0.15),
+                color: context.primary.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(16.r),
               ),
               child: Icon(
                 LucideIcons.pencil,
-                color: AppColors.primary,
+                color: context.primary,
                 size: 28,
               ),
             ),
@@ -103,12 +103,12 @@ class _InputDialogState extends State<InputDialog> {
             SizedBox(height: 16.w),
             Container(
               decoration: BoxDecoration(
-                color: AppColors.background,
+                color: context.background,
                 borderRadius: BorderRadius.circular(12.r),
                 border: Border.all(
                   color: _errorText != null
-                      ? AppColors.red
-                      : AppColors.white.withValues(alpha: 0.1),
+                      ? context.red
+                      : context.white.withValues(alpha: 0.1),
                 ),
               ),
               child: TextField(
@@ -123,7 +123,7 @@ class _InputDialogState extends State<InputDialog> {
                   hintText: widget.hint,
                   hintStyle: TextStyle(
                     fontSize: 16.sp,
-                    color: AppColors.lightGrey,
+                    color: context.lightGrey,
                   ),
                   contentPadding: EdgeInsets.all(16.w),
                   border: InputBorder.none,
@@ -137,7 +137,7 @@ class _InputDialogState extends State<InputDialog> {
                 children: [
                   Icon(
                     LucideIcons.circle_alert,
-                    color: AppColors.red,
+                    color: context.red,
                     size: 14,
                   ),
                   SizedBox(width: 6.w),
@@ -145,7 +145,7 @@ class _InputDialogState extends State<InputDialog> {
                     _errorText!,
                     style: TextStyle(
                       fontSize: 12.sp,
-                      color: AppColors.red,
+                      color: context.red,
                     ),
                   ),
                 ],
@@ -160,10 +160,10 @@ class _InputDialogState extends State<InputDialog> {
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 14.w),
                       decoration: BoxDecoration(
-                        color: AppColors.background,
+                        color: context.background,
                         borderRadius: BorderRadius.circular(12.r),
                         border: Border.all(
-                          color: AppColors.white.withValues(alpha: 0.1),
+                          color: context.white.withValues(alpha: 0.1),
                         ),
                       ),
                       child: Text(
@@ -171,7 +171,7 @@ class _InputDialogState extends State<InputDialog> {
                         style: TextStyle(
                           fontSize: 15.sp,
                           fontWeight: FontWeight.w600,
-                          color: AppColors.lightGrey,
+                          color: context.lightGrey,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -185,11 +185,11 @@ class _InputDialogState extends State<InputDialog> {
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 14.w),
                       decoration: BoxDecoration(
-                        color: AppColors.primary,
+                        color: context.primary,
                         borderRadius: BorderRadius.circular(12.r),
                         boxShadow: [
                           BoxShadow(
-                            color: AppColors.primary.withValues(alpha: 0.3),
+                            color: context.primary.withValues(alpha: 0.3),
                             blurRadius: 12,
                             spreadRadius: 0,
                           ),

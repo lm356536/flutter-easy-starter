@@ -32,10 +32,10 @@ class ConfirmDialog extends StatelessWidget {
         width: 320.w,
         padding: EdgeInsets.all(24.w),
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: context.surface,
           borderRadius: BorderRadius.circular(20.r),
           border: Border.all(
-            color: AppColors.white.withValues(alpha: 0.1),
+            color: context.white.withValues(alpha: 0.1),
           ),
         ),
         child: Column(
@@ -46,13 +46,13 @@ class ConfirmDialog extends StatelessWidget {
               height: 56.w,
               decoration: BoxDecoration(
                 color: isDanger
-                    ? AppColors.red.withValues(alpha: 0.15)
-                    : AppColors.primary.withValues(alpha: 0.15),
+                    ? context.red.withValues(alpha: 0.15)
+                    : context.primary.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(16.r),
               ),
               child: Icon(
                 isDanger ? LucideIcons.triangle_alert : LucideIcons.message_circle,
-                color: isDanger ? AppColors.red : AppColors.primary,
+                color: isDanger ? context.red : context.primary,
                 size: 28,
               ),
             ),
@@ -72,7 +72,7 @@ class ConfirmDialog extends StatelessWidget {
                 content!,
                 style: TextStyle(
                   fontSize: 14.sp,
-                  color: AppColors.lightGrey,
+                  color: context.lightGrey,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -90,10 +90,10 @@ class ConfirmDialog extends StatelessWidget {
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 14.w),
                       decoration: BoxDecoration(
-                        color: AppColors.background,
+                        color: context.background,
                         borderRadius: BorderRadius.circular(12.r),
                         border: Border.all(
-                          color: AppColors.white.withValues(alpha: 0.1),
+                          color: context.white.withValues(alpha: 0.1),
                         ),
                       ),
                       child: Text(
@@ -101,7 +101,7 @@ class ConfirmDialog extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 15.sp,
                           fontWeight: FontWeight.w600,
-                          color: AppColors.lightGrey,
+                          color: context.lightGrey,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -118,11 +118,11 @@ class ConfirmDialog extends StatelessWidget {
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 14.w),
                       decoration: BoxDecoration(
-                        color: isDanger ? AppColors.red : AppColors.primary,
+                        color: isDanger ? context.red : context.primary,
                         borderRadius: BorderRadius.circular(12.r),
                         boxShadow: [
                           BoxShadow(
-                            color: (isDanger ? AppColors.red : AppColors.primary)
+                            color: (isDanger ? context.red : context.primary)
                                 .withValues(alpha: 0.3),
                             blurRadius: 12,
                             spreadRadius: 0,

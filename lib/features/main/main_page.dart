@@ -36,7 +36,7 @@ class MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: IndexedStack(
         index: _currentIndex,
         children: _pages,
@@ -48,17 +48,17 @@ class MainPageState extends State<MainPage> {
   Widget _buildBottomBar() {
     const double barHeight = 80;
     const double indicatorWidth = 56;
-    const double indicatorHeight = 42;
+    double indicatorHeight = 42;
 
     return ClipRect(
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 25, sigmaY: 25),
         child: Container(
           decoration: BoxDecoration(
-            color: AppColors.surface.withValues(alpha: 0.55),
+            color: context.surface.withValues(alpha: 0.55),
             border: Border(
               top: BorderSide(
-                color: AppColors.white.withValues(alpha: 0.08),
+                color: context.white.withValues(alpha: 0.08),
                 width: 0.5,
               ),
             ),
@@ -86,7 +86,7 @@ class MainPageState extends State<MainPage> {
                           width: indicatorWidth,
                           height: indicatorHeight,
                           decoration: BoxDecoration(
-                            color: AppColors.primary.withValues(alpha: 0.2),
+                            color: context.primary.withValues(alpha: 0.2),
                             borderRadius: BorderRadius.circular(
                               indicatorHeight / 2,
                             ),
@@ -158,14 +158,14 @@ class MainPageState extends State<MainPage> {
           children: [
             Icon(
               isSelected ? activeIcon : icon,
-              color: isSelected ? AppColors.primary : AppColors.lightGrey,
+              color: isSelected ? context.primary : context.lightGrey,
               size: 24,
             ),
             SizedBox(height: 4.w),
             Text(
               label,
               style: TextStyle(
-                color: isSelected ? AppColors.primary : AppColors.lightGrey,
+                color: isSelected ? context.primary : context.lightGrey,
                 fontSize: 10.sp,
                 fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
               ),

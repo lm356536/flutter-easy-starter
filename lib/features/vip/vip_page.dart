@@ -142,7 +142,7 @@ class _VipPageState extends State<VipPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: CustomScrollView(
         slivers: [
           // 顶部渐变背景
@@ -226,8 +226,8 @@ class _VipPageState extends State<VipPage>
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            AppColors.primary.withValues(alpha: 0.25),
-            AppColors.background,
+            context.primary.withValues(alpha: 0.25),
+            context.background,
           ],
         ),
       ),
@@ -247,7 +247,7 @@ class _VipPageState extends State<VipPage>
                   height: 40.w,
                   child: Icon(
                     LucideIcons.arrow_left,
-                    color: AppColors.white,
+                    color: context.white,
                     size: 20,
                   ),
                 ),
@@ -339,7 +339,7 @@ class _VipPageState extends State<VipPage>
             '解锁所有特权，享受尊贵体验',
             style: TextStyle(
               fontSize: 15.sp,
-              color: AppColors.lightGrey,
+              color: context.lightGrey,
             ),
           ),
         ],
@@ -391,7 +391,7 @@ class _VipPageState extends State<VipPage>
             Text(
               benefit.title,
               style: TextStyle(
-                color: AppColors.white,
+                color: context.white,
                 fontSize: 13.sp,
                 fontWeight: FontWeight.w600,
               ),
@@ -400,7 +400,7 @@ class _VipPageState extends State<VipPage>
             Text(
               benefit.subtitle,
               style: TextStyle(
-                color: AppColors.lightGrey,
+                color: context.lightGrey,
                 fontSize: 10.sp,
               ),
               textAlign: TextAlign.center,
@@ -459,7 +459,7 @@ class _VipPageState extends State<VipPage>
           Text(
             '选择套餐',
             style: TextStyle(
-              color: AppColors.white,
+              color: context.white,
               fontSize: 18.sp,
               fontWeight: FontWeight.w600,
             ),
@@ -549,7 +549,7 @@ class _VipPageState extends State<VipPage>
             '开通即表示同意《VIP服务协议》',
             style: TextStyle(
               fontSize: 12.sp,
-              color: AppColors.tertiaryGrey,
+              color: context.tertiaryGrey,
             ),
           ),
           SizedBox(height: 8.w),
@@ -560,14 +560,14 @@ class _VipPageState extends State<VipPage>
               Icon(
                 LucideIcons.shield_check,
                 size: 14,
-                color: AppColors.green,
+                color: context.green,
               ),
               SizedBox(width: 4.w),
               Text(
                 '安全支付 · 随时取消',
                 style: TextStyle(
                   fontSize: 11.sp,
-                  color: AppColors.lightGrey,
+                  color: context.lightGrey,
                 ),
               ),
             ],
@@ -686,7 +686,7 @@ class _AnimatedPackageCardState extends State<AnimatedPackageCard>
                       ],
                     )
                   : null,
-              color: widget.isSelected ? null : AppColors.surface,
+              color: widget.isSelected ? null : context.surface,
               borderRadius: BorderRadius.circular(14.r),
               border: Border.all(
                 color: widget.isSelected
@@ -753,7 +753,7 @@ class _AnimatedPackageCardState extends State<AnimatedPackageCard>
             Text(
               widget.package.duration,
               style: TextStyle(
-                color: AppColors.white,
+                color: context.white,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,
               ),
@@ -763,8 +763,8 @@ class _AnimatedPackageCardState extends State<AnimatedPackageCard>
               widget.package.price,
               style: TextStyle(
                 color: widget.isSelected
-                    ? const Color(0xFFFFD700)
-                    : AppColors.white,
+                    ? Color(0xFFFFD700)
+                    : context.white,
                 fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
               ),
@@ -773,7 +773,7 @@ class _AnimatedPackageCardState extends State<AnimatedPackageCard>
             Text(
               widget.package.dailyPrice,
               style: TextStyle(
-                color: AppColors.lightGrey,
+                color: context.lightGrey,
                 fontSize: 11.sp,
               ),
             ),
@@ -785,13 +785,13 @@ class _AnimatedPackageCardState extends State<AnimatedPackageCard>
                   vertical: 2.w,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.red.withValues(alpha: 0.1),
+                  color: context.red.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(4.r),
                 ),
                 child: Text(
                   '省${(int.parse(widget.package.originalPrice!.replaceAll(RegExp(r'[^0-9]'), '')) - int.parse(widget.package.price.replaceAll(RegExp(r'[^0-9]'), '')))}元',
                   style: TextStyle(
-                    color: AppColors.red,
+                    color: context.red,
                     fontSize: 9.sp,
                     fontWeight: FontWeight.w600,
                   ),

@@ -128,15 +128,15 @@ class DialogUtils {
             hintText: hint,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: AppColors.border),
+              borderSide: BorderSide(color: context.border),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: AppColors.border),
+              borderSide: BorderSide(color: context.border),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: AppColors.primary),
+              borderSide: BorderSide(color: context.primary),
             ),
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 12,
@@ -216,7 +216,7 @@ class DialogUtils {
             ),
           ],
         ),
-        backgroundColor: AppColors.info,
+        backgroundColor: context.info,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
@@ -257,7 +257,7 @@ class DialogUtils {
             ),
           ],
         ),
-        backgroundColor: AppColors.success,
+        backgroundColor: context.success,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
@@ -298,7 +298,7 @@ class DialogUtils {
             ),
           ],
         ),
-        backgroundColor: AppColors.error,
+        backgroundColor: context.error,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
@@ -338,20 +338,20 @@ class _AlertDialog extends StatelessWidget {
             if (title != null)
               Text(
                 title!,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
-                  color: AppColors.textPrimary,
+                  color: context.textPrimary,
                 ),
               ),
             if (message != null && message!.isNotEmpty)
               Padding(
-                padding: const EdgeInsets.only(top: 16),
+                padding: EdgeInsets.only(top: 16),
                 child: Text(
                   message!,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 14,
-                    color: AppColors.textSecondary,
+                    color: context.textSecondary,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -407,20 +407,20 @@ class _ConfirmDialog extends StatelessWidget {
             if (title != null)
               Text(
                 title!,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
-                  color: AppColors.textPrimary,
+                  color: context.textPrimary,
                 ),
               ),
             if (message != null && message!.isNotEmpty)
               Padding(
-                padding: const EdgeInsets.only(top: 16),
+                padding: EdgeInsets.only(top: 16),
                 child: Text(
                   message!,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 14,
-                    color: AppColors.textSecondary,
+                    color: context.textSecondary,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -531,12 +531,12 @@ class _BottomSheetMenu<T> extends StatelessWidget {
                     children: [
                       ListTile(
                         leading: item.icon != null
-                            ? Icon(item.icon, color: item.textColor ?? AppColors.textPrimary)
+                            ? Icon(item.icon, color: item.textColor ?? context.textPrimary)
                             : null,
                         title: Text(
                           item.label,
                           style: TextStyle(
-                            color: item.textColor ?? AppColors.textPrimary,
+                            color: item.textColor ?? context.textPrimary,
                             fontSize: 16,
                           ),
                           textAlign: item.icon != null ? TextAlign.left : TextAlign.center,
@@ -551,7 +551,7 @@ class _BottomSheetMenu<T> extends StatelessWidget {
                           height: 1,
                           indent: item.icon != null ? 56 : 16,
                           endIndent: 16,
-                          color: AppColors.divider,
+                          color: context.divider,
                         ),
                     ],
                   );
@@ -575,10 +575,10 @@ class _BottomSheetMenu<T> extends StatelessWidget {
                 ),
                 child: Text(
                   cancelLabel,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.textPrimary,
+                    color: context.textPrimary,
                   ),
                 ),
               ),
@@ -636,12 +636,12 @@ class _TopImageDialog extends StatelessWidget {
               ),
               // 文案
               Transform.translate(
-                offset: const Offset(0, -20),
+                offset: Offset(0, -20),
                 child: Text(
                   message,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: AppColors.textPrimary,
+                  style: TextStyle(
+                    color: context.textPrimary,
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                     height: 1.5,
@@ -713,9 +713,9 @@ class _GradientButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: width,
-        padding: padding ?? const EdgeInsets.symmetric(vertical: 10, horizontal: 24),
+        padding: padding ?? EdgeInsets.symmetric(vertical: 10, horizontal: 24),
         decoration: BoxDecoration(
-          color: AppColors.primary,
+          color: context.primary,
           borderRadius: BorderRadius.circular(20),
         ),
         alignment: width == double.infinity ? Alignment.center : null,
@@ -747,16 +747,16 @@ class _OutlineButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.border),
+          border: Border.all(color: context.border),
           borderRadius: BorderRadius.circular(20),
         ),
         alignment: Alignment.center,
         child: Text(
           label,
-          style: const TextStyle(
-            color: AppColors.textSecondary,
+          style: TextStyle(
+            color: context.textSecondary,
             fontSize: 14,
             fontWeight: FontWeight.w500,
           ),
@@ -781,9 +781,9 @@ class _DestructiveButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         decoration: BoxDecoration(
-          color: AppColors.error,
+          color: context.error,
           borderRadius: BorderRadius.circular(20),
         ),
         alignment: Alignment.center,

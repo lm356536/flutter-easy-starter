@@ -140,7 +140,7 @@ class AppDialogs {
       context: context,
       message: message,
       icon: LucideIcons.circle_check,
-      color: AppColors.green,
+      color: context.green,
       duration: duration,
     );
   }
@@ -155,7 +155,7 @@ class AppDialogs {
       context: context,
       message: message,
       icon: LucideIcons.circle_x,
-      color: AppColors.red,
+      color: context.red,
       duration: duration,
     );
   }
@@ -170,7 +170,7 @@ class AppDialogs {
       context: context,
       message: message,
       icon: LucideIcons.circle_alert,
-      color: AppColors.orange,
+      color: context.orange,
       duration: duration,
     );
   }
@@ -185,7 +185,7 @@ class AppDialogs {
       context: context,
       message: message,
       icon: LucideIcons.info,
-      color: AppColors.blue,
+      color: context.blue,
       duration: duration,
     );
   }

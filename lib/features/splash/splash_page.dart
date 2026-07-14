@@ -114,7 +114,7 @@ class _SplashPageState extends State<SplashPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: Stack(
         children: [
           // 背景装饰 - 渐变光晕
@@ -125,7 +125,7 @@ class _SplashPageState extends State<SplashPage>
                   center: const Alignment(0, -0.3),
                   radius: 0.8,
                   colors: [
-                    AppColors.primary.withValues(alpha: 0.15),
+                    context.primary.withValues(alpha: 0.15),
                     Colors.transparent,
                   ],
                 ),
@@ -151,14 +151,14 @@ class _SplashPageState extends State<SplashPage>
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                           colors: [
-                            AppColors.primary,
-                            AppColors.primary.withValues(alpha: 0.8),
+                            context.primary,
+                            context.primary.withValues(alpha: 0.8),
                           ],
                         ),
                         borderRadius: BorderRadius.circular(32.r),
                         boxShadow: [
                           BoxShadow(
-                            color: AppColors.primary.withValues(alpha: 0.4),
+                            color: context.primary.withValues(alpha: 0.4),
                             blurRadius: 40,
                             spreadRadius: 5,
                           ),
@@ -198,7 +198,7 @@ class _SplashPageState extends State<SplashPage>
                     '开箱即用的快速开发框架',
                     style: TextStyle(
                       fontSize: 16.sp,
-                      color: AppColors.lightGrey,
+                      color: context.lightGrey,
                       letterSpacing: 0.5,
                     ),
                   ),
@@ -212,7 +212,7 @@ class _SplashPageState extends State<SplashPage>
                   height: 32.w,
                   child: CircularProgressIndicator(
                     strokeWidth: 2.5,
-                    color: AppColors.primary,
+                    color: context.primary,
                   ),
                 ),
 
@@ -223,7 +223,7 @@ class _SplashPageState extends State<SplashPage>
                   'v1.0.0',
                   style: TextStyle(
                     fontSize: 12.sp,
-                    color: AppColors.tertiaryGrey,
+                    color: context.tertiaryGrey,
                   ),
                 ),
               ],

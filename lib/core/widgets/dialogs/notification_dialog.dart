@@ -31,10 +31,10 @@ class NotificationDialog extends StatelessWidget {
         width: 320.w,
         padding: EdgeInsets.all(24.w),
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: context.surface,
           borderRadius: BorderRadius.circular(20.r),
           border: Border.all(
-            color: AppColors.white.withValues(alpha: 0.1),
+            color: context.white.withValues(alpha: 0.1),
           ),
         ),
         child: Column(
@@ -73,7 +73,7 @@ class NotificationDialog extends StatelessWidget {
                 content!,
                 style: TextStyle(
                   fontSize: 14.sp,
-                  color: AppColors.lightGrey,
+                  color: context.lightGrey,
                   height: 1.5,
                 ),
                 textAlign: TextAlign.center,
@@ -96,14 +96,14 @@ class NotificationDialog extends StatelessWidget {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      AppColors.primary,
-                      AppColors.primaryLight,
+                      context.primary,
+                      context.primaryLight,
                     ],
                   ),
                   borderRadius: BorderRadius.circular(14.r),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.primary.withValues(alpha: 0.3),
+                      color: context.primary.withValues(alpha: 0.3),
                       blurRadius: 16,
                       spreadRadius: 0,
                     ),

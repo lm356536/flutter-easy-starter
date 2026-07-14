@@ -129,7 +129,8 @@ class DeviceUtils {
 版本: ${info.appVersion}
 构建号: ${info.buildNumber}
 ━━━━━━━━━━━━━━━━━━━━
-    '''.trim();
+    '''
+        .trim();
   }
 
   /// 判断是否为 iOS
@@ -219,9 +220,9 @@ class DeviceInfoDisplay {
           backgroundColor: Colors.transparent,
           child: Container(
             width: double.infinity,
-            constraints: const BoxConstraints(maxWidth: 360),
+            constraints: BoxConstraints(maxWidth: 360),
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: context.surface,
               borderRadius: BorderRadius.circular(24),
               boxShadow: [
                 BoxShadow(
@@ -243,8 +244,8 @@ class DeviceInfoDisplay {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        AppColors.primary.withValues(alpha: 0.3),
-                        AppColors.primary.withValues(alpha: 0.1),
+                        context.primary.withValues(alpha: 0.3),
+                        context.primary.withValues(alpha: 0.1),
                       ],
                     ),
                     borderRadius: const BorderRadius.vertical(
@@ -258,35 +259,35 @@ class DeviceInfoDisplay {
                         width: 64,
                         height: 64,
                         decoration: BoxDecoration(
-                          color: AppColors.primary.withValues(alpha: 0.2),
+                          color: context.primary.withValues(alpha: 0.2),
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: AppColors.primary.withValues(alpha: 0.3),
+                            color: context.primary.withValues(alpha: 0.3),
                             width: 2,
                           ),
                         ),
                         child: Icon(
                           info.platform == 'ios' ? Icons.apple : Icons.android,
                           size: 32,
-                          color: AppColors.primary,
+                          color: context.primary,
                         ),
                       ),
-                      const SizedBox(height: 16),
+                      SizedBox(height: 16),
                       Text(
                         '${info.brand} ${info.model}',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: AppColors.white,
+                          color: context.white,
                         ),
                         textAlign: TextAlign.center,
                       ),
-                      const SizedBox(height: 4),
+                      SizedBox(height: 4),
                       Text(
                         info.osVersion,
                         style: TextStyle(
                           fontSize: 14,
-                          color: AppColors.lightGrey.withValues(alpha: 0.8),
+                          color: context.lightGrey.withValues(alpha: 0.8),
                         ),
                       ),
                     ],
@@ -300,35 +301,40 @@ class DeviceInfoDisplay {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // 设备信息组
-                      _buildSectionTitle(Icons.phone_android_outlined, '设备'),
+                      _buildSectionTitle(
+                          context, Icons.phone_android_outlined, '设备'),
                       const SizedBox(height: 12),
-                      _buildInfoItem('设备ID', '${info.deviceId.substring(0, info.deviceId.length > 8 ? 8 : info.deviceId.length)}...'),
-                      _buildInfoItem('设备类型', info.isPhysicalDevice ? '真机' : '模拟器'),
-                      _buildInfoItem('平台', info.platform.toUpperCase()),
+                      _buildInfoItem(context, '设备ID',
+                          '${info.deviceId.substring(0, info.deviceId.length > 8 ? 8 : info.deviceId.length)}...'),
+                      _buildInfoItem(context, '设备类型',
+                          info.isPhysicalDevice ? '真机' : '模拟器'),
+                      _buildInfoItem(
+                          context, '平台', info.platform.toUpperCase()),
 
                       const SizedBox(height: 20),
 
                       // App信息组
-                      _buildSectionTitle(Icons.apps_outlined, '应用'),
+                      _buildSectionTitle(context, Icons.apps_outlined, '应用'),
                       const SizedBox(height: 12),
-                      _buildInfoItem('应用名称', info.appName),
-                      _buildInfoItem('包名', info.packageName),
-                      _buildInfoItem('版本', '${info.appVersion} (${info.buildNumber})'),
+                      _buildInfoItem(context, '应用名称', info.appName),
+                      _buildInfoItem(context, '包名', info.packageName),
+                      _buildInfoItem(context, '版本',
+                          '${info.appVersion} (${info.buildNumber})'),
                     ],
                   ),
                 ),
 
                 // 底部按钮
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                  padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
                   child: SizedBox(
                     width: double.infinity,
                     height: 48,
                     child: ElevatedButton(
                       onPressed: () => Navigator.pop(context),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primary,
-                        foregroundColor: AppColors.white,
+                        backgroundColor: context.primary,
+                        foregroundColor: context.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -352,28 +358,30 @@ class DeviceInfoDisplay {
     });
   }
 
-  static Widget _buildSectionTitle(IconData icon, String title) {
+  static Widget _buildSectionTitle(
+      BuildContext context, IconData icon, String title) {
     return Row(
       children: [
         Icon(
           icon,
           size: 16,
-          color: AppColors.primary,
+          color: context.primary,
         ),
-        const SizedBox(width: 8),
+        SizedBox(width: 8),
         Text(
           title,
           style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w600,
-            color: AppColors.primary.withValues(alpha: 0.9),
+            color: context.primary.withValues(alpha: 0.9),
           ),
         ),
       ],
     );
   }
 
-  static Widget _buildInfoItem(String label, String value) {
+  static Widget _buildInfoItem(
+      BuildContext context, String label, String value) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Row(
@@ -384,16 +392,16 @@ class DeviceInfoDisplay {
               label,
               style: TextStyle(
                 fontSize: 13,
-                color: AppColors.lightGrey.withValues(alpha: 0.7),
+                color: context.lightGrey.withValues(alpha: 0.7),
               ),
             ),
           ),
           Expanded(
             child: Text(
               value,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 14,
-                color: AppColors.white,
+                color: context.white,
                 fontWeight: FontWeight.w500,
               ),
               overflow: TextOverflow.ellipsis,

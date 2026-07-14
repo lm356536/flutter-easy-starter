@@ -52,7 +52,7 @@ class _LoginPageState extends ConsumerState<LoginPage>
     });
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -105,23 +105,23 @@ class _LoginPageState extends ConsumerState<LoginPage>
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  AppColors.primary,
-                  AppColors.primary.withValues(alpha: 0.7),
+                  context.primary,
+                  context.primary.withValues(alpha: 0.7),
                 ],
               ),
               borderRadius: BorderRadius.circular(24.r),
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.primary.withValues(alpha: 0.4),
+                  color: context.primary.withValues(alpha: 0.4),
                   blurRadius: 30,
-                  offset: const Offset(0, 10),
+                  offset: Offset(0, 10),
                 ),
               ],
             ),
             child: Icon(
               Icons.rocket_launch,
               size: 40,
-              color: AppColors.white,
+              color: context.white,
             ),
           ),
           SizedBox(height: 24.w),
@@ -130,7 +130,7 @@ class _LoginPageState extends ConsumerState<LoginPage>
             style: TextStyle(
               fontSize: 28.sp,
               fontWeight: FontWeight.bold,
-              color: AppColors.white,
+              color: context.white,
             ),
           ),
           SizedBox(height: 8.w),
@@ -138,7 +138,7 @@ class _LoginPageState extends ConsumerState<LoginPage>
             '登录后继续体验 Demo',
             style: TextStyle(
               fontSize: 15.sp,
-              color: AppColors.lightGrey,
+              color: context.lightGrey,
             ),
           ),
         ],
@@ -153,18 +153,18 @@ class _LoginPageState extends ConsumerState<LoginPage>
         vertical: 16,
       ),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.surface,
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: TabBar(
         controller: _tabController,
         indicator: BoxDecoration(
-          color: AppColors.tertiaryGrey,
+          color: context.tertiaryGrey,
           borderRadius: BorderRadius.circular(12.r),
         ),
         indicatorSize: TabBarIndicatorSize.tab,
-        labelColor: AppColors.white,
-        unselectedLabelColor: AppColors.lightGrey,
+        labelColor: context.white,
+        unselectedLabelColor: context.lightGrey,
         labelStyle: TextStyle(fontSize: 15.sp,
           fontWeight: FontWeight.w600,
         ),
@@ -192,21 +192,21 @@ class _LoginPageState extends ConsumerState<LoginPage>
             children: [
               _SocialLoginButton(
                 icon: Icons.wechat,
-                color: const Color(0xFF07C160),
+                color: Color(0xFF07C160),
                 label: '微信',
                 onTap: () => _loginWithWechat(),
               ),
               SizedBox(width: 32.w),
               _SocialLoginButton(
                 icon: Icons.apple,
-                color: AppColors.white,
+                color: context.white,
                 label: 'Apple',
                 onTap: () {},
               ),
               SizedBox(width: 32.w),
               _SocialLoginButton(
                 icon: Icons.bolt,
-                color: AppColors.primary,
+                color: context.primary,
                 label: '演示',
                 onTap: () => _quickLogin(),
               ),
@@ -225,7 +225,7 @@ class _LoginPageState extends ConsumerState<LoginPage>
                   '演示账号',
                   style: TextStyle(
                     fontSize: 13.sp,
-                    color: AppColors.lightGrey,
+                    color: context.lightGrey,
                   ),
                 ),
               ),
@@ -241,7 +241,7 @@ class _LoginPageState extends ConsumerState<LoginPage>
               vertical: 8,
             ),
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: context.surface,
               borderRadius: BorderRadius.circular(8.r),
             ),
             child: Row(
@@ -250,14 +250,14 @@ class _LoginPageState extends ConsumerState<LoginPage>
                 Icon(
                   Icons.info_outline,
                   size: 14,
-                  color: AppColors.lightGrey,
+                  color: context.lightGrey,
                 ),
                 SizedBox(width: 8.w),
                 Text(
                   '账号: ${AppConstants.demoAccount} / 密码: ${AppConstants.demoPassword}',
                   style: TextStyle(
                     fontSize: 12.sp,
-                    color: AppColors.lightGrey,
+                    color: context.lightGrey,
                   ),
                 ),
               ],
@@ -316,9 +316,9 @@ class _SocialLoginButton extends StatelessWidget {
             width: 56.w,
             height: 56.w,
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: context.surface,
               shape: BoxShape.circle,
-              border: Border.all(color: AppColors.border),
+              border: Border.all(color: context.border),
             ),
             child: Icon(icon, color: color, size: 28),
           ),
@@ -328,7 +328,7 @@ class _SocialLoginButton extends StatelessWidget {
               label!,
               style: TextStyle(
                 fontSize: 12.sp,
-                color: AppColors.lightGrey,
+                color: context.lightGrey,
               ),
             ),
           ],
@@ -385,13 +385,13 @@ class _PasswordLoginFormState extends ConsumerState<_PasswordLoginForm> {
             // 用户名输入
             TextFormField(
               controller: _usernameController,
-              style: TextStyle(color: AppColors.white),
+              style: TextStyle(color: context.white),
               decoration: InputDecoration(
                 filled: true,
-                fillColor: AppColors.surface,
+                fillColor: context.surface,
                 hintText: '用户名',
-                hintStyle: TextStyle(color: AppColors.tertiaryGrey),
-                prefixIcon: Icon(Icons.person_outline, color: AppColors.lightGrey),
+                hintStyle: TextStyle(color: context.tertiaryGrey),
+                prefixIcon: Icon(Icons.person_outline, color: context.lightGrey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12.r),
                   borderSide: BorderSide.none,
@@ -410,17 +410,17 @@ class _PasswordLoginFormState extends ConsumerState<_PasswordLoginForm> {
             TextFormField(
               controller: _passwordController,
               obscureText: _obscurePassword,
-              style: TextStyle(color: AppColors.white),
+              style: TextStyle(color: context.white),
               decoration: InputDecoration(
                 filled: true,
-                fillColor: AppColors.surface,
+                fillColor: context.surface,
                 hintText: '密码',
-                hintStyle: TextStyle(color: AppColors.tertiaryGrey),
-                prefixIcon: Icon(Icons.lock_outline, color: AppColors.lightGrey),
+                hintStyle: TextStyle(color: context.tertiaryGrey),
+                prefixIcon: Icon(Icons.lock_outline, color: context.lightGrey),
                 suffixIcon: IconButton(
                   icon: Icon(
                     _obscurePassword ? Icons.visibility_off : Icons.visibility,
-                    color: AppColors.lightGrey,
+                    color: context.lightGrey,
                   ),
                   onPressed: () {
                     setState(() {
@@ -461,7 +461,7 @@ class _PasswordLoginFormState extends ConsumerState<_PasswordLoginForm> {
               child: ElevatedButton(
                 onPressed: widget.isLoading ? null : _login,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primary,
+                  backgroundColor: context.primary,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16.r),
                   ),
@@ -472,7 +472,7 @@ class _PasswordLoginFormState extends ConsumerState<_PasswordLoginForm> {
                         height: 20.w,
                         child: CircularProgressIndicator(
                           strokeWidth: 2,
-                          color: AppColors.white,
+                          color: context.white,
                         ),
                       )
                     : Text('登录',
@@ -536,13 +536,13 @@ class _PhoneLoginFormState extends ConsumerState<_PhoneLoginForm> {
             TextFormField(
               controller: _phoneController,
               keyboardType: TextInputType.phone,
-              style: TextStyle(color: AppColors.white),
+              style: TextStyle(color: context.white),
               decoration: InputDecoration(
                 filled: true,
-                fillColor: AppColors.surface,
+                fillColor: context.surface,
                 hintText: '手机号',
-                hintStyle: TextStyle(color: AppColors.tertiaryGrey),
-                prefixIcon: Icon(Icons.phone_outlined, color: AppColors.lightGrey),
+                hintStyle: TextStyle(color: context.tertiaryGrey),
+                prefixIcon: Icon(Icons.phone_outlined, color: context.lightGrey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12.r),
                   borderSide: BorderSide.none,
@@ -564,13 +564,13 @@ class _PhoneLoginFormState extends ConsumerState<_PhoneLoginForm> {
             TextFormField(
               controller: _codeController,
               keyboardType: TextInputType.number,
-              style: TextStyle(color: AppColors.white),
+              style: TextStyle(color: context.white),
               decoration: InputDecoration(
                 filled: true,
-                fillColor: AppColors.surface,
+                fillColor: context.surface,
                 hintText: '验证码',
-                hintStyle: TextStyle(color: AppColors.tertiaryGrey),
-                prefixIcon: Icon(Icons.security_outlined, color: AppColors.lightGrey),
+                hintStyle: TextStyle(color: context.tertiaryGrey),
+                prefixIcon: Icon(Icons.security_outlined, color: context.lightGrey),
                 suffixIcon: Padding(
                   padding: EdgeInsets.only(right: 8),
                   child: TextButton(
@@ -581,8 +581,8 @@ class _PhoneLoginFormState extends ConsumerState<_PhoneLoginForm> {
                       _isCountingDown ? '${_countDown}s' : '获取验证码',
                       style: TextStyle(
                         color: _isCountingDown
-                            ? AppColors.lightGrey
-                            : AppColors.primary,
+                            ? context.lightGrey
+                            : context.primary,
                         fontWeight: FontWeight.w500,
                         fontSize: 13.sp,
                       ),
@@ -613,7 +613,7 @@ class _PhoneLoginFormState extends ConsumerState<_PhoneLoginForm> {
               child: ElevatedButton(
                 onPressed: widget.isLoading ? null : _login,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primary,
+                  backgroundColor: context.primary,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16.r),
                   ),
@@ -624,7 +624,7 @@ class _PhoneLoginFormState extends ConsumerState<_PhoneLoginForm> {
                         height: 20.w,
                         child: CircularProgressIndicator(
                           strokeWidth: 2,
-                          color: AppColors.white,
+                          color: context.white,
                         ),
                       )
                     : Text('登录',

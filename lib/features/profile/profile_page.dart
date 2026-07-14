@@ -29,7 +29,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
     final user = authState.user;
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       appBar: AppBar(
         title: const Text('设置'),
         centerTitle: true,
@@ -66,14 +66,14 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         vertical: 2,
                       ),
                       decoration: BoxDecoration(
-                        color: AppColors.green.withValues(alpha: 0.2),
+                        color: context.green.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(AppRadius.sm),
                       ),
                       child: Text(
                         '已认证',
                         style: TextStyle(
                           fontSize: 11.sp,
-                          color: AppColors.green,
+                          color: context.green,
                         ),
                       ),
                     ),
@@ -93,7 +93,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     title: '消息通知',
                     trailing: _CustomSwitch(
                       value: _notificationsEnabled,
-                      activeColor: AppColors.primary,
+                      activeColor: context.primary,
                       onChanged: (value) =>
                           setState(() => _notificationsEnabled = value),
                     ),
@@ -106,7 +106,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     subtitle: '开启位置发现附近的人',
                     trailing: _CustomSwitch(
                       value: _locationEnabled,
-                      activeColor: AppColors.primary,
+                      activeColor: context.primary,
                       onChanged: (value) =>
                           setState(() => _locationEnabled = value),
                     ),
@@ -125,7 +125,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                       _getThemeModeLabel(ref.watch(themeModeProvider)),
                       style: TextStyle(
                         fontSize: 13.sp,
-                        color: AppColors.lightGrey,
+                        color: context.lightGrey,
                       ),
                     ),
                     onTap: () => _showThemePicker(context),
@@ -149,7 +149,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         vertical: 6,
                       ),
                       decoration: BoxDecoration(
-                        color: AppColors.primary.withValues(alpha: 0.2),
+                        color: context.primary.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(AppRadius.full),
                       ),
                       child: Row(
@@ -165,7 +165,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                             '1250',
                             style: TextStyle(
                               fontSize: 12.sp,
-                              color: AppColors.white,
+                              color: context.white,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -184,14 +184,14 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         vertical: 2,
                       ),
                       decoration: BoxDecoration(
-                        color: AppColors.accent.withValues(alpha: 0.2),
+                        color: context.accent.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(AppRadius.sm),
                       ),
                       child: Text(
                         '升级',
                         style: TextStyle(
                           fontSize: 11.sp,
-                          color: AppColors.accent,
+                          color: context.accent,
                         ),
                       ),
                     ),
@@ -239,8 +239,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                 child: OutlinedButton(
                   onPressed: () => _showLogoutConfirm(context, ref),
                   style: OutlinedButton.styleFrom(
-                    foregroundColor: AppColors.red,
-                    side: const BorderSide(color: AppColors.red),
+                    foregroundColor: context.red,
+                    side: BorderSide(color: context.red),
                   ),
                   child: Text('退出登录'),
                 ),
@@ -262,7 +262,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
       margin: EdgeInsets.all(AppSpacing.xxl),
       padding: EdgeInsets.all(AppSpacing.xxl),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.surface,
         borderRadius: BorderRadius.circular(AppRadius.lg),
       ),
       child: Row(
@@ -274,7 +274,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                 width: 72.w,
                 height: 72.w,
                 decoration: BoxDecoration(
-                  color: AppColors.tertiaryGrey,
+                  color: context.tertiaryGrey,
                   borderRadius: BorderRadius.circular(AppRadius.full),
                 ),
                 child: user?.avatar != null && user!.avatar!.isNotEmpty
@@ -305,10 +305,10 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   width: 20.w,
                   height: 20.w,
                   decoration: BoxDecoration(
-                    color: AppColors.green,
+                    color: context.green,
                     borderRadius: BorderRadius.circular(AppRadius.full),
                     border: Border.all(
-                      color: AppColors.surface,
+                      color: context.surface,
                       width: 2.w,
                     ),
                   ),
@@ -325,7 +325,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                 Text(
                   user?.displayName ?? '未设置昵称',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: AppColors.white,
+                        color: context.white,
                       ),
                 ),
                 SizedBox(height: 4.w),
@@ -340,14 +340,14 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     vertical: 2,
                   ),
                   decoration: BoxDecoration(
-                    color: AppColors.primary.withValues(alpha: 0.2),
+                    color: context.primary.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(AppRadius.sm),
                   ),
                   child: Text(
                     'VIP 会员',
                     style: TextStyle(
                       fontSize: 11.sp,
-                      color: AppColors.primary,
+                      color: context.primary,
                     ),
                   ),
                 ),
@@ -357,7 +357,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
           // 编辑按钮
           IconButton(
             icon: Icon(Icons.chevron_right),
-            color: AppColors.lightGrey,
+            color: context.lightGrey,
             onPressed: () => context.push(RouteNames.userInfo),
           ),
         ],
@@ -382,10 +382,10 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
           ),
           child: Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: AppTypography.caption,
               fontWeight: AppTypography.semiBold,
-              color: AppColors.lightGrey,
+              color: context.lightGrey,
             ),
           ),
         ),
@@ -393,7 +393,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
         Container(
           margin: EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
           decoration: BoxDecoration(
-            color: AppColors.surface,
+            color: context.surface,
             borderRadius: BorderRadius.circular(AppRadius.lg),
           ),
           child: Column(
@@ -412,15 +412,15 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                       decoration: BoxDecoration(
                         border: isLast
                             ? null
-                            : const Border(
-                                bottom: BorderSide(color: AppColors.divider),
+                            : Border(
+                                bottom: BorderSide(color: context.divider),
                               ),
                       ),
                       child: Row(
                         children: [
                           Icon(
                             item.icon,
-                            color: AppColors.lightGrey,
+                            color: context.lightGrey,
                             size: 22,
                           ),
                           SizedBox(width: 16),
@@ -430,14 +430,14 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                               children: [
                                 Text(
                                   item.title,
-                                  style: TextStyle(color: AppColors.white),
+                                  style: TextStyle(color: context.white),
                                 ),
                                 if (item.subtitle != null)
                                   Text(
                                     item.subtitle!,
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       fontSize: AppTypography.caption,
-                                      color: AppColors.lightGrey,
+                                      color: context.lightGrey,
                                     ),
                                   ),
                               ],
@@ -447,7 +447,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                               Icon(
                                 Icons.chevron_right,
                                 size: 20,
-                                color: AppColors.lightGrey,
+                                color: context.lightGrey,
                               ),
                         ],
                       ),
@@ -478,7 +478,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
 
     showModalBottomSheet(
       context: context,
-      backgroundColor: AppColors.surface,
+      backgroundColor: context.surface,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(AppRadius.xxl),
@@ -497,7 +497,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   height: 4.w,
                   margin: EdgeInsets.only(bottom: AppSpacing.lg),
                   decoration: BoxDecoration(
-                    color: AppColors.tertiaryGrey,
+                    color: context.tertiaryGrey,
                     borderRadius: BorderRadius.circular(2.r),
                   ),
                 ),
@@ -506,7 +506,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   style: TextStyle(
                     fontSize: 17.sp,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.white,
+                    color: context.white,
                   ),
                 ),
                 SizedBox(height: AppSpacing.xxl),
@@ -575,13 +575,13 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(AppRadius.md),
-          color: isSelected ? AppColors.primary.withValues(alpha: 0.15) : null,
+          color: isSelected ? context.primary.withValues(alpha: 0.15) : null,
         ),
         child: Row(
           children: [
             Icon(
               icon,
-              color: isSelected ? AppColors.primary : AppColors.lightGrey,
+              color: isSelected ? context.primary : context.lightGrey,
               size: 24,
             ),
             SizedBox(width: AppSpacing.md),
@@ -592,7 +592,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   Text(
                     label,
                     style: TextStyle(
-                      color: isSelected ? AppColors.primary : AppColors.white,
+                      color: isSelected ? context.primary : context.white,
                       fontWeight:
                           isSelected ? FontWeight.w600 : FontWeight.w400,
                     ),
@@ -601,7 +601,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     subtitle,
                     style: TextStyle(
                       fontSize: 12.sp,
-                      color: AppColors.lightGrey,
+                      color: context.lightGrey,
                     ),
                   ),
                 ],
@@ -610,7 +610,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
             if (isSelected)
               Icon(
                 Icons.check,
-                color: AppColors.primary,
+                color: context.primary,
                 size: 20,
               ),
           ],
@@ -645,14 +645,14 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
         width: 56.w,
         height: 56.w,
         decoration: BoxDecoration(
-          color: AppColors.primary,
+          color: context.primary,
           borderRadius: BorderRadius.circular(AppRadius.lg),
           boxShadow: AppShadows.glow,
         ),
         child: Icon(
           Icons.rocket_launch,
           size: 32,
-          color: AppColors.white,
+          color: context.white,
         ),
       ),
       applicationLegalese: '© 2024 Flutter Easy Starter. MIT License.',
@@ -700,11 +700,11 @@ class _CustomSwitch extends StatelessWidget {
     return GestureDetector(
       onTap: () => onChanged(!value),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
+        duration: Duration(milliseconds: 200),
         width: 52.w,
         height: 32.w,
         decoration: BoxDecoration(
-          color: value ? activeColor : AppColors.surfaceVariant,
+          color: value ? activeColor : context.surfaceVariant,
           borderRadius: BorderRadius.circular(16.r),
         ),
         child: AnimatedAlign(

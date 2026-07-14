@@ -99,7 +99,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: context.background,
       body: Stack(
         children: [
           // 主内容
@@ -191,9 +191,9 @@ class _UserDetailPageState extends State<UserDetailPage> {
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                   colors: [
-                    AppColors.background,
-                    AppColors.background.withValues(alpha: 0.9),
-                    AppColors.background.withValues(alpha: 0.5),
+                    context.background,
+                    context.background.withValues(alpha: 0.9),
+                    context.background.withValues(alpha: 0.5),
                     Colors.transparent,
                   ],
                 ),
@@ -216,7 +216,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
                   margin: EdgeInsets.symmetric(horizontal: 4),
                   decoration: BoxDecoration(
                     color: _currentPhotoIndex == index
-                        ? AppColors.primary
+                        ? context.primary
                         : Colors.white.withValues(alpha: 0.5),
                     borderRadius: BorderRadius.circular(4.r),
                   ),
@@ -236,7 +236,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
                   vertical: 6,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.green.withValues(alpha: 0.9),
+                  color: context.green.withValues(alpha: 0.9),
                   borderRadius: BorderRadius.circular(20.r),
                 ),
                 child: Row(
@@ -270,7 +270,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
       margin: EdgeInsets.symmetric(horizontal: 20),
       padding: EdgeInsets.all(20.w),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.surface,
         borderRadius: BorderRadius.circular(20.r),
       ),
       child: Column(
@@ -283,7 +283,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
                 child: Text(
                   '${_userData['name']}, ${_userData['age']}',
                   style: TextStyle(
-                    color: AppColors.white,
+                    color: context.white,
                     fontSize: 28.sp,
                     fontWeight: FontWeight.bold,
                   ),
@@ -293,12 +293,12 @@ class _UserDetailPageState extends State<UserDetailPage> {
                 Container(
                   padding: EdgeInsets.all(8.w),
                   decoration: BoxDecoration(
-                    color: AppColors.primary.withValues(alpha: 0.2),
+                    color: context.primary.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(12.r),
                   ),
                   child: Icon(
                     Icons.verified,
-                    color: AppColors.primary,
+                    color: context.primary,
                     size: 24,
                   ),
                 ),
@@ -313,13 +313,13 @@ class _UserDetailPageState extends State<UserDetailPage> {
               Icon(
                 Icons.location_on,
                 size: 16,
-                color: AppColors.lightGrey,
+                color: context.lightGrey,
               ),
               SizedBox(width: 4.w),
               Text(
                 _userData['location'],
                 style: TextStyle(
-                  color: AppColors.lightGrey,
+                  color: context.lightGrey,
                   fontSize: 14.sp,
                 ),
               ),
@@ -334,13 +334,13 @@ class _UserDetailPageState extends State<UserDetailPage> {
               Icon(
                 Icons.near_me,
                 size: 16,
-                color: AppColors.lightGrey,
+                color: context.lightGrey,
               ),
               SizedBox(width: 4.w),
               Text(
                 '${_userData['distance']}km · ${_userData['lastActive']}活跃',
                 style: TextStyle(
-                  color: AppColors.lightGrey,
+                  color: context.lightGrey,
                   fontSize: 14.sp,
                 ),
               ),
@@ -372,7 +372,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
                   vertical: 10,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.primary,
+                  color: context.primary,
                   borderRadius: BorderRadius.circular(30.r),
                 ),
                 child: Text(
@@ -391,7 +391,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
 
           // 分割线
           Divider(
-            color: AppColors.divider,
+            color: context.divider,
             thickness: 1,
           ),
 
@@ -403,21 +403,21 @@ class _UserDetailPageState extends State<UserDetailPage> {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.border),
+                  border: Border.all(color: context.border),
                   borderRadius: BorderRadius.circular(30.r),
                 ),
                 child: RichText(
                   text: TextSpan(
                     text: '身高: ',
                     style: TextStyle(
-                      color: AppColors.lightGrey,
+                      color: context.lightGrey,
                       fontSize: 14.sp,
                     ),
                     children: [
                       TextSpan(
                         text: _userData['height'],
                         style: TextStyle(
-                          color: AppColors.white,
+                          color: context.white,
                           fontSize: 14.sp,
                           fontWeight: FontWeight.bold,
                         ),
@@ -430,21 +430,21 @@ class _UserDetailPageState extends State<UserDetailPage> {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.border),
+                  border: Border.all(color: context.border),
                   borderRadius: BorderRadius.circular(30.r),
                 ),
                 child: RichText(
                   text: TextSpan(
                     text: '感情状态: ',
                     style: TextStyle(
-                      color: AppColors.lightGrey,
+                      color: context.lightGrey,
                       fontSize: 14.sp,
                     ),
                     children: [
                       TextSpan(
                         text: _userData['maritalStatus'],
                         style: TextStyle(
-                          color: AppColors.white,
+                          color: context.white,
                           fontSize: 14.sp,
                           fontWeight: FontWeight.bold,
                         ),
@@ -465,7 +465,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       padding: EdgeInsets.all(20.w),
       decoration: BoxDecoration(
-        color: AppColors.surface,
+        color: context.surface,
         borderRadius: BorderRadius.circular(20.r),
       ),
       child: Row(
@@ -487,7 +487,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
         Text(
           value,
           style: TextStyle(
-            color: AppColors.white,
+            color: context.white,
             fontSize: 24.sp,
             fontWeight: FontWeight.bold,
           ),
@@ -496,7 +496,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
         Text(
           label,
           style: TextStyle(
-            color: AppColors.lightGrey,
+            color: context.lightGrey,
             fontSize: 14.sp,
           ),
         ),
@@ -508,7 +508,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
     return Container(
       width: 1.w,
       height: 40.w,
-      color: AppColors.border,
+      color: context.border,
     );
   }
 
@@ -524,14 +524,14 @@ class _UserDetailPageState extends State<UserDetailPage> {
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 16),
                 decoration: BoxDecoration(
-                  color: isSelected ? AppColors.primary : Colors.transparent,
+                  color: isSelected ? context.primary : Colors.transparent,
                   borderRadius: BorderRadius.circular(12.r),
                 ),
                 child: Text(
                   _tabs[index],
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: isSelected ? Colors.white : AppColors.lightGrey,
+                    color: isSelected ? Colors.white : context.lightGrey,
                     fontSize: 16.sp,
                     fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                   ),
@@ -552,7 +552,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
             margin: EdgeInsets.only(bottom: 16),
             padding: EdgeInsets.all(16.w),
             decoration: BoxDecoration(
-              color: AppColors.surface,
+              color: context.surface,
               borderRadius: BorderRadius.circular(16.r),
             ),
             child: Column(
@@ -564,7 +564,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
                       width: 40.w,
                       height: 40.w,
                       decoration: BoxDecoration(
-                        color: AppColors.tertiaryGrey,
+                        color: context.tertiaryGrey,
                         borderRadius: BorderRadius.circular(20.r),
                         image: DecorationImage(
                           image: AssetImage(_photos[0]),
@@ -579,14 +579,14 @@ class _UserDetailPageState extends State<UserDetailPage> {
                         Text(
                           _userData['name'],
                           style: TextStyle(
-                            color: AppColors.white,
+                            color: context.white,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                         Text(
                           '${index + 1}小时前',
                           style: TextStyle(
-                            color: AppColors.lightGrey,
+                            color: context.lightGrey,
                             fontSize: 12.sp,
                           ),
                         ),
@@ -608,13 +608,13 @@ class _UserDetailPageState extends State<UserDetailPage> {
                     Icon(
                       Icons.favorite_border,
                       size: 20,
-                      color: AppColors.lightGrey,
+                      color: context.lightGrey,
                     ),
                     SizedBox(width: 4.w),
                     Text(
                       '${12 + index * 3}',
                       style: TextStyle(
-                        color: AppColors.lightGrey,
+                        color: context.lightGrey,
                         fontSize: 14.sp,
                       ),
                     ),
@@ -622,13 +622,13 @@ class _UserDetailPageState extends State<UserDetailPage> {
                     Icon(
                       Icons.chat_bubble_outline,
                       size: 20,
-                      color: AppColors.lightGrey,
+                      color: context.lightGrey,
                     ),
                     SizedBox(width: 4.w),
                     Text(
                       '${3 + index}',
                       style: TextStyle(
-                        color: AppColors.lightGrey,
+                        color: context.lightGrey,
                         fontSize: 14.sp,
                       ),
                     ),
@@ -657,7 +657,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
             onTap: () => _showPhotoViewer(photoIndex),
             child: Container(
               decoration: BoxDecoration(
-                color: AppColors.surface,
+                color: context.surface,
                 borderRadius: BorderRadius.circular(8.r),
                 image: DecorationImage(
                   image: AssetImage(_photos[photoIndex]),
@@ -699,7 +699,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
         ),
         decoration: BoxDecoration(
           color: showBackground
-              ? AppColors.background.withValues(alpha: 0.95)
+              ? context.background.withValues(alpha: 0.95)
               : Colors.transparent,
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(20.r),
@@ -716,7 +716,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
                 width: 44.w,
                 height: 44.w,
                 decoration: BoxDecoration(
-                  color: AppColors.darkGrey.withValues(alpha: 0.8),
+                  color: context.darkGrey.withValues(alpha: 0.8),
                   borderRadius: BorderRadius.circular(22.r),
                 ),
                 child: Icon(
@@ -734,7 +734,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
                 width: 44.w,
                 height: 44.w,
                 decoration: BoxDecoration(
-                  color: AppColors.darkGrey.withValues(alpha: 0.8),
+                  color: context.darkGrey.withValues(alpha: 0.8),
                   borderRadius: BorderRadius.circular(22.r),
                 ),
                 child: Icon(
@@ -753,7 +753,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
   void _showMoreMenu() {
     showModalBottomSheet(
       context: context,
-      backgroundColor: AppColors.surface,
+      backgroundColor: context.surface,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
       ),
@@ -767,15 +767,15 @@ class _UserDetailPageState extends State<UserDetailPage> {
                 width: 40.w,
                 height: 4.w,
                 decoration: BoxDecoration(
-                  color: AppColors.tertiaryGrey,
+                  color: context.tertiaryGrey,
                   borderRadius: BorderRadius.circular(2.r),
                 ),
               ),
               ListTile(
-                leading: Icon(Icons.share, color: AppColors.white),
+                leading: Icon(Icons.share, color: context.white),
                 title: Text(
                   '分享资料',
-                  style: TextStyle(color: AppColors.white),
+                  style: TextStyle(color: context.white),
                 ),
                 onTap: () {
                   Navigator.pop(context);
@@ -783,10 +783,10 @@ class _UserDetailPageState extends State<UserDetailPage> {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.block, color: AppColors.red),
+                leading: Icon(Icons.block, color: context.red),
                 title: Text(
                   '屏蔽用户',
-                  style: TextStyle(color: AppColors.red),
+                  style: TextStyle(color: context.red),
                 ),
                 onTap: () {
                   Navigator.pop(context);
@@ -794,10 +794,10 @@ class _UserDetailPageState extends State<UserDetailPage> {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.report, color: AppColors.orange),
+                leading: Icon(Icons.report, color: context.orange),
                 title: Text(
                   '举报',
-                  style: TextStyle(color: AppColors.orange),
+                  style: TextStyle(color: context.orange),
                 ),
                 onTap: () {
                   Navigator.pop(context);
@@ -816,14 +816,14 @@ class _UserDetailPageState extends State<UserDetailPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: AppColors.surface,
+          backgroundColor: context.surface,
           title: Text(
             '屏蔽用户',
-            style: TextStyle(color: AppColors.white),
+            style: TextStyle(color: context.white),
           ),
           content: Text(
             '确定要屏蔽 ${_userData['name']} 吗？屏蔽后将不再收到对方的消息。',
-            style: const TextStyle(color: AppColors.lightGrey),
+            style: TextStyle(color: context.lightGrey),
           ),
           actions: [
             TextButton(
@@ -836,7 +836,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
                 context.pop();
                 DialogUtils.showSuccess(context, message: '已屏蔽用户');
               },
-              style: TextButton.styleFrom(foregroundColor: AppColors.red),
+              style: TextButton.styleFrom(foregroundColor: context.red),
               child: Text('屏蔽'),
             ),
           ],
@@ -857,9 +857,9 @@ class _UserDetailPageState extends State<UserDetailPage> {
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
             colors: [
-              AppColors.background,
-              AppColors.background.withValues(alpha: 0.9),
-              AppColors.background.withValues(alpha: 0.0),
+              context.background,
+              context.background.withValues(alpha: 0.9),
+              context.background.withValues(alpha: 0.0),
             ],
           ),
         ),
@@ -873,12 +873,12 @@ class _UserDetailPageState extends State<UserDetailPage> {
                 child: Container(
                   height: 56.w,
                   decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.border),
+                    border: Border.all(color: context.border),
                     borderRadius: BorderRadius.circular(30.r),
                   ),
                   child: Icon(
                     Icons.close,
-                    color: AppColors.lightGrey,
+                    color: context.lightGrey,
                     size: 28,
                   ),
                 ),
@@ -897,7 +897,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
                 child: Container(
                   height: 56.w,
                   decoration: BoxDecoration(
-                    color: AppColors.primary,
+                    color: context.primary,
                     borderRadius: BorderRadius.circular(30.r),
                   ),
                   child: Row(
@@ -937,12 +937,12 @@ class _UserDetailPageState extends State<UserDetailPage> {
                 child: Container(
                   height: 56.w,
                   decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.border),
+                    border: Border.all(color: context.border),
                     borderRadius: BorderRadius.circular(30.r),
                   ),
                   child: Icon(
                     Icons.favorite,
-                    color: AppColors.pink,
+                    color: context.pink,
                     size: 26,
                   ),
                 ),

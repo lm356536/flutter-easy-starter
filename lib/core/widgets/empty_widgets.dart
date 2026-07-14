@@ -39,8 +39,8 @@ class EmptyWidget extends StatelessWidget {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      AppColors.surface,
-                      AppColors.surfaceVariant.withValues(alpha: 0.5),
+                      context.surface,
+                      context.surfaceVariant.withValues(alpha: 0.5),
                     ],
                   ),
                   borderRadius: BorderRadius.circular(24.r),
@@ -48,7 +48,7 @@ class EmptyWidget extends StatelessWidget {
                 child: Icon(
                   icon,
                   size: 40,
-                  color: AppColors.lightGrey,
+                  color: context.lightGrey,
                 ),
               ),
               SizedBox(height: 24.w),
@@ -56,7 +56,7 @@ class EmptyWidget extends StatelessWidget {
                 Text(
                   title!,
                   style: TextStyle(
-                    color: AppColors.white,
+                    color: context.white,
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w600,
                   ),
@@ -67,7 +67,7 @@ class EmptyWidget extends StatelessWidget {
                   child: Text(
                     subtitle!,
                     style: TextStyle(
-                      color: AppColors.lightGrey,
+                      color: context.lightGrey,
                       fontSize: 15.sp,
                     ),
                     textAlign: TextAlign.center,
@@ -84,10 +84,10 @@ class EmptyWidget extends StatelessWidget {
                         vertical: 12.w,
                       ),
                       decoration: BoxDecoration(
-                        color: AppColors.primary.withValues(alpha: 0.2),
+                        color: context.primary.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(12.r),
                         border: Border.all(
-                          color: AppColors.primary.withValues(alpha: 0.3),
+                          color: context.primary.withValues(alpha: 0.3),
                         ),
                       ),
                       child: Row(
@@ -96,13 +96,13 @@ class EmptyWidget extends StatelessWidget {
                           Icon(
                             LucideIcons.refresh_cw,
                             size: 16,
-                            color: AppColors.primary,
+                            color: context.primary,
                           ),
                           SizedBox(width: 8.w),
                           Text(
                             '重新加载',
                             style: TextStyle(
-                              color: AppColors.primary,
+                              color: context.primary,
                               fontSize: 15.sp,
                               fontWeight: FontWeight.w600,
                             ),
@@ -150,8 +150,8 @@ class AppErrorWidget extends StatelessWidget {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      AppColors.red.withValues(alpha: 0.2),
-                      AppColors.red.withValues(alpha: 0.05),
+                      context.red.withValues(alpha: 0.2),
+                      context.red.withValues(alpha: 0.05),
                     ],
                   ),
                   borderRadius: BorderRadius.circular(24.r),
@@ -159,14 +159,14 @@ class AppErrorWidget extends StatelessWidget {
                 child: Icon(
                   LucideIcons.circle_alert,
                   size: 40,
-                  color: AppColors.red,
+                  color: context.red,
                 ),
               ),
               SizedBox(height: 24.w),
               Text(
                 message ?? '加载失败',
                 style: TextStyle(
-                  color: AppColors.white,
+                  color: context.white,
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w600,
                 ),
@@ -175,7 +175,7 @@ class AppErrorWidget extends StatelessWidget {
               Text(
                 '请检查网络连接后重试',
                 style: TextStyle(
-                  color: AppColors.lightGrey,
+                  color: context.lightGrey,
                   fontSize: 14.sp,
                 ),
               ),
@@ -190,10 +190,10 @@ class AppErrorWidget extends StatelessWidget {
                         vertical: 12.w,
                       ),
                       decoration: BoxDecoration(
-                        color: AppColors.red.withValues(alpha: 0.2),
+                        color: context.red.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(12.r),
                         border: Border.all(
-                          color: AppColors.red.withValues(alpha: 0.3),
+                          color: context.red.withValues(alpha: 0.3),
                         ),
                       ),
                       child: Row(
@@ -202,13 +202,13 @@ class AppErrorWidget extends StatelessWidget {
                           Icon(
                             LucideIcons.refresh_cw,
                             size: 16,
-                            color: AppColors.red,
+                            color: context.red,
                           ),
                           SizedBox(width: 8.w),
                           Text(
                             '重新加载',
                             style: TextStyle(
-                              color: AppColors.red,
+                              color: context.red,
                               fontSize: 15.sp,
                               fontWeight: FontWeight.w600,
                             ),
@@ -249,8 +249,8 @@ class LoadingWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    AppColors.primary.withValues(alpha: 0.3),
-                    AppColors.primary.withValues(alpha: 0.1),
+                    context.primary.withValues(alpha: 0.3),
+                    context.primary.withValues(alpha: 0.1),
                   ],
                 ),
                 shape: BoxShape.circle,
@@ -262,7 +262,7 @@ class LoadingWidget extends StatelessWidget {
                   child: CircularProgressIndicator(
                     strokeWidth: 2.5,
                     valueColor: AlwaysStoppedAnimation<Color>(
-                      AppColors.primary,
+                      context.primary,
                     ),
                   ),
                 ),
@@ -275,7 +275,7 @@ class LoadingWidget extends StatelessWidget {
               child: Text(
                 message!,
                 style: TextStyle(
-                  color: AppColors.lightGrey,
+                  color: context.lightGrey,
                   fontSize: 14.sp,
                 ),
               ),

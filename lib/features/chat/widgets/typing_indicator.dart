@@ -73,7 +73,7 @@ class _TypingIndicatorState extends State<TypingIndicator>
         Text(
           '正在输入',
           style: TextStyle(
-            color: AppColors.lightGrey,
+            color: context.lightGrey,
             fontSize: 12.sp,
           ),
         ),
@@ -115,12 +115,12 @@ class TypingBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!isTyping) return const SizedBox.shrink();
+    if (!isTyping) return SizedBox.shrink();
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       decoration: BoxDecoration(
-        color: AppColors.primary,
+        color: context.primary,
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Row(
